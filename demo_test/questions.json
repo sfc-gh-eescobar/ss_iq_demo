@@ -1,0 +1,9 @@
+{
+  "s1q2": "The Dubai Chocolate Shake clearly won on the metrics. But I want to understand WHY it resonated. What are guests actually saying about it across Yelp, Google, and social media? Pull the most compelling verbatim quotes and tell me what themes are driving that 0.92 sentiment score.",
+  "s1q3": "Now compare that to the Veggie Shack Reimagined which had only a 0.45 sentiment score and 22 incrementality. What went wrong according to guest reviews? What were people complaining about?",
+  "s1q4": "Based on everything we know from the performance data AND guest feedback, give me a strategic recommendation: Should we extend the Dubai Chocolate Shake into a permanent menu item or a seasonal anchor? And what lessons from the Veggie Shack failure should we apply to our next plant-based LTO?",
+  "s2q1": "What does our customer base look like across CLV tiers? How many Platinum and Gold guests do we have versus Silver and Bronze, and what channels are our highest-value customers using to order?",
+  "s2q2": "I see a lot of our volume is going through third-party delivery. What is the commission impact? Compare the net revenue per order across UberEats, DoorDash, and Grubhub versus our owned channels like APP and IN_STORE.",
+  "s2q3": "What are delivery customers actually complaining about in their reviews? Pull guest feedback specifically about DoorDash, UberEats, and Grubhub delivery experiences and tell me the main pain points.",
+  "s2q4": "Given the commission drag on delivery and the guest complaints you just surfaced, build me a prescriptive strategy to migrate our highest-value delivery customers to owned channels. Factor in our At Risk and Hibernating segments too. What would you recommend?"
+}

@@ -1,0 +1,344 @@
+<mxfile host="app.diagrams.net" modified="2026-03-30T00:00:00.000Z" agent="Cortex Code" version="24.0.0" type="device">
+  <diagram name="Marketing Intelligence Agent Architecture" id="mkt-agent-arch">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- ===== TITLE ===== -->
+        <mxCell id="title" value="Shake Shack Marketing Intelligence Agent" style="text;html=1;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontColor=#2D8B3F;" vertex="1" parent="1">
+          <mxGeometry x="350" y="15" width="700" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="Architecture Overview" style="text;html=1;fontSize=14;fontStyle=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontColor=#888;" vertex="1" parent="1">
+          <mxGeometry x="500" y="48" width="400" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ================================================================ -->
+        <!-- ROW 1 (TOP): INTERFACES / CONSUMERS                             -->
+        <!-- ================================================================ -->
+        <mxCell id="ui-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2D8B3F;strokeWidth=2;dashed=0;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="100" y="80" width="1300" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="ui-label" value="Interfaces &amp; Consumers" style="text;html=1;fontSize=14;fontStyle=1;align=left;verticalAlign=top;fillColor=none;strokeColor=none;fontColor=#1B5E20;" vertex="1" parent="1">
+          <mxGeometry x="120" y="88" width="250" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Snowflake Intelligence -->
+        <mxCell id="ui-si" value="&lt;b style=&quot;font-size:13px&quot;&gt;Snowflake Intelligence&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;Built-in chat UI&lt;br&gt;No code required&lt;br&gt;&lt;br&gt;&lt;i&gt;CMO / CFO / COO&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2D8B3F;strokeColor=#1B5E20;fontColor=#fff;fontSize=11;arcSize=10;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="118" width="200" height="95" as="geometry"/>
+        </mxCell>
+
+        <!-- ShackGPT React App -->
+        <mxCell id="ui-react" value="&lt;b style=&quot;font-size:13px&quot;&gt;ShackGPT&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;Custom React App&lt;br&gt;Branded experience&lt;br&gt;&lt;br&gt;&lt;i&gt;Marketing team / Ops&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=#0D47A1;fontColor=#fff;fontSize=11;arcSize=10;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="118" width="200" height="95" as="geometry"/>
+        </mxCell>
+
+        <!-- MCP -->
+        <mxCell id="ui-mcp" value="&lt;b style=&quot;font-size:13px&quot;&gt;MCP (Model Context)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;Claude / Cursor / IDEs&lt;br&gt;Developer workflows&lt;br&gt;&lt;br&gt;&lt;i&gt;Data / Analytics eng&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6A1B9A;strokeColor=#4A148C;fontColor=#fff;fontSize=11;arcSize=10;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="118" width="200" height="95" as="geometry"/>
+        </mxCell>
+
+        <!-- REST API -->
+        <mxCell id="ui-api" value="&lt;b style=&quot;font-size:13px&quot;&gt;REST API&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;DATA_AGENT_RUN()&lt;br&gt;Any HTTP client&lt;br&gt;&lt;br&gt;&lt;i&gt;Integrations / Slack bots&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E65100;strokeColor=#BF360C;fontColor=#fff;fontSize=11;arcSize=10;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="118" width="200" height="95" as="geometry"/>
+        </mxCell>
+
+        <!-- Streamlit -->
+        <mxCell id="ui-streamlit" value="&lt;b style=&quot;font-size:13px&quot;&gt;Streamlit in Snowflake&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;Embedded dashboards&lt;br&gt;Custom visualizations&lt;br&gt;&lt;br&gt;&lt;i&gt;Analysts / Self-serve&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C62828;strokeColor=#B71C1C;fontColor=#fff;fontSize=11;arcSize=10;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="118" width="200" height="95" as="geometry"/>
+        </mxCell>
+
+        <!-- ================================================================ -->
+        <!-- ROW 2: AGENT OBJECT (the central hub)                            -->
+        <!-- ================================================================ -->
+
+        <!-- Arrows: Interfaces -> Agent (all point down) -->
+        <mxCell id="a-si" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.15;entryY=0;strokeColor=#2D8B3F;strokeWidth=2;endArrow=classic;startArrow=classic;" edge="1" parent="1" source="ui-si" target="agent-outer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a-react" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.32;entryY=0;strokeColor=#1565C0;strokeWidth=2;endArrow=classic;startArrow=classic;" edge="1" parent="1" source="ui-react" target="agent-outer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a-mcp" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#6A1B9A;strokeWidth=2;endArrow=classic;startArrow=classic;" edge="1" parent="1" source="ui-mcp" target="agent-outer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a-api" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.68;entryY=0;strokeColor=#E65100;strokeWidth=2;endArrow=classic;startArrow=classic;" edge="1" parent="1" source="ui-api" target="agent-outer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a-streamlit" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.85;entryY=0;strokeColor=#C62828;strokeWidth=2;endArrow=classic;startArrow=classic;" edge="1" parent="1" source="ui-streamlit" target="agent-outer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Agent outer box -->
+        <mxCell id="agent-outer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#F57F17;strokeWidth=3;arcSize=6;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="290" width="1040" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- Agent icon/badge -->
+        <mxCell id="agent-badge" value="CORTEX AGENT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F57F17;strokeColor=#E65100;fontColor=#fff;fontSize=10;fontStyle=1;arcSize=15;" vertex="1" parent="1">
+          <mxGeometry x="200" y="300" width="110" height="24" as="geometry"/>
+        </mxCell>
+
+        <!-- Agent title -->
+        <mxCell id="agent-title" value="&lt;font style=&quot;font-size:18px&quot;&gt;&lt;b&gt;MKT_INTELLIGENCE_AGENT&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;color:#888&quot;&gt;DEMO_DB.SHAKE_SHACK  |  Orchestration: auto  |  Budget: 900s / 400K tokens&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="320" y="295" width="580" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- Tool boxes inside agent -->
+        <mxCell id="tool1" value="&lt;b&gt;customer_intelligence&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#666&quot;&gt;cortex_analyst_text_to_sql&lt;br&gt;Segments, CLV, churn, loyalty&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#F57F17;fontSize=10;arcSize=10;shadow=0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="200" y="345" width="195" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="tool2" value="&lt;b&gt;channel_financial&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#666&quot;&gt;cortex_analyst_text_to_sql&lt;br&gt;Channel P&amp;amp;L, commissions, CAC&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#F57F17;fontSize=10;arcSize=10;shadow=0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="415" y="345" width="195" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="tool3" value="&lt;b&gt;menu_lto&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#666&quot;&gt;cortex_analyst_text_to_sql&lt;br&gt;LTO, weather, commodity, margins&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#F57F17;fontSize=10;arcSize=10;shadow=0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="630" y="345" width="195" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="tool4" value="&lt;b&gt;score_customer&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#666&quot;&gt;generic (stored procedure)&lt;br&gt;ML churn scoring (XGBoost)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;arcSize=10;shadow=0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="845" y="345" width="195" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Routing instructions note inside agent -->
+        <mxCell id="routing-note" value="&lt;font style=&quot;font-size:10px;color:#999&quot;&gt;&lt;b&gt;Orchestration routes questions to the right tool automatically:&lt;/b&gt;  guest/loyalty/churn &amp;rarr; customer_intelligence  |  revenue/margins/delivery &amp;rarr; channel_financial  |  menu/LTO/weather &amp;rarr; menu_lto  |  ML scoring &amp;rarr; score_customer&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="415" width="1000" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ================================================================ -->
+        <!-- ROW 3: SEMANTIC VIEWS                                             -->
+        <!-- ================================================================ -->
+        <mxCell id="sv-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#8E24AA;strokeWidth=1;dashed=1;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="120" y="550" width="960" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="sv-label" value="Semantic Views (Cortex Analyst Text-to-SQL)" style="text;html=1;fontSize=13;fontStyle=1;align=left;verticalAlign=top;fillColor=none;strokeColor=none;fontColor=#6A1B9A;" vertex="1" parent="1">
+          <mxGeometry x="140" y="558" width="400" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="sv-cust" value="&lt;b&gt;MKT_CUSTOMER_INTELLIGENCE_VIEW&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#666&quot;&gt;8 metrics | 30+ dims | 6 filters | 13 VQRs&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CE93D8;strokeColor=#6A1B9A;fontSize=10;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="140" y="590" width="270" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="sv-chan" value="&lt;b&gt;MKT_CHANNEL_FINANCIAL_VIEW&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#666&quot;&gt;9 metrics | 17 dims | 3 filters | 8 VQRs&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CE93D8;strokeColor=#6A1B9A;fontSize=10;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="440" y="590" width="270" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="sv-menu" value="&lt;b&gt;MKT_MENU_LTO_VIEW&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#666&quot;&gt;6 metrics | 21 dims | 4 filters | 10 VQRs&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CE93D8;strokeColor=#6A1B9A;fontSize=10;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="740" y="590" width="270" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- explanation of SV role -->
+        <mxCell id="sv-note" value="&lt;font style=&quot;font-size:9px;color:#888&quot;&gt;Semantic views define dimensions, metrics, filters, and verified queries (VQRs) that guide Cortex Analyst's text-to-SQL generation&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="645" width="800" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows: Agent tools -> Semantic Views -->
+        <mxCell id="a-t1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#8E24AA;strokeWidth=1.5;" edge="1" parent="1" source="tool1" target="sv-cust">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a-t2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#8E24AA;strokeWidth=1.5;" edge="1" parent="1" source="tool2" target="sv-chan">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a-t3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#8E24AA;strokeWidth=1.5;" edge="1" parent="1" source="tool3" target="sv-menu">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ================================================================ -->
+        <!-- ML INFRASTRUCTURE (right side, connects to tool4)                 -->
+        <!-- ================================================================ -->
+        <mxCell id="ml-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#C62828;strokeWidth=1;dashed=1;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="340" width="240" height="350" as="geometry"/>
+        </mxCell>
+        <mxCell id="ml-label" value="ML Infrastructure (SPCS)" style="text;html=1;fontSize=12;fontStyle=1;align=center;verticalAlign=top;fillColor=none;strokeColor=none;fontColor=#C62828;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="348" width="200" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ml-model" value="&lt;b&gt;MKT_CHURN_MODEL&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#666&quot;&gt;XGBoost V1&lt;br&gt;Model Registry&lt;/font&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;size=10;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="380" width="190" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="ml-service" value="&lt;b&gt;MKT_CHURN_SERVICE&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#666&quot;&gt;SPCS Container Runtime&lt;br&gt;Real-time inference&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="455" width="180" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="ml-proc" value="&lt;b&gt;SCORE_CUSTOMER_TOOL&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#666&quot;&gt;Stored Procedure&lt;br&gt;13 input parameters&lt;br&gt;Churn prob + risk level&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1175" y="530" width="180" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- ML internal arrows -->
+        <mxCell id="ml-a1" style="exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#C62828;strokeWidth=1;" edge="1" parent="1" source="ml-model" target="ml-service">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ml-a2" style="exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#C62828;strokeWidth=1;" edge="1" parent="1" source="ml-service" target="ml-proc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow: tool4 -> ML proc -->
+        <mxCell id="a-ml" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#C62828;strokeWidth=2;dashed=0;" edge="1" parent="1" source="tool4" target="ml-proc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ================================================================ -->
+        <!-- ROW 4: MART TABLES (CTAS)                                         -->
+        <!-- ================================================================ -->
+        <mxCell id="mart-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1E88E5;strokeWidth=1;dashed=1;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="120" y="720" width="960" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="mart-label" value="Mart Tables (CTAS - Pre-Joined, One Table per Domain)" style="text;html=1;fontSize=13;fontStyle=1;align=left;verticalAlign=top;fillColor=none;strokeColor=none;fontColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="140" y="728" width="500" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="m-cust" value="&lt;b&gt;MKT_CUSTOMER_INTELLIGENCE_MART&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#666&quot;&gt;50K rows | 60 cols | Guests + Txn Aggregates&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=6;fillColor=#BBDEFB;strokeColor=#1565C0;fontSize=10;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="140" y="758" width="270" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="m-chan" value="&lt;b&gt;MKT_CHANNEL_FINANCIAL_MART&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#666&quot;&gt;2.6M rows | 35 cols | Txns + Economics&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=6;fillColor=#BBDEFB;strokeColor=#1565C0;fontSize=10;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="440" y="758" width="270" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="m-menu" value="&lt;b&gt;MKT_MENU_PERFORMANCE_MART&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#666&quot;&gt;12.5M rows | 45 cols | Items + Weather + Commodity&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=6;fillColor=#BBDEFB;strokeColor=#1565C0;fontSize=10;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="740" y="758" width="270" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows: Semantic Views -> Mart Tables -->
+        <mxCell id="a-sv1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;entryDx=0;entryDy=5;strokeColor=#1565C0;strokeWidth=1.5;" edge="1" parent="1" source="sv-cust" target="m-cust">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a-sv2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;entryDx=0;entryDy=5;strokeColor=#1565C0;strokeWidth=1.5;" edge="1" parent="1" source="sv-chan" target="m-chan">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a-sv3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;entryDx=0;entryDy=5;strokeColor=#1565C0;strokeWidth=1.5;" edge="1" parent="1" source="sv-menu" target="m-menu">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ================================================================ -->
+        <!-- ROW 5 (BOTTOM): SOURCE TABLES                                     -->
+        <!-- ================================================================ -->
+        <mxCell id="ds-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECEFF1;strokeColor=#90A4AE;strokeWidth=1;dashed=1;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="120" y="880" width="1260" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="ds-label" value="Source Tables (10 - Synthetic Data)" style="text;html=1;fontSize=13;fontStyle=1;align=left;verticalAlign=top;fillColor=none;strokeColor=none;fontColor=#546E7A;" vertex="1" parent="1">
+          <mxGeometry x="140" y="888" width="300" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 1 of source tables -->
+        <mxCell id="t-guests" value="&lt;b&gt;MKT_GUEST_PROFILES&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#888&quot;&gt;50K guests | RFM + CLV&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=6;fillColor=#fff;strokeColor=#78909C;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="140" y="918" width="165" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="t-txns" value="&lt;b&gt;MKT_TRANSACTIONS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#888&quot;&gt;2M+ orders | 7 channels&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=6;fillColor=#fff;strokeColor=#78909C;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="325" y="918" width="165" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="t-items" value="&lt;b&gt;MKT_ORDER_ITEMS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#888&quot;&gt;6M+ line items&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=6;fillColor=#fff;strokeColor=#78909C;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="510" y="918" width="165" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="t-menu" value="&lt;b&gt;MKT_MENU_ITEMS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#888&quot;&gt;125 items (86 core + 39 LTO)&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=6;fillColor=#fff;strokeColor=#78909C;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="695" y="918" width="165" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="t-locs" value="&lt;b&gt;MKT_LOCATIONS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#888&quot;&gt;281 shacks | 29 markets&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=6;fillColor=#fff;strokeColor=#78909C;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="880" y="918" width="165" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 2 of source tables -->
+        <mxCell id="t-channel" value="&lt;b&gt;MKT_CHANNEL_ECONOMICS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#888&quot;&gt;7 channels&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=6;fillColor=#fff;strokeColor=#78909C;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="140" y="985" width="145" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="t-lto" value="&lt;b&gt;MKT_LTO_CAMPAIGNS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#888&quot;&gt;40 campaigns&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=6;fillColor=#fff;strokeColor=#78909C;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="305" y="985" width="145" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="t-mktg" value="&lt;b&gt;MKT_MARKETING_CAMPAIGNS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#888&quot;&gt;100 campaigns&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=6;fillColor=#fff;strokeColor=#78909C;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="470" y="985" width="155" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="t-weather" value="&lt;b&gt;MKT_WEATHER_DAILY&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#888&quot;&gt;154K rows&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=6;fillColor=#fff;strokeColor=#78909C;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="645" y="985" width="145" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="t-commodity" value="&lt;b&gt;MKT_COMMODITY_PRICES&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#888&quot;&gt;3.3K rows | 6 commodities&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=6;fillColor=#fff;strokeColor=#78909C;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="810" y="985" width="155" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows: Mart Tables -> Source Tables -->
+        <mxCell id="a-m1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=5;strokeColor=#90A4AE;strokeWidth=1;dashed=1;" edge="1" parent="1" source="m-cust" target="t-guests">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a-m2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=5;strokeColor=#90A4AE;strokeWidth=1;dashed=1;" edge="1" parent="1" source="m-chan" target="t-txns">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a-m3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=5;strokeColor=#90A4AE;strokeWidth=1;dashed=1;" edge="1" parent="1" source="m-menu" target="t-items">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ================================================================ -->
+        <!-- SNOWFLAKE PLATFORM BOUNDARY                                       -->
+        <!-- ================================================================ -->
+        <mxCell id="sf-boundary" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#29B5E8;strokeWidth=2;dashed=0;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="80" y="260" width="1340" height="800" as="geometry"/>
+        </mxCell>
+        <mxCell id="sf-label" value="&lt;font style=&quot;font-size:13px&quot;&gt;Snowflake  &lt;b&gt;DEMO_DB.SHAKE_SHACK&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;fillColor=#29B5E8;strokeColor=none;fontColor=#fff;rounded=1;spacingLeft=8;spacingRight=8;spacingTop=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="260" width="280" height="24" as="geometry"/>
+        </mxCell>
+
+        <!-- ================================================================ -->
+        <!-- LEGEND (bottom-right)                                             -->
+        <!-- ================================================================ -->
+        <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#DDD;strokeWidth=1;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="880" width="240" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-title" value="&lt;b&gt;Legend&lt;/b&gt;" style="text;html=1;fontSize=12;align=left;fillColor=none;strokeColor=none;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="888" width="100" height="20" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="l1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2D8B3F;strokeColor=#1B5E20;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="916" width="16" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="l1t" value="Snowflake Intelligence" style="text;html=1;fontSize=10;align=left;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="912" width="150" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="l2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=#0D47A1;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="936" width="16" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="l2t" value="Custom React App" style="text;html=1;fontSize=10;align=left;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="932" width="150" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="l3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6A1B9A;strokeColor=#4A148C;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="956" width="16" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="l3t" value="MCP / IDE Integration" style="text;html=1;fontSize=10;align=left;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="952" width="150" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="l4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E65100;strokeColor=#BF360C;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="976" width="16" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="l4t" value="REST API" style="text;html=1;fontSize=10;align=left;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="972" width="150" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="l5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#F57F17;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="996" width="16" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="l5t" value="Cortex Agent Object" style="text;html=1;fontSize=10;align=left;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="992" width="150" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="l6" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;" vertex="1" parent="1">
+          <mxGeometry x="1165" y="1016" width="16" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="l6t" value="ML Infrastructure (SPCS)" style="text;html=1;fontSize=10;align=left;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="1012" width="150" height="18" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="l-stats" value="&lt;hr&gt;&lt;font style=&quot;font-size:9px;color:#999&quot;&gt;31 VQRs | 4 tools | 3 semantic views&lt;br&gt;1 ML model | 10 source tables | 3 marts&lt;/font&gt;" style="text;html=1;align=center;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1038" width="220" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- ================================================================ -->
+        <!-- FLOW LABELS on the left margin                                    -->
+        <!-- ================================================================ -->
+        <mxCell id="flow-users" value="&lt;font style=&quot;font-size:10px;color:#999&quot;&gt;USERS &amp;amp;&lt;br&gt;APPS&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;rotation=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="130" width="55" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow-agent" value="&lt;font style=&quot;font-size:10px;color:#999&quot;&gt;AGENT&lt;br&gt;OBJECT&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="365" width="55" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow-semantic" value="&lt;font style=&quot;font-size:10px;color:#999&quot;&gt;SEMANTIC&lt;br&gt;LAYER&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="590" width="55" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow-mart" value="&lt;font style=&quot;font-size:10px;color:#999&quot;&gt;MART&lt;br&gt;LAYER&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="760" width="55" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="flow-source" value="&lt;font style=&quot;font-size:10px;color:#999&quot;&gt;SOURCE&lt;br&gt;LAYER&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="950" width="55" height="40" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

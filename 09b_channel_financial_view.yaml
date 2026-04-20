@@ -1,0 +1,389 @@
+name: MKT_CHANNEL_FINANCIAL_VIEW
+description: |
+  Channel and financial analytics semantic view for Shake Shack Marketing Agent.
+  Answers questions about channel profitability, delivery commission impact, app migration
+  opportunity, revenue by channel and location, and margin optimization across 2M+ transactions.
+
+tables:
+  - name: CHANNEL_FINANCIAL
+    description: Transaction-level financial data with channel economics, customer segments, and location data. Each row is one transaction with full margin analysis.
+    base_table:
+      database: DEMO_DB
+      schema: SHAKE_SHACK
+      table: MKT_CHANNEL_FINANCIAL_MART
+    primary_key:
+      columns:
+        - TRANSACTION_ID
+
+    dimensions:
+      - name: transaction_id
+        expr: TRANSACTION_ID
+        description: Unique transaction identifier
+        data_type: VARCHAR
+      - name: guest_id
+        expr: GUEST_ID
+        description: Guest identifier
+        data_type: VARCHAR
+      - name: location_id
+        expr: LOCATION_ID
+        description: Location identifier
+        data_type: VARCHAR
+      - name: order_channel
+        expr: ORDER_CHANNEL
+        description: Ordering channel for this transaction
+        data_type: VARCHAR
+        sample_values:
+          - APP
+          - WEB
+          - KIOSK
+          - IN_STORE
+          - UBER_EATS
+          - DOORDASH
+          - GRUBHUB
+      - name: channel_group
+        expr: CHANNEL_GROUP
+        description: High-level channel grouping (THIRD_PARTY_DELIVERY, DIGITAL_DIRECT, IN_RESTAURANT)
+        data_type: VARCHAR
+        sample_values:
+          - THIRD_PARTY_DELIVERY
+          - DIGITAL_DIRECT
+          - IN_RESTAURANT
+      - name: daypart
+        expr: DAYPART
+        description: Time of day for the transaction
+        data_type: VARCHAR
+        sample_values:
+          - BREAKFAST
+          - LUNCH
+          - AFTERNOON
+          - DINNER
+          - LATE_NIGHT
+      - name: clv_tier
+        expr: CLV_TIER
+        description: Customer lifetime value tier
+        data_type: VARCHAR
+        sample_values:
+          - PLATINUM
+          - GOLD
+          - SILVER
+          - BRONZE
+      - name: rfm_segment
+        expr: RFM_SEGMENT
+        description: RFM customer segment
+        data_type: VARCHAR
+      - name: behavioral_segment
+        expr: BEHAVIORAL_SEGMENT
+        description: Behavioral customer segment
+        data_type: VARCHAR
+      - name: acquisition_channel
+        expr: ACQUISITION_CHANNEL
+        description: How the customer was originally acquired
+        data_type: VARCHAR
+      - name: preferred_channel
+        expr: PREFERRED_CHANNEL
+        description: Guest's stated preferred channel
+        data_type: VARCHAR
+      - name: home_market
+        expr: HOME_MARKET
+        description: Guest's home market
+        data_type: VARCHAR
+      - name: age_group
+        expr: AGE_GROUP
+        description: Guest age group
+        data_type: VARCHAR
+      - name: loyalty_enrolled
+        expr: LOYALTY_ENROLLED
+        description: Whether guest is enrolled in loyalty program
+        data_type: BOOLEAN
+      - name: is_first_visit
+        expr: IS_FIRST_VISIT
+        description: Whether this was the guest's first visit
+        data_type: BOOLEAN
+      - name: location_market
+        expr: LOCATION_MARKET
+        description: Market where the transaction occurred
+        data_type: VARCHAR
+      - name: location_region
+        expr: LOCATION_REGION
+        description: Region where the transaction occurred
+        data_type: VARCHAR
+      - name: location_format
+        expr: LOCATION_FORMAT
+        description: Format of the location (Traditional, Drive-Thru, Stadium, Airport)
+        data_type: VARCHAR
+      - name: is_new_market
+        expr: IS_NEW_MARKET
+        description: Whether location is in a new market
+        data_type: BOOLEAN
+      - name: txn_year_month
+        expr: TXN_YEAR_MONTH
+        description: Year-month of transaction (YYYY-MM format)
+        data_type: VARCHAR
+
+    time_dimensions:
+      - name: transaction_date
+        expr: TRANSACTION_DATE
+        description: Date of the transaction
+        data_type: DATE
+
+    facts:
+      - name: order_total
+        expr: ORDER_TOTAL
+        description: Gross order total before discounts
+        data_type: NUMBER
+      - name: discount_amount
+        expr: DISCOUNT_AMOUNT
+        description: Discount applied to the order
+        data_type: NUMBER
+      - name: delivery_fee
+        expr: DELIVERY_FEE
+        description: Delivery fee charged on the order
+        data_type: NUMBER
+      - name: platform_commission
+        expr: PLATFORM_COMMISSION
+        description: Commission paid to third-party delivery platform
+        data_type: NUMBER
+      - name: net_revenue
+        expr: NET_REVENUE
+        description: Revenue after discounts and commissions (ORDER_TOTAL - DISCOUNT_AMOUNT - PLATFORM_COMMISSION)
+        data_type: NUMBER
+      - name: true_net_revenue
+        expr: TRUE_NET_REVENUE
+        description: True net revenue after all channel costs including packaging and delivery costs
+        data_type: NUMBER
+      - name: order_margin_pct
+        expr: ORDER_MARGIN_PCT
+        description: Order margin percentage after all channel costs
+        data_type: NUMBER
+      - name: item_count
+        expr: ITEM_COUNT
+        description: Number of items in the order
+        data_type: NUMBER
+      - name: channel_commission_pct
+        expr: CHANNEL_COMMISSION_PCT
+        description: Commission percentage for this channel (0% for direct, 22-28% for delivery)
+        data_type: NUMBER
+      - name: channel_net_margin_pct
+        expr: CHANNEL_NET_MARGIN_PCT
+        description: Standard net margin percentage for this channel
+        data_type: NUMBER
+      - name: channel_cac
+        expr: CHANNEL_CAC
+        description: Customer acquisition cost for this channel
+        data_type: NUMBER
+      - name: txn_year
+        expr: TXN_YEAR
+        description: Transaction year
+        data_type: NUMBER
+      - name: txn_month
+        expr: TXN_MONTH
+        description: Transaction month
+        data_type: NUMBER
+      - name: txn_quarter
+        expr: TXN_QUARTER
+        description: Transaction quarter (1-4)
+        data_type: NUMBER
+
+    metrics:
+      - name: total_revenue
+        expr: SUM(ORDER_TOTAL)
+        description: Total gross revenue
+        data_type: NUMBER
+      - name: total_net_revenue
+        expr: SUM(NET_REVENUE)
+        description: Total net revenue after discounts and commissions
+        data_type: NUMBER
+      - name: total_true_net_revenue
+        expr: SUM(TRUE_NET_REVENUE)
+        description: Total true net revenue after all channel costs
+        data_type: NUMBER
+      - name: total_commissions
+        expr: SUM(PLATFORM_COMMISSION)
+        description: Total commissions paid to delivery platforms
+        data_type: NUMBER
+      - name: total_discounts
+        expr: SUM(DISCOUNT_AMOUNT)
+        description: Total discounts applied
+        data_type: NUMBER
+      - name: avg_order_value
+        expr: AVG(ORDER_TOTAL)
+        description: Average order value
+        data_type: NUMBER
+      - name: avg_margin_pct
+        expr: AVG(ORDER_MARGIN_PCT)
+        description: Average order margin percentage
+        data_type: NUMBER
+      - name: transaction_count
+        expr: COUNT(*)
+        description: Total number of transactions
+        data_type: NUMBER
+      - name: unique_guests
+        expr: COUNT(DISTINCT GUEST_ID)
+        description: Number of unique guests
+        data_type: NUMBER
+
+    filters:
+      - name: delivery_orders
+        expr: CHANNEL_GROUP = 'THIRD_PARTY_DELIVERY'
+        description: Filter to third-party delivery orders only
+      - name: direct_orders
+        expr: CHANNEL_GROUP IN ('DIGITAL_DIRECT', 'IN_RESTAURANT')
+        description: Filter to direct/owned channel orders
+      - name: high_value_customers
+        expr: CLV_TIER IN ('PLATINUM', 'GOLD')
+        description: Filter to high-value customer transactions
+
+verified_queries:
+  - question: Compare high-value customer channel mix versus average customer
+    sql: |
+      SELECT
+        CHANNEL_GROUP,
+        ORDER_CHANNEL,
+        ROUND(SUM(CASE WHEN CLV_TIER IN ('PLATINUM','GOLD') THEN ORDER_TOTAL ELSE 0 END), 2) AS high_value_revenue,
+        ROUND(SUM(CASE WHEN CLV_TIER IN ('SILVER','BRONZE') THEN ORDER_TOTAL ELSE 0 END), 2) AS standard_revenue,
+        COUNT(CASE WHEN CLV_TIER IN ('PLATINUM','GOLD') THEN 1 END) AS high_value_txns,
+        COUNT(CASE WHEN CLV_TIER IN ('SILVER','BRONZE') THEN 1 END) AS standard_txns,
+        ROUND(AVG(CASE WHEN CLV_TIER IN ('PLATINUM','GOLD') THEN ORDER_MARGIN_PCT END), 2) AS high_value_margin_pct,
+        ROUND(AVG(CASE WHEN CLV_TIER IN ('SILVER','BRONZE') THEN ORDER_MARGIN_PCT END), 2) AS standard_margin_pct
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CHANNEL_FINANCIAL_MART
+      GROUP BY CHANNEL_GROUP, ORDER_CHANNEL
+      ORDER BY high_value_revenue DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: How much profit are we losing to third-party delivery commissions?
+    sql: |
+      SELECT
+        ORDER_CHANNEL,
+        COUNT(*) AS total_orders,
+        ROUND(SUM(ORDER_TOTAL), 2) AS gross_revenue,
+        ROUND(SUM(PLATFORM_COMMISSION), 2) AS total_commissions,
+        ROUND(SUM(TRUE_NET_REVENUE), 2) AS true_net_revenue,
+        ROUND(AVG(ORDER_MARGIN_PCT), 2) AS avg_margin_pct,
+        ROUND(AVG(CHANNEL_COMMISSION_PCT), 2) AS commission_rate
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CHANNEL_FINANCIAL_MART
+      WHERE CHANNEL_GROUP = 'THIRD_PARTY_DELIVERY'
+      GROUP BY ORDER_CHANNEL
+      ORDER BY total_commissions DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: What is the margin impact of migrating 10% of delivery users to our app?
+    sql: |
+      WITH delivery_stats AS (
+        SELECT
+          COUNT(*) AS delivery_txns,
+          AVG(ORDER_TOTAL) AS avg_delivery_order,
+          AVG(ORDER_MARGIN_PCT) AS avg_delivery_margin
+        FROM DEMO_DB.SHAKE_SHACK.MKT_CHANNEL_FINANCIAL_MART
+        WHERE CHANNEL_GROUP = 'THIRD_PARTY_DELIVERY'
+      ),
+      app_stats AS (
+        SELECT
+          AVG(ORDER_MARGIN_PCT) AS avg_app_margin
+        FROM DEMO_DB.SHAKE_SHACK.MKT_CHANNEL_FINANCIAL_MART
+        WHERE ORDER_CHANNEL = 'APP'
+      )
+      SELECT
+        d.delivery_txns,
+        ROUND(d.delivery_txns * 0.10) AS migrated_txns,
+        ROUND(d.avg_delivery_order, 2) AS avg_order_value,
+        ROUND(d.avg_delivery_margin, 2) AS current_delivery_margin_pct,
+        ROUND(a.avg_app_margin, 2) AS app_margin_pct,
+        ROUND(a.avg_app_margin - d.avg_delivery_margin, 2) AS margin_improvement_pct,
+        ROUND(d.delivery_txns * 0.10 * d.avg_delivery_order * (a.avg_app_margin - d.avg_delivery_margin) / 100, 2) AS annual_margin_gain
+      FROM delivery_stats d, app_stats a
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: Show me channel mix trends over the last 6 months
+    sql: |
+      SELECT
+        TXN_YEAR_MONTH,
+        ORDER_CHANNEL,
+        COUNT(*) AS transaction_count,
+        ROUND(SUM(ORDER_TOTAL), 2) AS total_revenue,
+        ROUND(AVG(ORDER_TOTAL), 2) AS avg_order_value,
+        ROUND(AVG(ORDER_MARGIN_PCT), 2) AS avg_margin_pct
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CHANNEL_FINANCIAL_MART
+      WHERE TRANSACTION_DATE >= DATEADD('month', -6, CURRENT_DATE())
+      GROUP BY TXN_YEAR_MONTH, ORDER_CHANNEL
+      ORDER BY TXN_YEAR_MONTH, total_revenue DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: What is the average order value by channel?
+    sql: |
+      SELECT
+        ORDER_CHANNEL,
+        CHANNEL_GROUP,
+        COUNT(*) AS total_orders,
+        ROUND(AVG(ORDER_TOTAL), 2) AS avg_order_value,
+        ROUND(AVG(ITEM_COUNT), 1) AS avg_items,
+        ROUND(AVG(ORDER_MARGIN_PCT), 2) AS avg_margin_pct,
+        ROUND(SUM(ORDER_TOTAL), 2) AS total_revenue
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CHANNEL_FINANCIAL_MART
+      GROUP BY ORDER_CHANNEL, CHANNEL_GROUP
+      ORDER BY avg_order_value DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: Which locations have the highest third-party delivery dependency?
+    sql: |
+      SELECT
+        LOCATION_MARKET,
+        LOCATION_ID,
+        COUNT(*) AS total_orders,
+        SUM(CASE WHEN CHANNEL_GROUP = 'THIRD_PARTY_DELIVERY' THEN 1 ELSE 0 END) AS delivery_orders,
+        ROUND(SUM(CASE WHEN CHANNEL_GROUP = 'THIRD_PARTY_DELIVERY' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) AS delivery_pct,
+        ROUND(SUM(PLATFORM_COMMISSION), 2) AS total_commissions_paid
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CHANNEL_FINANCIAL_MART
+      GROUP BY LOCATION_MARKET, LOCATION_ID
+      HAVING COUNT(*) >= 100
+      ORDER BY delivery_pct DESC
+      LIMIT 20
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: Show me the revenue split by channel for the last quarter
+    sql: |
+      SELECT
+        CHANNEL_GROUP,
+        ORDER_CHANNEL,
+        COUNT(*) AS transaction_count,
+        ROUND(SUM(ORDER_TOTAL), 2) AS gross_revenue,
+        ROUND(SUM(ORDER_TOTAL) * 100.0 / SUM(SUM(ORDER_TOTAL)) OVER (), 1) AS revenue_share_pct,
+        ROUND(SUM(TRUE_NET_REVENUE), 2) AS true_net_revenue,
+        ROUND(AVG(ORDER_MARGIN_PCT), 2) AS avg_margin_pct
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CHANNEL_FINANCIAL_MART
+      WHERE TRANSACTION_DATE >= DATEADD('month', -3, CURRENT_DATE())
+      GROUP BY CHANNEL_GROUP, ORDER_CHANNEL
+      ORDER BY gross_revenue DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: What would our restaurant margin be at different app adoption rates?
+    sql: |
+      WITH base AS (
+        SELECT
+          COUNT(*) AS total_txns,
+          SUM(CASE WHEN CHANNEL_GROUP = 'THIRD_PARTY_DELIVERY' THEN 1 ELSE 0 END) AS delivery_txns,
+          AVG(CASE WHEN CHANNEL_GROUP = 'THIRD_PARTY_DELIVERY' THEN ORDER_TOTAL END) AS avg_delivery_order,
+          AVG(CASE WHEN CHANNEL_GROUP = 'THIRD_PARTY_DELIVERY' THEN ORDER_MARGIN_PCT END) AS delivery_margin,
+          AVG(CASE WHEN ORDER_CHANNEL = 'APP' THEN ORDER_MARGIN_PCT END) AS app_margin,
+          SUM(TRUE_NET_REVENUE) AS current_total_net,
+          SUM(ORDER_TOTAL) AS current_total_gross
+        FROM DEMO_DB.SHAKE_SHACK.MKT_CHANNEL_FINANCIAL_MART
+      ),
+      scenarios AS (
+        SELECT column1 AS migration_pct FROM (VALUES (5),(10),(15),(20),(25),(30))
+      )
+      SELECT
+        s.migration_pct || '%' AS delivery_to_app_migration,
+        ROUND(b.delivery_txns * s.migration_pct / 100.0) AS migrated_orders,
+        ROUND(b.current_total_net + (b.delivery_txns * s.migration_pct / 100.0 * b.avg_delivery_order * (b.app_margin - b.delivery_margin) / 100), 2) AS projected_net_revenue,
+        ROUND((b.current_total_net + (b.delivery_txns * s.migration_pct / 100.0 * b.avg_delivery_order * (b.app_margin - b.delivery_margin) / 100) - b.current_total_net), 2) AS incremental_margin
+      FROM base b CROSS JOIN scenarios s
+      ORDER BY s.migration_pct
+    verified_at: 1711500000
+    verified_by: demo

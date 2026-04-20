@@ -1,0 +1,165 @@
+{
+  "content": [
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "has_time_column": true,
+          "need_future_forecasting_data": false,
+          "original_query": "Across our newly opened drive-thrus in the Midwest, what percentage of guests acquired through the 1-3-5 promotion returned for a second full-priced visit within 30 days?",
+          "previous_related_tool_result_id": "",
+          "query": "What percentage of guests acquired through the APP135 promotion at Midwest drive-thru locations returned for a second full-priced visit within 30 days?"
+        },
+        "name": "retention_cohort",
+        "tool_use_id": "toolu_bdrk_01Ap2jbtckUBrryg9SsHMhj3",
+        "type": "cortex_analyst_text_to_sql"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "query_id": "01c3d7af-0812-a216-0053-fc07169101ce",
+              "result_set": {
+                "data": [
+                  [
+                    "430",
+                    "395",
+                    "25",
+                    "5.8",
+                    "91.9",
+                    "2025-10-01",
+                    "2025-12-17",
+                    "430"
+                  ]
+                ],
+                "resultSetMetaData": {
+                  "format": "jsonv2",
+                  "numRows": 1,
+                  "partition": 0,
+                  "partitionInfo": [
+                    {
+                      "rowCount": 1,
+                      "uncompressedSize": 74
+                    }
+                  ],
+                  "rowType": [
+                    {
+                      "length": 0,
+                      "name": "TOTAL_ACQUIRED",
+                      "nullable": false,
+                      "precision": 18,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "RETURNED_30D_COUNT",
+                      "nullable": true,
+                      "precision": 13,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "FULL_PRICE_30D_COUNT",
+                      "nullable": true,
+                      "precision": 13,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "FULL_PRICE_RETURN_RATE",
+                      "nullable": true,
+                      "precision": 23,
+                      "scale": 1,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "RETENTION_RATE_30D",
+                      "nullable": true,
+                      "precision": 23,
+                      "scale": 1,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "MIN_FIRST_VISIT_DATE",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "date"
+                    },
+                    {
+                      "length": 0,
+                      "name": "MAX_FIRST_VISIT_DATE",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "date"
+                    },
+                    {
+                      "length": 0,
+                      "name": "COUNT_FIRST_VISIT_DATE",
+                      "nullable": false,
+                      "precision": 18,
+                      "scale": 0,
+                      "type": "fixed"
+                    }
+                  ]
+                },
+                "statementHandle": "01c3d7af-0812-a216-0053-fc07169101ce"
+              },
+              "result_set_truncated": false,
+              "sql": "WITH __retention AS (\n  SELECT\n    acquisition_promo,\n    first_location_format,\n    first_region,\n    first_visit_date,\n    returned_within_30,\n    second_visit_full_price\n  FROM DEMO_DB.SHAKE_SHACK.MKT_GUEST_RETENTION_COHORT\n)\nSELECT\n  COUNT(*) AS total_acquired,\n  SUM(CASE WHEN returned_within_30 THEN 1 ELSE 0 END) AS returned_30d_count,\n  SUM(CASE WHEN returned_within_30 AND second_visit_full_price THEN 1 ELSE 0 END) AS full_price_30d_count,\n  ROUND(\n    100.0 * SUM(CASE WHEN returned_within_30 AND second_visit_full_price THEN 1 ELSE 0 END) / NULLIF(NULLIF(COUNT(*), 0), 0),\n    1\n  ) AS full_price_return_rate,\n  ROUND(\n    100.0 * SUM(CASE WHEN returned_within_30 THEN 1 ELSE 0 END) / NULLIF(NULLIF(COUNT(*), 0), 0),\n    1\n  ) AS retention_rate_30d,\n  MIN(first_visit_date) AS min_first_visit_date,\n  MAX(first_visit_date) AS max_first_visit_date,\n  COUNT(first_visit_date) AS count_first_visit_date\nFROM __retention\nWHERE\n  acquisition_promo = 'APP135'\n  AND first_region = 'Midwest'\n  AND first_location_format = 'Drive-Thru'\n  AND first_visit_date <= CURRENT_DATE\n -- Generated by Cortex Analyst (request_id: a5c126b6-9e0a-4953-bd4e-d2de72cd4389)\n;",
+              "text": "The question is clear and I can answer it with the following SQL."
+            },
+            "type": "json"
+          }
+        ],
+        "name": "retention_cohort",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01Ap2jbtckUBrryg9SsHMhj3",
+        "type": "cortex_analyst_text_to_sql"
+      },
+      "type": "tool_result"
+    },
+    {
+      "thinking": {
+        "text": "\nThis is excellent data. Looking at the results:\n- TOTAL_ACQUIRED: 430 guests were acquired through the APP135 (1-3-5) promotion at Midwest Drive-Thru locations\n- RETURNED_30D_COUNT: 395 returned within 30 days (91.9% retention rate)\n- FULL_PRICE_30D_COUNT: 25 returned for a full-priced second visit within 30 days\n- FULL_PRICE_RETURN_RATE: 5.8% - this is the key metric the user is asking about\n- Campaign period: Oct 1 - Dec 17, 2025\n\nThis is a concerning finding. While the 30-day retention rate of 91.9% appears strong, the full-price conversion rate of only 5.8% suggests that most returning guests are likely still using promotions or discounts. This indicates potential promo dependency.\n\nThe user is asking specifically about full-priced second visits, so 5.8% is the direct answer. I should present this clearly with the strategic implication - the Midwest drive-thru 1-3-5 promotion successfully drove trial (430 guests) and repeat visits (91.9%), but struggled to convert guests to full-price purchases (only 5.8%).\n\nI should present this in a strategic way that highlights both the positive (strong retention) and the concern (low full-price conversion).\n"
+      },
+      "type": "thinking"
+    },
+    {
+      "text": "\n**Only 5.8% of guests acquired through the 1-3-5 promotion at Midwest drive-thrus converted to full-priced visits within 30 days** \u2014 a significant concern for long-term profitability despite strong overall retention.\n\n## Key Findings\n\n| Metric | Value | Performance |\n|--------|-------|-------------|\n| **Guests Acquired (APP135)** | 430 | Midwest Drive-Thru, Oct-Dec 2025 |\n| **30-Day Return Rate** | 91.9% (395 guests) | Excellent retention signal |\n| **Full-Price Conversion Rate** | 5.8% (25 guests) | **Critical weakness** |\n\n## Strategic Implications\n\n**The Good:** The 1-3-5 promotion successfully drove trial at new Midwest drive-thru locations with exceptional 30-day retention (91.9% \u2014 nearly every guest came back).\n\n**The Problem:** Almost all returning guests (370 of 395, or 94%) are still relying on discounts or promotions for their second visit. This creates promo dependency that erodes unit economics and threatens long-term profitability.\n\n## Recommended Actions\n\n1. **Immediate:** Implement a graduated offer sequence for Midwest drive-thru guests \u2014 reduce discount depth on visit 3-4 to wean guests off promotions\n2. **Test:** A \"reward unlock\" messaging strategy emphasizing exclusive benefits vs. discounts for the 395 retained guests\n3. **Monitor:** Track full-price conversion at 60 and 90 days to see if behavior normalizes over time\n4. **Compare:** Benchmark this 5.8% against Traditional format locations and other regions to determine if this is a drive-thru/Midwest issue or a broader campaign weakness\n\nThe Midwest drive-thru cohort shows strong engagement but weak margin contribution \u2014 action is needed before scaling this promotion model further.\n",
+      "type": "text"
+    }
+  ],
+  "metadata": {
+    "usage": {
+      "tokens_consumed": [
+        {
+          "context_window": 200000,
+          "input_tokens": {
+            "cache_read": 31658,
+            "cache_write": 1693,
+            "total": 33358,
+            "uncached": 7
+          },
+          "model_name": "claude-sonnet-4-5",
+          "output_tokens": {
+            "total": 994
+          }
+        }
+      ]
+    }
+  },
+  "role": "assistant",
+  "schema_version": "v2",
+  "sequence_number": 301,
+  "status": "completed"
+}

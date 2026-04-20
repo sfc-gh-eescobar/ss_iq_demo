@@ -1,0 +1,483 @@
+name: MKT_MENU_LTO_VIEW
+description: |
+  Menu performance and LTO analytics semantic view for Shake Shack Marketing Agent.
+  Answers questions about LTO incrementality, menu margin protection, weather impact on sales,
+  commodity cost trends, stage-gate innovation pipeline, and menu mix optimization.
+  Built on 6M+ order items joined with menu, weather, and commodity data.
+
+tables:
+  - name: MENU_PERFORMANCE
+    description: Order item-level menu performance data with weather, commodity prices, and LTO campaign metrics. Each row is one order line item with full margin and context data.
+    base_table:
+      database: DEMO_DB
+      schema: SHAKE_SHACK
+      table: MKT_MENU_PERFORMANCE_MART
+    primary_key:
+      columns:
+        - ORDER_ITEM_ID
+
+    dimensions:
+      - name: order_item_id
+        expr: ORDER_ITEM_ID
+        description: Unique order item identifier
+        data_type: VARCHAR
+      - name: transaction_id
+        expr: TRANSACTION_ID
+        description: Parent transaction identifier
+        data_type: VARCHAR
+      - name: guest_id
+        expr: GUEST_ID
+        description: Guest identifier
+        data_type: VARCHAR
+      - name: location_id
+        expr: LOCATION_ID
+        description: Location identifier
+        data_type: VARCHAR
+      - name: order_channel
+        expr: ORDER_CHANNEL
+        description: Ordering channel
+        data_type: VARCHAR
+      - name: menu_item_id
+        expr: MENU_ITEM_ID
+        description: Menu item identifier
+        data_type: VARCHAR
+      - name: item_name
+        expr: ITEM_NAME
+        description: Menu item name
+        data_type: VARCHAR
+      - name: menu_category
+        expr: MENU_CATEGORY
+        description: Menu category (BURGERS, CHICKEN, FRIES, SHAKES, FROZEN_CUSTARD, DRINKS, FLAT_TOP_DOGS, KIDS)
+        data_type: VARCHAR
+        sample_values:
+          - BURGERS
+          - CHICKEN
+          - FRIES
+          - SHAKES
+          - FROZEN_CUSTARD
+          - DRINKS
+          - FLAT_TOP_DOGS
+          - KIDS
+      - name: menu_subcategory
+        expr: MENU_SUBCATEGORY
+        description: Menu subcategory (e.g. Signature, Classic, Korean, Seasonal)
+        data_type: VARCHAR
+      - name: menu_region
+        expr: MENU_REGION
+        description: Region where this menu item is available
+        data_type: VARCHAR
+        sample_values:
+          - GLOBAL
+          - NORTH_AMERICA
+          - UK
+          - MIDDLE_EAST
+          - EAST_ASIA
+      - name: protein_type
+        expr: PROTEIN_TYPE
+        description: Primary protein in the item (BEEF, CHICKEN, MUSHROOM, NONE)
+        data_type: VARCHAR
+        sample_values:
+          - BEEF
+          - CHICKEN
+          - MUSHROOM
+          - NONE
+      - name: is_lto
+        expr: IS_LTO
+        description: Whether this is a limited-time offer item
+        data_type: BOOLEAN
+      - name: is_core_menu
+        expr: IS_CORE_MENU
+        description: Whether this is a permanent core menu item
+        data_type: BOOLEAN
+      - name: stage_gate_status
+        expr: STAGE_GATE_STATUS
+        description: Stage-gate innovation status (CONCEPT, TEST, PILOT, SCALE, CORE)
+        data_type: VARCHAR
+        sample_values:
+          - CONCEPT
+          - TEST
+          - PILOT
+          - SCALE
+          - CORE
+      - name: promoted_to_core
+        expr: PROMOTED_TO_CORE
+        description: Whether this LTO was promoted to permanent core menu
+        data_type: BOOLEAN
+      - name: is_lto_item
+        expr: IS_LTO_ITEM
+        description: Whether this specific order item was an LTO at time of purchase
+        data_type: BOOLEAN
+      - name: is_upsell
+        expr: IS_UPSELL
+        description: Whether this item was an upsell add-on
+        data_type: BOOLEAN
+      - name: weather_condition
+        expr: WEATHER_CONDITION
+        description: Weather condition on the transaction date at the location
+        data_type: VARCHAR
+        sample_values:
+          - SUNNY
+          - CLOUDY
+          - RAIN
+          - SNOW
+          - EXTREME_HEAT
+      - name: lto_campaign_name
+        expr: LTO_CAMPAIGN_NAME
+        description: Name of the LTO campaign associated with this item
+        data_type: VARCHAR
+      - name: lto_outcome
+        expr: LTO_OUTCOME
+        description: Final outcome of the LTO campaign (ACTIVE, EXTENDED, RETIRED, RECURRING, SCALED, SCALED_TO_CORE)
+        data_type: VARCHAR
+        sample_values:
+          - ACTIVE
+          - EXTENDED
+          - RETIRED
+          - RECURRING
+          - SCALED
+          - SCALED_TO_CORE
+      - name: location_market
+        expr: LOCATION_MARKET
+        description: Market where item was sold
+        data_type: VARCHAR
+      - name: location_region
+        expr: LOCATION_REGION
+        description: Region where item was sold
+        data_type: VARCHAR
+      - name: txn_year_month
+        expr: TXN_YEAR_MONTH
+        description: Year-month of the transaction (YYYY-MM format)
+        data_type: VARCHAR
+
+    time_dimensions:
+      - name: transaction_date
+        expr: TRANSACTION_DATE
+        description: Date of the transaction
+        data_type: DATE
+
+    facts:
+      - name: quantity
+        expr: QUANTITY
+        description: Quantity of this item ordered
+        data_type: NUMBER
+      - name: sold_price
+        expr: SOLD_PRICE
+        description: Actual price the item was sold at
+        data_type: NUMBER
+      - name: line_total
+        expr: LINE_TOTAL
+        description: Total revenue for this line item (quantity x price)
+        data_type: NUMBER
+      - name: base_price
+        expr: BASE_PRICE
+        description: Standard menu price for the item
+        data_type: NUMBER
+      - name: food_cost
+        expr: FOOD_COST
+        description: Food cost per unit of this item
+        data_type: NUMBER
+      - name: food_cost_pct
+        expr: FOOD_COST_PCT
+        description: Food cost as a percentage of price
+        data_type: NUMBER
+      - name: item_gross_profit
+        expr: ITEM_GROSS_PROFIT
+        description: Gross profit for this line item (line_total - food_cost * quantity)
+        data_type: NUMBER
+      - name: item_margin_pct
+        expr: ITEM_MARGIN_PCT
+        description: Gross margin percentage for this line item
+        data_type: NUMBER
+      - name: high_temp_f
+        expr: HIGH_TEMP_F
+        description: High temperature in Fahrenheit on the transaction date
+        data_type: NUMBER
+      - name: low_temp_f
+        expr: LOW_TEMP_F
+        description: Low temperature in Fahrenheit on the transaction date
+        data_type: NUMBER
+      - name: precipitation_in
+        expr: PRECIPITATION_IN
+        description: Precipitation in inches on the transaction date
+        data_type: NUMBER
+      - name: protein_price_index
+        expr: PROTEIN_PRICE_INDEX
+        description: Commodity price index for this item's protein type (base 100)
+        data_type: NUMBER
+      - name: protein_yoy_change
+        expr: PROTEIN_YOY_CHANGE
+        description: Year-over-year change in protein commodity price
+        data_type: NUMBER
+      - name: lto_incremental_traffic_pct
+        expr: LTO_INCREMENTAL_TRAFFIC_PCT
+        description: Incremental traffic percentage driven by this LTO
+        data_type: NUMBER
+      - name: lto_attach_rate
+        expr: LTO_ATTACH_RATE
+        description: Percentage of orders that included this LTO item
+        data_type: NUMBER
+      - name: lto_social_sentiment
+        expr: LTO_SOCIAL_SENTIMENT
+        description: Social media sentiment score for the LTO (-1 to 1)
+        data_type: NUMBER
+      - name: lto_incrementality_score
+        expr: LTO_INCREMENTALITY_SCORE
+        description: Overall incrementality score (0-100) for the LTO campaign
+        data_type: NUMBER
+      - name: lto_cannibalization_pct
+        expr: LTO_CANNIBALIZATION_PCT
+        description: Percentage of LTO sales that cannibalized core menu items
+        data_type: NUMBER
+      - name: lto_guest_overlap_pct
+        expr: LTO_GUEST_OVERLAP_PCT
+        description: Guest profile overlap percentage between LTOs
+        data_type: NUMBER
+      - name: lto_repeat_purchase_rate
+        expr: LTO_REPEAT_PURCHASE_RATE
+        description: Percentage of guests who re-ordered this LTO
+        data_type: NUMBER
+      - name: txn_year
+        expr: TXN_YEAR
+        description: Transaction year
+        data_type: NUMBER
+      - name: txn_month
+        expr: TXN_MONTH
+        description: Transaction month
+        data_type: NUMBER
+
+    metrics:
+      - name: total_units_sold
+        expr: SUM(QUANTITY)
+        description: Total units sold
+        data_type: NUMBER
+      - name: total_item_revenue
+        expr: SUM(LINE_TOTAL)
+        description: Total revenue from items
+        data_type: NUMBER
+      - name: total_item_profit
+        expr: SUM(ITEM_GROSS_PROFIT)
+        description: Total gross profit from items
+        data_type: NUMBER
+      - name: avg_item_margin
+        expr: AVG(ITEM_MARGIN_PCT)
+        description: Average item margin percentage
+        data_type: NUMBER
+      - name: unique_transactions
+        expr: COUNT(DISTINCT TRANSACTION_ID)
+        description: Number of unique transactions
+        data_type: NUMBER
+      - name: avg_food_cost_pct
+        expr: AVG(FOOD_COST_PCT)
+        description: Average food cost percentage
+        data_type: NUMBER
+
+    filters:
+      - name: lto_items_only
+        expr: IS_LTO = TRUE
+        description: Filter to LTO items only
+      - name: core_items_only
+        expr: IS_CORE_MENU = TRUE
+        description: Filter to core menu items only
+      - name: beef_items
+        expr: PROTEIN_TYPE = 'BEEF'
+        description: Filter to beef protein items
+      - name: rainy_weather
+        expr: WEATHER_CONDITION = 'RAIN'
+        description: Filter to rainy weather days
+
+verified_queries:
+  - question: Which LTO items drove the highest incremental traffic versus baseline?
+    sql: |
+      SELECT
+        ITEM_NAME,
+        LTO_CAMPAIGN_NAME,
+        LTO_OUTCOME,
+        STAGE_GATE_STATUS,
+        SUM(QUANTITY) AS total_units,
+        ROUND(SUM(LINE_TOTAL), 2) AS total_revenue,
+        ROUND(AVG(LTO_INCREMENTAL_TRAFFIC_PCT), 1) AS incremental_traffic_pct,
+        ROUND(AVG(LTO_ATTACH_RATE), 1) AS attach_rate,
+        ROUND(AVG(LTO_SOCIAL_SENTIMENT), 2) AS social_sentiment,
+        ROUND(AVG(LTO_INCREMENTALITY_SCORE), 1) AS incrementality_score,
+        ROUND(AVG(LTO_CANNIBALIZATION_PCT), 1) AS cannibalization_pct
+      FROM DEMO_DB.SHAKE_SHACK.MKT_MENU_PERFORMANCE_MART
+      WHERE IS_LTO = TRUE AND LTO_CAMPAIGN_NAME IS NOT NULL
+      GROUP BY ITEM_NAME, LTO_CAMPAIGN_NAME, LTO_OUTCOME, STAGE_GATE_STATUS
+      ORDER BY incremental_traffic_pct DESC
+      LIMIT 15
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: Which menu items should we promote to protect 23% margin with beef at mid-teens inflation?
+    sql: |
+      SELECT
+        MENU_CATEGORY,
+        ITEM_NAME,
+        PROTEIN_TYPE,
+        ROUND(AVG(FOOD_COST_PCT), 1) AS avg_food_cost_pct,
+        ROUND(AVG(ITEM_MARGIN_PCT), 1) AS avg_margin_pct,
+        SUM(QUANTITY) AS total_units,
+        ROUND(SUM(LINE_TOTAL), 2) AS total_revenue,
+        ROUND(AVG(PROTEIN_PRICE_INDEX), 1) AS current_protein_index,
+        ROUND(AVG(PROTEIN_YOY_CHANGE), 1) AS protein_yoy_change_pct
+      FROM DEMO_DB.SHAKE_SHACK.MKT_MENU_PERFORMANCE_MART
+      WHERE TRANSACTION_DATE >= DATEADD('month', -3, CURRENT_DATE())
+      GROUP BY MENU_CATEGORY, ITEM_NAME, PROTEIN_TYPE
+      HAVING AVG(ITEM_MARGIN_PCT) >= 23
+      ORDER BY total_revenue DESC
+      LIMIT 20
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: How does weather affect our menu mix and traffic?
+    sql: |
+      SELECT
+        WEATHER_CONDITION,
+        COUNT(DISTINCT TRANSACTION_ID) AS total_transactions,
+        ROUND(AVG(LINE_TOTAL), 2) AS avg_item_revenue,
+        ROUND(SUM(CASE WHEN MENU_CATEGORY = 'SHAKES' THEN QUANTITY ELSE 0 END) * 100.0 / SUM(QUANTITY), 1) AS shake_mix_pct,
+        ROUND(SUM(CASE WHEN MENU_CATEGORY = 'BURGERS' THEN QUANTITY ELSE 0 END) * 100.0 / SUM(QUANTITY), 1) AS burger_mix_pct,
+        ROUND(SUM(CASE WHEN MENU_CATEGORY = 'DRINKS' THEN QUANTITY ELSE 0 END) * 100.0 / SUM(QUANTITY), 1) AS drink_mix_pct,
+        ROUND(AVG(HIGH_TEMP_F), 1) AS avg_high_temp
+      FROM DEMO_DB.SHAKE_SHACK.MKT_MENU_PERFORMANCE_MART
+      WHERE WEATHER_CONDITION IS NOT NULL
+      GROUP BY WEATHER_CONDITION
+      ORDER BY total_transactions DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: Show me the stage-gate pipeline for current menu innovations
+    sql: |
+      SELECT
+        STAGE_GATE_STATUS,
+        MENU_REGION,
+        ITEM_NAME,
+        MENU_CATEGORY,
+        LTO_OUTCOME,
+        SUM(QUANTITY) AS total_units,
+        ROUND(SUM(LINE_TOTAL), 2) AS total_revenue,
+        ROUND(AVG(ITEM_MARGIN_PCT), 1) AS avg_margin_pct,
+        ROUND(AVG(LTO_INCREMENTALITY_SCORE), 1) AS incrementality_score,
+        ROUND(AVG(LTO_SOCIAL_SENTIMENT), 2) AS social_sentiment
+      FROM DEMO_DB.SHAKE_SHACK.MKT_MENU_PERFORMANCE_MART
+      WHERE IS_LTO = TRUE AND LTO_CAMPAIGN_NAME IS NOT NULL
+      GROUP BY STAGE_GATE_STATUS, MENU_REGION, ITEM_NAME, MENU_CATEGORY, LTO_OUTCOME
+      ORDER BY CASE STAGE_GATE_STATUS WHEN 'CORE' THEN 1 WHEN 'SCALE' THEN 2 WHEN 'PILOT' THEN 3 WHEN 'TEST' THEN 4 ELSE 5 END, total_revenue DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: Which LTOs had the highest cannibalization of core menu items?
+    sql: |
+      SELECT
+        ITEM_NAME,
+        LTO_CAMPAIGN_NAME,
+        STAGE_GATE_STATUS,
+        LTO_OUTCOME,
+        ROUND(AVG(LTO_CANNIBALIZATION_PCT), 1) AS cannibalization_pct,
+        ROUND(AVG(LTO_INCREMENTALITY_SCORE), 1) AS incrementality_score,
+        ROUND(AVG(LTO_ATTACH_RATE), 1) AS attach_rate,
+        ROUND(SUM(LINE_TOTAL), 2) AS total_revenue
+      FROM DEMO_DB.SHAKE_SHACK.MKT_MENU_PERFORMANCE_MART
+      WHERE IS_LTO = TRUE AND LTO_CAMPAIGN_NAME IS NOT NULL
+      GROUP BY ITEM_NAME, LTO_CAMPAIGN_NAME, STAGE_GATE_STATUS, LTO_OUTCOME
+      ORDER BY cannibalization_pct DESC
+      LIMIT 10
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: What is the food cost trend for our beef items over the last year?
+    sql: |
+      SELECT
+        TXN_YEAR_MONTH,
+        ROUND(AVG(PROTEIN_PRICE_INDEX), 2) AS avg_beef_price_index,
+        ROUND(AVG(PROTEIN_YOY_CHANGE), 2) AS avg_yoy_change_pct,
+        ROUND(AVG(FOOD_COST_PCT), 2) AS avg_food_cost_pct,
+        ROUND(AVG(ITEM_MARGIN_PCT), 2) AS avg_margin_pct,
+        SUM(QUANTITY) AS total_beef_units
+      FROM DEMO_DB.SHAKE_SHACK.MKT_MENU_PERFORMANCE_MART
+      WHERE PROTEIN_TYPE = 'BEEF' AND TRANSACTION_DATE >= DATEADD('year', -1, CURRENT_DATE())
+      GROUP BY TXN_YEAR_MONTH
+      ORDER BY TXN_YEAR_MONTH
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: Compare the K-Shack launch performance to the Dubai Chocolate Shake launch
+    sql: |
+      SELECT
+        ITEM_NAME,
+        LTO_CAMPAIGN_NAME,
+        ROUND(AVG(LTO_INCREMENTAL_TRAFFIC_PCT), 1) AS incremental_traffic_pct,
+        ROUND(AVG(LTO_ATTACH_RATE), 1) AS attach_rate,
+        ROUND(AVG(LTO_SOCIAL_SENTIMENT), 2) AS social_sentiment,
+        ROUND(AVG(LTO_INCREMENTALITY_SCORE), 1) AS incrementality_score,
+        ROUND(AVG(LTO_REPEAT_PURCHASE_RATE), 1) AS repeat_purchase_rate,
+        ROUND(AVG(LTO_CANNIBALIZATION_PCT), 1) AS cannibalization_pct,
+        ROUND(AVG(LTO_GUEST_OVERLAP_PCT), 1) AS guest_overlap_pct,
+        SUM(QUANTITY) AS total_units,
+        ROUND(SUM(LINE_TOTAL), 2) AS total_revenue
+      FROM DEMO_DB.SHAKE_SHACK.MKT_MENU_PERFORMANCE_MART
+      WHERE LTO_CAMPAIGN_NAME LIKE '%K-Shack%' OR LTO_CAMPAIGN_NAME LIKE '%Dubai Chocolate%'
+      GROUP BY ITEM_NAME, LTO_CAMPAIGN_NAME
+      ORDER BY total_revenue DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: What items have the best margin-to-traffic ratio?
+    sql: |
+      SELECT
+        ITEM_NAME,
+        MENU_CATEGORY,
+        IS_LTO,
+        SUM(QUANTITY) AS total_units,
+        ROUND(SUM(LINE_TOTAL), 2) AS total_revenue,
+        ROUND(AVG(ITEM_MARGIN_PCT), 1) AS avg_margin_pct,
+        ROUND(SUM(ITEM_GROSS_PROFIT), 2) AS total_gross_profit,
+        COUNT(DISTINCT TRANSACTION_ID) AS transactions_with_item
+      FROM DEMO_DB.SHAKE_SHACK.MKT_MENU_PERFORMANCE_MART
+      WHERE TRANSACTION_DATE >= DATEADD('month', -3, CURRENT_DATE())
+      GROUP BY ITEM_NAME, MENU_CATEGORY, IS_LTO
+      HAVING SUM(QUANTITY) >= 100
+      ORDER BY total_gross_profit DESC
+      LIMIT 20
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: Which upcoming innovations should we scale based on guest profile overlap with our best LTOs?
+    sql: |
+      SELECT
+        ITEM_NAME,
+        STAGE_GATE_STATUS,
+        MENU_REGION,
+        LTO_OUTCOME,
+        ROUND(AVG(LTO_GUEST_OVERLAP_PCT), 1) AS guest_overlap_pct,
+        ROUND(AVG(LTO_INCREMENTALITY_SCORE), 1) AS incrementality_score,
+        ROUND(AVG(LTO_SOCIAL_SENTIMENT), 2) AS social_sentiment,
+        ROUND(AVG(LTO_REPEAT_PURCHASE_RATE), 1) AS repeat_purchase_rate,
+        ROUND(AVG(ITEM_MARGIN_PCT), 1) AS avg_margin_pct,
+        SUM(QUANTITY) AS total_units
+      FROM DEMO_DB.SHAKE_SHACK.MKT_MENU_PERFORMANCE_MART
+      WHERE IS_LTO = TRUE AND LTO_CAMPAIGN_NAME IS NOT NULL
+        AND STAGE_GATE_STATUS IN ('TEST', 'PILOT', 'SCALE')
+      GROUP BY ITEM_NAME, STAGE_GATE_STATUS, MENU_REGION, LTO_OUTCOME
+      ORDER BY guest_overlap_pct DESC, incrementality_score DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: What is the commodity cost impact on our category margins?
+    sql: |
+      SELECT
+        MENU_CATEGORY,
+        PROTEIN_TYPE,
+        TXN_YEAR_MONTH,
+        ROUND(AVG(PROTEIN_PRICE_INDEX), 2) AS avg_price_index,
+        ROUND(AVG(PROTEIN_YOY_CHANGE), 2) AS avg_yoy_change,
+        ROUND(AVG(FOOD_COST_PCT), 2) AS avg_food_cost_pct,
+        ROUND(AVG(ITEM_MARGIN_PCT), 2) AS avg_margin_pct,
+        SUM(QUANTITY) AS total_units
+      FROM DEMO_DB.SHAKE_SHACK.MKT_MENU_PERFORMANCE_MART
+      WHERE PROTEIN_TYPE IS NOT NULL AND PROTEIN_TYPE != 'NONE'
+        AND TRANSACTION_DATE >= DATEADD('year', -1, CURRENT_DATE())
+      GROUP BY MENU_CATEGORY, PROTEIN_TYPE, TXN_YEAR_MONTH
+      ORDER BY PROTEIN_TYPE, TXN_YEAR_MONTH
+    verified_at: 1711500000
+    verified_by: demo

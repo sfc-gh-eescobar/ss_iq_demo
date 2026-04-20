@@ -1,0 +1,611 @@
+name: MKT_CUSTOMER_INTELLIGENCE_VIEW
+description: |
+  Customer intelligence semantic view for Shake Shack Marketing Agent.
+  Answers questions about loyalty segmentation, churn cohorts, customer lifetime value,
+  RFM analysis, acquisition channels, and win-back opportunities across 50K guest profiles.
+  Built on a pre-joined mart table combining guest profiles with transaction aggregates.
+
+tables:
+  - name: CUSTOMER_INTELLIGENCE
+    description: Pre-joined customer intelligence mart with guest demographics, RFM scores, CLV tiers, behavioral segments, and transaction aggregates across 50K guests.
+    base_table:
+      database: DEMO_DB
+      schema: SHAKE_SHACK
+      table: MKT_CUSTOMER_INTELLIGENCE_MART
+    primary_key:
+      columns:
+        - GUEST_ID
+
+    dimensions:
+      - name: guest_id
+        expr: GUEST_ID
+        description: Unique guest identifier
+        data_type: VARCHAR
+      - name: first_name
+        expr: FIRST_NAME
+        description: Guest first name
+        data_type: VARCHAR
+      - name: acquisition_channel
+        expr: ACQUISITION_CHANNEL
+        description: Channel through which the guest was first acquired (APP, IN_STORE, WEB, UBER_EATS, DOORDASH, GRUBHUB, KIOSK)
+        data_type: VARCHAR
+        sample_values:
+          - APP
+          - IN_STORE
+          - WEB
+          - UBER_EATS
+          - DOORDASH
+          - GRUBHUB
+          - KIOSK
+      - name: favorite_category
+        expr: FAVORITE_CATEGORY
+        description: Guest's most purchased menu category
+        data_type: VARCHAR
+        sample_values:
+          - BURGERS
+          - CHICKEN
+          - SHAKES
+          - FRIES
+          - DRINKS
+      - name: dietary_preference
+        expr: DIETARY_PREFERENCE
+        description: Guest dietary preference
+        data_type: VARCHAR
+        sample_values:
+          - STANDARD
+          - VEGETARIAN
+          - GLUTEN_FREE
+      - name: preferred_channel
+        expr: PREFERRED_CHANNEL
+        description: Guest's preferred ordering channel
+        data_type: VARCHAR
+        sample_values:
+          - APP
+          - IN_STORE
+          - KIOSK
+          - UBER_EATS
+          - DOORDASH
+          - GRUBHUB
+          - WEB
+      - name: preferred_daypart
+        expr: PREFERRED_DAYPART
+        description: Guest's preferred daypart for visits
+        data_type: VARCHAR
+        sample_values:
+          - LUNCH
+          - DINNER
+          - AFTERNOON
+          - BREAKFAST
+          - LATE_NIGHT
+      - name: rfm_segment
+        expr: RFM_SEGMENT
+        description: RFM-based customer segment combining recency, frequency, and monetary scores
+        data_type: VARCHAR
+        sample_values:
+          - Champions
+          - Loyal Customers
+          - New Customers
+          - Potential Loyalists
+          - At Risk
+          - Hibernating
+          - About to Sleep
+          - Lost
+      - name: clv_tier
+        expr: CLV_TIER
+        description: Customer lifetime value tier based on predicted CLV
+        data_type: VARCHAR
+        sample_values:
+          - PLATINUM
+          - GOLD
+          - SILVER
+          - BRONZE
+      - name: behavioral_segment
+        expr: BEHAVIORAL_SEGMENT
+        description: Behavioral customer segment based on channel usage, engagement, and visit patterns
+        data_type: VARCHAR
+        sample_values:
+          - High-Value Delivery Dependent
+          - Digital Power User
+          - Lapsed Loyalist
+          - Super Fan
+          - Promising Newcomer
+          - Brand Ambassador
+          - Delivery First
+          - Young & Digital
+          - Traditional Diner
+          - Casual Visitor
+      - name: loyalty_enrolled
+        expr: LOYALTY_ENROLLED
+        description: Whether guest is enrolled in loyalty program
+        data_type: BOOLEAN
+      - name: loyalty_tier
+        expr: LOYALTY_TIER
+        description: Loyalty program tier (PLATINUM, GOLD, SILVER, or NULL if not enrolled)
+        data_type: VARCHAR
+        sample_values:
+          - PLATINUM
+          - GOLD
+          - SILVER
+      - name: age_group
+        expr: AGE_GROUP
+        description: Guest age group
+        data_type: VARCHAR
+        sample_values:
+          - 18-24
+          - 25-34
+          - 35-44
+          - 45-54
+          - 55+
+      - name: home_market
+        expr: HOME_MARKET
+        description: Guest's home market location
+        data_type: VARCHAR
+      - name: signup_cohort
+        expr: SIGNUP_COHORT
+        description: Year-quarter cohort when guest signed up (e.g. 2025-Q3)
+        data_type: VARCHAR
+      - name: most_common_channel
+        expr: MOST_COMMON_CHANNEL
+        description: The channel used most frequently by this guest based on actual transactions
+        data_type: VARCHAR
+      - name: most_common_daypart
+        expr: MOST_COMMON_DAYPART
+        description: The daypart visited most frequently by this guest
+        data_type: VARCHAR
+      - name: push_opt_in
+        expr: PUSH_OPT_IN
+        description: Whether guest opted into push notifications
+        data_type: BOOLEAN
+      - name: email_opt_in
+        expr: EMAIL_OPT_IN
+        description: Whether guest opted into email communications
+        data_type: BOOLEAN
+      - name: location_market
+        expr: LOCATION_MARKET
+        description: Market of the guest's home location
+        data_type: VARCHAR
+      - name: location_region
+        expr: LOCATION_REGION
+        description: Region of the guest's home location (Northeast, Southeast, Midwest, Southwest, West, International)
+        data_type: VARCHAR
+        sample_values:
+          - Northeast
+          - Southeast
+          - Midwest
+          - Southwest
+          - West
+          - International
+      - name: home_is_new_market
+        expr: HOME_IS_NEW_MARKET
+        description: Whether the guest's home location is in a new market (opened within last year)
+        data_type: BOOLEAN
+      - name: home_location_format
+        expr: HOME_LOCATION_FORMAT
+        description: Format of guest's home location
+        data_type: VARCHAR
+        sample_values:
+          - Traditional
+          - Drive-Thru
+          - Stadium
+          - Airport
+
+    time_dimensions:
+      - name: acquisition_date
+        expr: ACQUISITION_DATE
+        description: Date the guest was first acquired
+        data_type: DATE
+      - name: last_visit_date
+        expr: LAST_VISIT_DATE
+        description: Date of the guest's most recent visit
+        data_type: DATE
+      - name: first_transaction_date
+        expr: FIRST_TRANSACTION_DATE
+        description: Date of guest's first recorded transaction
+        data_type: DATE
+      - name: last_transaction_date
+        expr: LAST_TRANSACTION_DATE
+        description: Date of guest's most recent recorded transaction
+        data_type: DATE
+
+    facts:
+      - name: total_visits
+        expr: TOTAL_VISITS
+        description: Total number of visits by the guest
+        data_type: NUMBER
+      - name: avg_order_value
+        expr: AVG_ORDER_VALUE
+        description: Average order value for this guest
+        data_type: NUMBER
+      - name: lifetime_value
+        expr: LIFETIME_VALUE
+        description: Total lifetime value (total visits x avg order value)
+        data_type: NUMBER
+      - name: days_since_last_visit
+        expr: DAYS_SINCE_LAST_VISIT
+        description: Number of days since the guest's last visit
+        data_type: NUMBER
+      - name: app_usage_score
+        expr: APP_USAGE_SCORE
+        description: App engagement score from 0-99
+        data_type: NUMBER
+      - name: promo_response_rate
+        expr: PROMO_RESPONSE_RATE
+        description: Promotional response rate from 0-99
+        data_type: NUMBER
+      - name: nps_score
+        expr: NPS_SCORE
+        description: Net promoter score from -100 to 100
+        data_type: NUMBER
+      - name: recency_score
+        expr: RECENCY_SCORE
+        description: RFM recency score (1-5, 5 is most recent)
+        data_type: NUMBER
+      - name: frequency_score
+        expr: FREQUENCY_SCORE
+        description: RFM frequency score (1-5, 5 is most frequent)
+        data_type: NUMBER
+      - name: monetary_score
+        expr: MONETARY_SCORE
+        description: RFM monetary score (1-5, 5 is highest spend)
+        data_type: NUMBER
+      - name: churn_risk_score
+        expr: CHURN_RISK_SCORE
+        description: Predicted churn risk score from 0-100 (higher means higher risk of churning)
+        data_type: NUMBER
+      - name: predicted_clv
+        expr: PREDICTED_CLV
+        description: Predicted customer lifetime value in dollars for next 12 months
+        data_type: NUMBER
+      - name: loyalty_propensity_score
+        expr: LOYALTY_PROPENSITY_SCORE
+        description: Propensity to enroll in loyalty program from 0-100
+        data_type: NUMBER
+      - name: loyalty_points_balance
+        expr: LOYALTY_POINTS_BALANCE
+        description: Current loyalty points balance
+        data_type: NUMBER
+      - name: txn_count
+        expr: TXN_COUNT
+        description: Total number of recorded transactions for this guest
+        data_type: NUMBER
+      - name: total_revenue
+        expr: TOTAL_REVENUE
+        description: Total gross revenue from this guest
+        data_type: NUMBER
+      - name: total_net_revenue
+        expr: TOTAL_NET_REVENUE
+        description: Total net revenue after discounts and commissions
+        data_type: NUMBER
+      - name: avg_txn_value
+        expr: AVG_TXN_VALUE
+        description: Average transaction value from recorded transactions
+        data_type: NUMBER
+      - name: total_discounts
+        expr: TOTAL_DISCOUNTS
+        description: Total discount amount applied to this guest's orders
+        data_type: NUMBER
+      - name: total_commissions
+        expr: TOTAL_COMMISSIONS
+        description: Total third-party platform commissions paid for this guest's orders
+        data_type: NUMBER
+      - name: visits_last_30d
+        expr: VISITS_LAST_30D
+        description: Number of visits in the last 30 days
+        data_type: NUMBER
+      - name: visits_last_60d
+        expr: VISITS_LAST_60D
+        description: Number of visits in the last 60 days
+        data_type: NUMBER
+      - name: visits_last_90d
+        expr: VISITS_LAST_90D
+        description: Number of visits in the last 90 days
+        data_type: NUMBER
+      - name: visits_last_180d
+        expr: VISITS_LAST_180D
+        description: Number of visits in the last 180 days
+        data_type: NUMBER
+      - name: visits_last_365d
+        expr: VISITS_LAST_365D
+        description: Number of visits in the last 365 days
+        data_type: NUMBER
+      - name: delivery_order_count
+        expr: DELIVERY_ORDER_COUNT
+        description: Number of orders placed through third-party delivery platforms
+        data_type: NUMBER
+      - name: app_order_count
+        expr: APP_ORDER_COUNT
+        description: Number of orders placed through the Shake Shack app
+        data_type: NUMBER
+      - name: instore_order_count
+        expr: INSTORE_ORDER_COUNT
+        description: Number of in-store orders
+        data_type: NUMBER
+      - name: kiosk_order_count
+        expr: KIOSK_ORDER_COUNT
+        description: Number of kiosk orders
+        data_type: NUMBER
+      - name: web_order_count
+        expr: WEB_ORDER_COUNT
+        description: Number of web orders
+        data_type: NUMBER
+      - name: channel_diversity
+        expr: CHANNEL_DIVERSITY
+        description: Number of distinct channels used by this guest
+        data_type: NUMBER
+      - name: delivery_pct
+        expr: DELIVERY_PCT
+        description: Percentage of orders placed through third-party delivery platforms
+        data_type: NUMBER
+      - name: app_pct
+        expr: APP_PCT
+        description: Percentage of orders placed through the Shake Shack app
+        data_type: NUMBER
+
+    metrics:
+      - name: total_guests
+        expr: COUNT(DISTINCT GUEST_ID)
+        description: Total number of unique guests
+        data_type: NUMBER
+      - name: avg_lifetime_value
+        expr: AVG(LIFETIME_VALUE)
+        description: Average lifetime value across guests
+        data_type: NUMBER
+      - name: avg_predicted_clv
+        expr: AVG(PREDICTED_CLV)
+        description: Average predicted CLV across guests
+        data_type: NUMBER
+      - name: avg_churn_risk
+        expr: AVG(CHURN_RISK_SCORE)
+        description: Average churn risk score across guests
+        data_type: NUMBER
+      - name: loyalty_enrollment_rate
+        expr: "AVG(CASE WHEN LOYALTY_ENROLLED THEN 1.0 ELSE 0.0 END) * 100"
+        description: Percentage of guests enrolled in loyalty program
+        data_type: NUMBER
+      - name: avg_visits_per_guest
+        expr: AVG(TOTAL_VISITS)
+        description: Average number of visits per guest
+        data_type: NUMBER
+      - name: total_customer_revenue
+        expr: SUM(TOTAL_REVENUE)
+        description: Sum of total revenue across all guests
+        data_type: NUMBER
+      - name: avg_delivery_pct
+        expr: AVG(DELIVERY_PCT)
+        description: Average delivery order percentage across guests
+        data_type: NUMBER
+
+    filters:
+      - name: high_value_customers
+        expr: CLV_TIER IN ('PLATINUM', 'GOLD')
+        description: Filter to high-value customers (Platinum and Gold CLV tiers)
+      - name: at_risk_customers
+        expr: CHURN_RISK_SCORE >= 60
+        description: Filter to customers with high churn risk (score >= 60)
+      - name: lapsed_customers
+        expr: DAYS_SINCE_LAST_VISIT >= 60
+        description: Filter to lapsed customers who haven't visited in 60+ days
+      - name: loyalty_eligible
+        expr: LOYALTY_ENROLLED = FALSE AND LOYALTY_PROPENSITY_SCORE >= 50
+        description: Filter to guests not enrolled in loyalty but with high propensity
+      - name: new_market_customers
+        expr: HOME_IS_NEW_MARKET = TRUE
+        description: Filter to customers in new market locations
+      - name: champions_filter
+        expr: "RFM_SEGMENT = 'Champions'"
+        description: Filter to Champions segment only
+
+verified_queries:
+  - question: Which customer segments should we prioritize for loyalty enrollment?
+    sql: |
+      SELECT
+        RFM_SEGMENT,
+        CLV_TIER,
+        COUNT(*) AS guest_count,
+        ROUND(AVG(CASE WHEN LOYALTY_ENROLLED THEN 1.0 ELSE 0.0 END) * 100, 1) AS current_enrollment_pct,
+        ROUND(AVG(LOYALTY_PROPENSITY_SCORE), 1) AS avg_propensity,
+        ROUND(AVG(PREDICTED_CLV), 2) AS avg_predicted_clv,
+        ROUND(AVG(TOTAL_VISITS), 1) AS avg_visits
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CUSTOMER_INTELLIGENCE_MART
+      WHERE LOYALTY_ENROLLED = FALSE
+      GROUP BY RFM_SEGMENT, CLV_TIER
+      ORDER BY avg_predicted_clv DESC
+      LIMIT 15
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: Show me churn cohorts by acquisition channel over the last 18 months
+    sql: |
+      SELECT
+        ACQUISITION_CHANNEL,
+        SIGNUP_COHORT,
+        COUNT(*) AS total_guests,
+        SUM(CASE WHEN DAYS_SINCE_LAST_VISIT >= 60 THEN 1 ELSE 0 END) AS churned_guests,
+        ROUND(SUM(CASE WHEN DAYS_SINCE_LAST_VISIT >= 60 THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) AS churn_rate_pct,
+        ROUND(AVG(PREDICTED_CLV), 2) AS avg_predicted_clv
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CUSTOMER_INTELLIGENCE_MART
+      GROUP BY ACQUISITION_CHANNEL, SIGNUP_COHORT
+      ORDER BY ACQUISITION_CHANNEL, SIGNUP_COHORT
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: How many customers visited 8 or more times last year but haven't been back in 60 days?
+    sql: |
+      SELECT
+        RFM_SEGMENT,
+        BEHAVIORAL_SEGMENT,
+        COUNT(*) AS lapsed_high_freq_guests,
+        ROUND(AVG(LIFETIME_VALUE), 2) AS avg_ltv,
+        ROUND(AVG(DAYS_SINCE_LAST_VISIT), 0) AS avg_days_inactive,
+        ROUND(AVG(PREDICTED_CLV), 2) AS avg_predicted_clv
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CUSTOMER_INTELLIGENCE_MART
+      WHERE VISITS_LAST_365D >= 8 AND DAYS_SINCE_LAST_VISIT >= 60
+      GROUP BY RFM_SEGMENT, BEHAVIORAL_SEGMENT
+      ORDER BY lapsed_high_freq_guests DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: What is the RFM distribution of our top 20% of guests by predicted CLV?
+    sql: |
+      SELECT
+        RFM_SEGMENT,
+        COUNT(*) AS guest_count,
+        ROUND(AVG(PREDICTED_CLV), 2) AS avg_predicted_clv,
+        ROUND(AVG(TOTAL_VISITS), 1) AS avg_visits,
+        ROUND(AVG(CHURN_RISK_SCORE), 1) AS avg_churn_risk
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CUSTOMER_INTELLIGENCE_MART
+      WHERE PREDICTED_CLV >= (SELECT PERCENTILE_CONT(0.80) WITHIN GROUP (ORDER BY PREDICTED_CLV) FROM DEMO_DB.SHAKE_SHACK.MKT_CUSTOMER_INTELLIGENCE_MART)
+      GROUP BY RFM_SEGMENT
+      ORDER BY guest_count DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: Compare retention rates between new markets and established markets
+    sql: |
+      SELECT
+        CASE WHEN HOME_IS_NEW_MARKET THEN 'New Market' ELSE 'Established Market' END AS market_type,
+        COUNT(*) AS total_guests,
+        ROUND(AVG(DAYS_SINCE_LAST_VISIT), 1) AS avg_days_since_last_visit,
+        ROUND(SUM(CASE WHEN DAYS_SINCE_LAST_VISIT >= 60 THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) AS churn_rate_pct,
+        ROUND(AVG(VISITS_LAST_90D), 2) AS avg_visits_90d,
+        ROUND(AVG(PREDICTED_CLV), 2) AS avg_predicted_clv,
+        ROUND(AVG(CHURN_RISK_SCORE), 1) AS avg_churn_risk
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CUSTOMER_INTELLIGENCE_MART
+      GROUP BY CASE WHEN HOME_IS_NEW_MARKET THEN 'New Market' ELSE 'Established Market' END
+      ORDER BY market_type
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: Which new markets have the highest customer acquisition cost?
+    sql: |
+      SELECT
+        HOME_MARKET,
+        COUNT(*) AS total_guests,
+        ROUND(AVG(VISITS_LAST_90D), 2) AS avg_visits_90d,
+        ROUND(SUM(CASE WHEN DAYS_SINCE_LAST_VISIT >= 60 THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) AS churn_rate_pct,
+        ROUND(AVG(PREDICTED_CLV), 2) AS avg_predicted_clv,
+        ROUND(AVG(TOTAL_REVENUE), 2) AS avg_revenue_per_guest
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CUSTOMER_INTELLIGENCE_MART
+      WHERE HOME_IS_NEW_MARKET = TRUE
+      GROUP BY HOME_MARKET
+      ORDER BY churn_rate_pct DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: What percentage of our guests would qualify for each loyalty tier?
+    sql: |
+      SELECT
+        CLV_TIER,
+        COUNT(*) AS guest_count,
+        ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 1) AS pct_of_total,
+        ROUND(AVG(CASE WHEN LOYALTY_ENROLLED THEN 1.0 ELSE 0.0 END) * 100, 1) AS current_enrollment_pct,
+        ROUND(AVG(PREDICTED_CLV), 2) AS avg_predicted_clv,
+        ROUND(AVG(TOTAL_VISITS), 1) AS avg_visits,
+        ROUND(AVG(LOYALTY_PROPENSITY_SCORE), 1) AS avg_loyalty_propensity
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CUSTOMER_INTELLIGENCE_MART
+      GROUP BY CLV_TIER
+      ORDER BY avg_predicted_clv DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: Show me guest segments by predicted CLV and churn risk
+    sql: |
+      SELECT
+        BEHAVIORAL_SEGMENT,
+        COUNT(*) AS guest_count,
+        ROUND(AVG(PREDICTED_CLV), 2) AS avg_predicted_clv,
+        ROUND(AVG(CHURN_RISK_SCORE), 1) AS avg_churn_risk,
+        ROUND(AVG(LIFETIME_VALUE), 2) AS avg_lifetime_value,
+        ROUND(AVG(VISITS_LAST_90D), 2) AS avg_recent_visits
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CUSTOMER_INTELLIGENCE_MART
+      GROUP BY BEHAVIORAL_SEGMENT
+      ORDER BY avg_predicted_clv DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: What is the average visit frequency by acquisition channel?
+    sql: |
+      SELECT
+        ACQUISITION_CHANNEL,
+        COUNT(*) AS guest_count,
+        ROUND(AVG(TOTAL_VISITS), 1) AS avg_total_visits,
+        ROUND(AVG(VISITS_LAST_90D), 2) AS avg_visits_90d,
+        ROUND(AVG(AVG_ORDER_VALUE), 2) AS avg_order_value,
+        ROUND(AVG(PREDICTED_CLV), 2) AS avg_predicted_clv
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CUSTOMER_INTELLIGENCE_MART
+      GROUP BY ACQUISITION_CHANNEL
+      ORDER BY avg_total_visits DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: How many guests are at risk of churning in the next 30 days?
+    sql: |
+      SELECT
+        RFM_SEGMENT,
+        CLV_TIER,
+        COUNT(*) AS at_risk_guests,
+        ROUND(AVG(CHURN_RISK_SCORE), 1) AS avg_churn_risk,
+        ROUND(SUM(PREDICTED_CLV), 2) AS total_clv_at_risk,
+        ROUND(AVG(DAYS_SINCE_LAST_VISIT), 0) AS avg_days_inactive
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CUSTOMER_INTELLIGENCE_MART
+      WHERE CHURN_RISK_SCORE >= 60
+      GROUP BY RFM_SEGMENT, CLV_TIER
+      ORDER BY total_clv_at_risk DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: What frequency lift do we need from each segment to hit 3% comp growth?
+    sql: |
+      SELECT
+        RFM_SEGMENT,
+        COUNT(*) AS guest_count,
+        ROUND(AVG(VISITS_LAST_365D), 2) AS current_annual_visits,
+        ROUND(AVG(AVG_ORDER_VALUE), 2) AS avg_order_value,
+        ROUND(SUM(TOTAL_REVENUE), 2) AS segment_total_revenue,
+        ROUND(SUM(TOTAL_REVENUE) * 0.03, 2) AS revenue_needed_for_3pct_growth,
+        ROUND((SUM(TOTAL_REVENUE) * 0.03) / (COUNT(*) * AVG(AVG_ORDER_VALUE)), 2) AS additional_visits_needed_per_guest
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CUSTOMER_INTELLIGENCE_MART
+      GROUP BY RFM_SEGMENT
+      ORDER BY segment_total_revenue DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: Which loyalty segments should we prioritize for investment and what is the frequency lift from moving segments toward Champions?
+    sql: |
+      SELECT
+        RFM_SEGMENT,
+        COUNT(*) AS guest_count,
+        ROUND(AVG(TOTAL_VISITS), 1) AS avg_total_visits,
+        ROUND(AVG(VISITS_LAST_30D), 2) AS avg_visits_30d,
+        ROUND(AVG(VISITS_LAST_90D), 2) AS avg_visits_90d,
+        ROUND(AVG(FREQUENCY_SCORE), 2) AS avg_frequency_score,
+        ROUND(AVG(MONETARY_SCORE), 2) AS avg_monetary_score,
+        ROUND(AVG(PREDICTED_CLV), 2) AS avg_predicted_clv,
+        ROUND(AVG(LIFETIME_VALUE), 2) AS avg_lifetime_value,
+        ROUND(AVG(LOYALTY_PROPENSITY_SCORE), 1) AS avg_propensity
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CUSTOMER_INTELLIGENCE_MART
+      GROUP BY RFM_SEGMENT
+      ORDER BY avg_predicted_clv DESC
+    verified_at: 1711500000
+    verified_by: demo
+
+  - question: What triggered drop-off for our highest-frequency churned customers?
+    sql: |
+      SELECT
+        BEHAVIORAL_SEGMENT,
+        PREFERRED_CHANNEL,
+        AGE_GROUP,
+        COUNT(*) AS churned_count,
+        ROUND(AVG(TOTAL_VISITS), 1) AS avg_historical_visits,
+        ROUND(AVG(DAYS_SINCE_LAST_VISIT), 0) AS avg_days_inactive,
+        ROUND(AVG(NPS_SCORE), 1) AS avg_nps,
+        ROUND(AVG(APP_USAGE_SCORE), 1) AS avg_app_score,
+        ROUND(AVG(DELIVERY_PCT), 1) AS avg_delivery_pct
+      FROM DEMO_DB.SHAKE_SHACK.MKT_CUSTOMER_INTELLIGENCE_MART
+      WHERE DAYS_SINCE_LAST_VISIT >= 60 AND FREQUENCY_SCORE >= 4
+      GROUP BY BEHAVIORAL_SEGMENT, PREFERRED_CHANNEL, AGE_GROUP
+      HAVING COUNT(*) >= 5
+      ORDER BY churned_count DESC
+      LIMIT 15
+    verified_at: 1711500000
+    verified_by: demo

@@ -1,0 +1,1570 @@
+{
+  "content": [
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "agentic_search": false,
+          "limit": 50,
+          "query": "Dubai Chocolate Shake guest feedback reviews sentiment what guests love"
+        },
+        "name": "guest_reviews",
+        "tool_use_id": "toolu_bdrk_01Dus6naETC6qCkBafECbuHh",
+        "type": "cortex_search"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "search_results": [
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_96754796-125b-4587-b95f-6ec52dfa2ee3",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_ba1a59fc-7452-49a7-b49e-4d77175eafaa",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_f2c7668f-0ca7-4871-9790-650901ea8183",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_bf1bcc8a-0569-4e4e-bbcb-a95979962d97",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_5f15e5ba-09c0-460e-844b-bd96bb9b88e9",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_b160e9c8-4e70-4b6a-b51c-069016808eb6",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_e506e7f4-6170-4569-91f5-cdb01614058d",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_b45fb5c6-7e41-4b28-a4ec-9a601d668f8a",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_430d6681-7731-4f15-becb-e1aaa9295ded",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_90486d6f-784e-4184-bebd-ed7504742f4f",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_24014068-68be-4087-815f-5ae11a411379",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_dfb9219c-0d70-4bea-af36-bba5568ad673",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_cffef677-1eb8-4248-81c3-f239e0e01ee5",
+                  "source_id": 0,
+                  "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_e8380bf0-f70f-4e54-a36f-354e24f45190",
+                  "source_id": 0,
+                  "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_fb9b7ea7-ba08-4648-9caa-81bc69d6a5d2",
+                  "source_id": 0,
+                  "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_8e359f1e-6f9e-4baf-bf13-392f2a71f521",
+                  "source_id": 0,
+                  "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_2cb61836-b2d9-4d08-a778-00287a361a42",
+                  "source_id": 0,
+                  "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_a03008a3-d72f-442b-bd76-027b12df1262",
+                  "source_id": 0,
+                  "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_1450516a-8695-4979-8f1b-774b5f3ffc00",
+                  "source_id": 0,
+                  "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_4f5f1845-9b57-48cb-8170-14927074af69",
+                  "source_id": 0,
+                  "text": "POV: you finally try the Dubai Chocolate Shake (NA) and realize everything people said was true. absolute game changer"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_2215641d-c70e-4ad1-9ee0-8d5fcb7b06f7",
+                  "source_id": 0,
+                  "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_7f5cbe01-585f-42d7-8068-dac6bd24803f",
+                  "source_id": 0,
+                  "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_a6bbaa25-3875-4173-94c8-1f57e3516a30",
+                  "source_id": 0,
+                  "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_e0641447-8e35-40f6-a279-0b58d40911dd",
+                  "source_id": 0,
+                  "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_dc4bada5-3b0c-4d60-bda3-a8065a4cf574",
+                  "source_id": 0,
+                  "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_95b8b69f-52ab-4f0a-9be1-7f6630a46c2c",
+                  "source_id": 0,
+                  "text": "ok the Dubai Chocolate Shake (NA) hype is REAL. just had it and im shook. shake shack did not have to go this hard"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_430bbb6b-6de7-4d8b-98c5-be669038068b",
+                  "source_id": 0,
+                  "text": "ok the Dubai Chocolate Shake (NA) hype is REAL. just had it and im shook. shake shack did not have to go this hard"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_cb43ed15-97f3-4672-93b0-11da8af80383",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_f3240c86-6a39-42cc-9f69-0058cf3c4e58",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_1139ca77-8d94-4cbd-8492-841fbdd9eaa0",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_ff20d1ee-e233-4026-a2b6-ecc9eb4ff348",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_a8635ee4-5f5a-4192-b5ae-8ef105a81e63",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_81489bcc-1b5b-4feb-9b68-f044c1c4bf6b",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_fe1a67d1-c486-4c1e-9ffe-41077d0ea8fc",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_df16da55-8163-47d7-b9f2-7a4e846518d7",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_87925791-c7b1-4afd-938e-8d2ccc6571a4",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_b4791eb8-c3ba-4685-be53-1b3293b1fa56",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_81ad22d3-e7ea-4ba2-be99-312038ea8d9e",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_bc256c57-fa49-49ea-a801-f3cc10506f2a",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_2e9da5d9-e560-4cff-b198-ed191a003a42",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_8808afd2-78e7-4129-962d-9effb8406255",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_08a6d8ee-c3e9-48df-89f8-78e21c76a800",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_6c68fd0c-a90f-461d-82be-0b5bc922eeda",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_9e9b5a71-1525-4f90-904c-516ebbd87373",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_79fdb3cb-d3b4-4dac-808c-4630bb11e55b",
+                  "source_id": 0,
+                  "text": "Just had the Dubai Chocolate Shake (NA) for the second time this week. The flavors are incredible and the quality is exactly what I expect from Shake Shack. Already told all my friends about it."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_47364130-90e2-4789-bcc0-c1475e9f74ec",
+                  "source_id": 0,
+                  "text": "Just had the Dubai Chocolate Shake (NA) for the second time this week. The flavors are incredible and the quality is exactly what I expect from Shake Shack. Already told all my friends about it."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_d9942557-2afd-44eb-bbc3-6cb0e60ebb15",
+                  "source_id": 0,
+                  "text": "Just had the Dubai Chocolate Shake (NA) for the second time this week. The flavors are incredible and the quality is exactly what I expect from Shake Shack. Already told all my friends about it."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_ee6b8fc7-1121-4cb0-a3b5-06f37aa6f0d5",
+                  "source_id": 0,
+                  "text": "Just had the Dubai Chocolate Shake (NA) for the second time this week. The flavors are incredible and the quality is exactly what I expect from Shake Shack. Already told all my friends about it."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_cbd11191-c9bf-43de-995b-1626d00ef13c",
+                  "source_id": 0,
+                  "text": "Just had the Dubai Chocolate Shake (NA) for the second time this week. The flavors are incredible and the quality is exactly what I expect from Shake Shack. Already told all my friends about it."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_3523f381-3523-4f2a-8bd9-c9caf7ec4096",
+                  "source_id": 0,
+                  "text": "Just had the Dubai Chocolate Shake (NA) for the second time this week. The flavors are incredible and the quality is exactly what I expect from Shake Shack. Already told all my friends about it."
+                }
+              ],
+              "search_results_persist": {}
+            },
+            "type": "json"
+          }
+        ],
+        "name": "guest_reviews",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01Dus6naETC6qCkBafECbuHh",
+        "type": "cortex_search"
+      },
+      "type": "tool_result"
+    },
+    {
+      "thinking": {
+        "text": "\nGood, I've retrieved 50 guest reviews about the Dubai Chocolate Shake. Now let me search for more specific themes - negative feedback, texture/flavor comments, and social media virality to get a more complete picture.\n"
+      },
+      "type": "thinking"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "agentic_search": false,
+          "limit": 30,
+          "query": "Dubai Chocolate Shake viral TikTok Instagram social media trending FOMO"
+        },
+        "name": "guest_reviews",
+        "tool_use_id": "toolu_bdrk_01XtqMko9VEPZ5cRv5GA7isU",
+        "type": "cortex_search"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "agentic_search": false,
+          "limit": 30,
+          "query": "Dubai Chocolate Shake texture pistachio kadayif unique different special innovation"
+        },
+        "name": "guest_reviews",
+        "tool_use_id": "toolu_bdrk_01F3ot9syKHq331y8PQQpRoo",
+        "type": "cortex_search"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "agentic_search": false,
+          "limit": 20,
+          "query": "Dubai Chocolate Shake negative criticism disappointed not worth"
+        },
+        "name": "guest_reviews",
+        "tool_use_id": "toolu_bdrk_01XAw5Gnpht8b8boRaccTNFY",
+        "type": "cortex_search"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "search_results": [
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_c20a7770-1ee3-4023-a299-96c679385c5e",
+                  "source_id": 0,
+                  "text": "ok the Dubai Chocolate Shake (NA) hype is REAL. just had it and im shook. shake shack did not have to go this hard"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_9933e51f-f13d-4d58-b6bc-27a65a678364",
+                  "source_id": 0,
+                  "text": "ok the Dubai Chocolate Shake (NA) hype is REAL. just had it and im shook. shake shack did not have to go this hard"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_ccc01423-1983-4ade-8793-46ed2c5d322f",
+                  "source_id": 0,
+                  "text": "The new Dubai Chocolate Shake (NA) is legit. Great flavor, good portion size, and totally worth the price. Hope they keep it on the menu."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_4f28be7f-517c-4b4c-a061-b95aef6c9baa",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_075f1856-733b-4240-9c7c-a75d2eeb73bd",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_080e5f2c-8d96-4b20-8aac-9b6807cd056f",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_cb10db00-ffca-441a-91f3-fb6278ec252a",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_971ed568-26b4-4c68-930b-9897fe80a4ba",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_b1259381-5031-4979-9346-9f0a9ff52f54",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_e8798ed6-7caa-4e1a-a802-8cdc137f1df4",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_a5499d10-c260-4f1b-a8c8-eda0f82798f6",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_efe0f47d-4731-41ee-8dce-f8009da98ae1",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_9e3f5d01-b2a7-475e-be5b-5c9cbd6a564e",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_9282f83c-fcba-4878-9755-3e301a75c38c",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_d843eb08-2855-4bc8-87bd-b7c2b55091a0",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_50c8095d-3992-4f99-8ce9-626fffc21a8b",
+                  "source_id": 0,
+                  "text": "POV: you finally try the Dubai Chocolate Shake (NA) and realize everything people said was true. absolute game changer"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_c43fa952-e7f7-4e5e-9cf2-dbfbd000898e",
+                  "source_id": 0,
+                  "text": "The new Dubai Chocolate Shake (NA) is legit. Great flavor, good portion size, and totally worth the price. Hope they keep it on the menu."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_b0e9ab02-eb52-4932-a575-556d1547e2f4",
+                  "source_id": 0,
+                  "text": "The new Dubai Chocolate Shake (NA) is legit. Great flavor, good portion size, and totally worth the price. Hope they keep it on the menu."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_725c0ad0-b245-473c-b6e9-47f9e962e78c",
+                  "source_id": 0,
+                  "text": "The new Dubai Chocolate Shake (NA) is legit. Great flavor, good portion size, and totally worth the price. Hope they keep it on the menu."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_0c661dc4-6b80-44c7-9efd-18381d35d5fb",
+                  "source_id": 0,
+                  "text": "The new Dubai Chocolate Shake (NA) is legit. Great flavor, good portion size, and totally worth the price. Hope they keep it on the menu."
+                }
+              ],
+              "search_results_persist": {}
+            },
+            "type": "json"
+          }
+        ],
+        "name": "guest_reviews",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01XAw5Gnpht8b8boRaccTNFY",
+        "type": "cortex_search"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "search_results": [
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_e512e485-6e0a-43b2-9468-97e27e1946ba",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_c3ca4133-b602-47a1-b87a-99a5322ddf6c",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_af09a9d2-9d52-4a1f-a74a-3691eb763815",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_65b05ae5-44f0-48d4-b785-cc0e2bd6c38c",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_15b6677b-44a2-45c5-a510-e0396e0decf4",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_f6853e0d-f319-45e5-a480-1090d3e5d1f4",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_c428f6d7-e591-46ad-ba78-817f14a8e94a",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_f3f3db57-0f3c-495e-b332-cb3675fa1f6b",
+                  "source_id": 0,
+                  "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_835a06f6-d4f0-4ffc-9a07-46d089a6be18",
+                  "source_id": 0,
+                  "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_825fe7ba-9eb7-4af8-86de-1c30f32d134c",
+                  "source_id": 0,
+                  "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_d8b06ac3-098e-4bbc-b944-ab69faee0cca",
+                  "source_id": 0,
+                  "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_013f2935-702e-4cc2-86a7-3c6b6d5abe21",
+                  "source_id": 0,
+                  "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_124b9980-ade4-49c2-8755-736f7e4825e7",
+                  "source_id": 0,
+                  "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_7a1b4952-9bbe-4017-a345-51678368423a",
+                  "source_id": 0,
+                  "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_bbcb741f-385b-415f-b076-ced5ed7367c2",
+                  "source_id": 0,
+                  "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_1472830b-8ad7-4ad4-9692-802921f914a3",
+                  "source_id": 0,
+                  "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_1251b545-a66d-4dc9-8f9e-52a8b0b7fbcd",
+                  "source_id": 0,
+                  "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_70c6eb81-c305-43a3-86d7-953275aca919",
+                  "source_id": 0,
+                  "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_60bf2969-8250-4ddd-85d8-325d3d88d248",
+                  "source_id": 0,
+                  "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_00a774d9-a4c4-4a76-9010-2955e9dd5205",
+                  "source_id": 0,
+                  "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_bf7b4c8a-171a-4ab8-99db-c31e8372c697",
+                  "source_id": 0,
+                  "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_e1269634-f937-4b38-a157-53a19da4b958",
+                  "source_id": 0,
+                  "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_b1647a3d-f3c0-4404-80b3-740595d357d0",
+                  "source_id": 0,
+                  "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_ff67f6c7-e157-4633-a57a-40ab4b6a991a",
+                  "source_id": 0,
+                  "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_584586d2-b4f2-4e23-8c15-edbf77c3a3f4",
+                  "source_id": 0,
+                  "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_cff3e00d-e29f-4111-b3af-7594e106e35a",
+                  "source_id": 0,
+                  "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_d3f92283-d1b3-4d6f-afe8-bfcb26e46b2a",
+                  "source_id": 0,
+                  "text": "POV: you finally try the Dubai Chocolate Shake (NA) and realize everything people said was true. absolute game changer"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_12fa8169-a1bd-43f4-ab20-9d362642cacd",
+                  "source_id": 0,
+                  "text": "Tried the Dubai Chocolate Shake (NA) today and WOW. This needs to be a permanent menu item. I will absolutely be coming back specifically for this."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_226408c8-9788-4e01-bf27-b9245172e269",
+                  "source_id": 0,
+                  "text": "Tried the Dubai Chocolate Shake (NA) today and WOW. This needs to be a permanent menu item. I will absolutely be coming back specifically for this."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_2f2ae848-d0ba-4ca2-b5bb-2091107e2ee1",
+                  "source_id": 0,
+                  "text": "Tried the Dubai Chocolate Shake (NA) today and WOW. This needs to be a permanent menu item. I will absolutely be coming back specifically for this."
+                }
+              ],
+              "search_results_persist": {}
+            },
+            "type": "json"
+          }
+        ],
+        "name": "guest_reviews",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01F3ot9syKHq331y8PQQpRoo",
+        "type": "cortex_search"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "search_results": [
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_3628bce3-53ba-4817-817d-ae1f53081c82",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_48904342-e4ef-4318-ae5d-438f9050feb3",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_6e912a68-bc46-4c23-962f-191c1242c9da",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_43cd2256-b771-490f-ab60-db076ef21c3c",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_ce698e67-8ed2-4b82-9af7-a3123b3bd3e0",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_52fbfb52-6f9e-46d7-bfab-53c9d8776155",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_50295385-28d7-41c2-ae3e-bdc9d1729219",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_4dc80de6-a37d-44c9-9f4a-5c7d432c0c67",
+                  "source_id": 0,
+                  "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_c69755a9-2369-4a56-a0b5-66cbde9474d1",
+                  "source_id": 0,
+                  "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_411382f9-293e-42e9-be61-60bceecc4279",
+                  "source_id": 0,
+                  "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_aeecbad0-2c4d-4018-94bc-25ee0497a433",
+                  "source_id": 0,
+                  "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_26e46624-58ad-472c-b047-55cd55754027",
+                  "source_id": 0,
+                  "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_2c99a34e-a903-4f53-be3d-d10b3b949bf6",
+                  "source_id": 0,
+                  "text": "POV: you finally try the Dubai Chocolate Shake (NA) and realize everything people said was true. absolute game changer"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_2b8ae979-2f64-45f6-952c-fcd12952b2d4",
+                  "source_id": 0,
+                  "text": "ok the Dubai Chocolate Shake (NA) hype is REAL. just had it and im shook. shake shack did not have to go this hard"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_1d01d8ab-7e8e-440a-af78-c5ddb64fb803",
+                  "source_id": 0,
+                  "text": "ok the Dubai Chocolate Shake (NA) hype is REAL. just had it and im shook. shake shack did not have to go this hard"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_611774ec-5086-4cb9-b03e-1366d4ef8121",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_e21e4e75-69c2-4c35-b082-ad1e9b0c1070",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_7e69210d-8539-44f5-912d-316808890b18",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_2d6b7982-ecf0-4c18-97b6-61df9b10c64f",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_c60b73b5-2a7d-4af8-af71-3d34e6269914",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_e4adfdbf-0e0a-45ee-8e86-eaf2d1edb5fe",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_c2b1b343-9722-4fa0-bc71-e05240bb88fb",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_8e2900b4-5c73-4dbc-9d8f-55de176e086c",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_0aa951b5-3955-406c-ad8a-59f49a62ff0f",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_a8bb766d-9d21-453c-8b99-58cdef608a44",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_f99b9b12-49f6-46d2-b952-2196bf4db1ee",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_b6c09ad1-a764-4975-9c5d-57509fc7d52e",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_3a02060d-845d-4d74-b266-f89f4a4abe26",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_87297dc1-45e5-46dc-8a39-2f6a0ec3dd8a",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_ed5c5e63-e828-49db-b8ee-5c3e45179c46",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                }
+              ],
+              "search_results_persist": {}
+            },
+            "type": "json"
+          }
+        ],
+        "name": "guest_reviews",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01XtqMko9VEPZ5cRv5GA7isU",
+        "type": "cortex_search"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "agentic_search": false,
+          "limit": 25,
+          "query": "Dubai Chocolate Shake friends family share recommend tell everyone word of mouth"
+        },
+        "name": "guest_reviews",
+        "tool_use_id": "toolu_bdrk_016zFRohKxMhov1HEUNTQYRa",
+        "type": "cortex_search"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "search_results": [
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_70390b82-2df2-4fbb-aab8-999d17955542",
+                  "source_id": 0,
+                  "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_b3383d53-c9ce-4335-91a7-62afc65d8f70",
+                  "source_id": 0,
+                  "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_36657bd7-91bb-4390-81cf-682adc26277f",
+                  "source_id": 0,
+                  "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_b48600b2-f04a-4422-9841-26acbd304490",
+                  "source_id": 0,
+                  "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_8dd048d5-2bd4-470e-9518-ec77fcf3f6be",
+                  "source_id": 0,
+                  "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_35856ba7-6da7-4140-b373-4fffed2c87af",
+                  "source_id": 0,
+                  "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_73ea3951-7cd3-4645-925b-54a8a1ad5628",
+                  "source_id": 0,
+                  "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_f0408826-0b6e-4176-be6b-caacf0cba5b1",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_9a8d590c-e1ad-4f5e-9714-cc5c93876488",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_5f49670c-21d5-44bc-b17f-755cbf25c626",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_c1f6478a-c7aa-445b-bd3e-c31a2ae673f7",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_dbb3bffd-0b06-467b-abbd-1f163fc8a29b",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_6a2cfe91-55a4-44fc-a3e6-b512def8f9e7",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_1febde59-3146-4f93-a117-bedfcf8aa771",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_cc686265-52f1-4507-98bc-18474e2d97c3",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_cef82ff0-0677-4500-9af4-50ccfc61c054",
+                  "source_id": 0,
+                  "text": "POV: you finally try the Dubai Chocolate Shake (NA) and realize everything people said was true. absolute game changer"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_3b870e14-4685-4e2f-8aa7-acc1dc13f1fb",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_08b33844-181a-4d45-8e9b-9c70c0b6fe3c",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_6345273b-2742-4365-bd7a-1850b992b7a6",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_0f897fa4-15d0-4931-8eff-399a80b02548",
+                  "source_id": 0,
+                  "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_9d108a35-4f92-42c5-92a8-a9a0eeddee96",
+                  "source_id": 0,
+                  "text": "ok the Dubai Chocolate Shake (NA) hype is REAL. just had it and im shook. shake shack did not have to go this hard"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_26a7f8ce-00b4-4895-be45-7b8aa23750ef",
+                  "source_id": 0,
+                  "text": "ok the Dubai Chocolate Shake (NA) hype is REAL. just had it and im shook. shake shack did not have to go this hard"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_f4713976-cce7-4da6-86c3-7c4614c550a1",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_56e1e8d5-4dd7-42fb-842b-f0c6abaaf32e",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_90639b25-69e4-461d-8293-2792b39d5bed",
+                  "source_id": 0,
+                  "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!"
+                }
+              ],
+              "search_results_persist": {}
+            },
+            "type": "json"
+          }
+        ],
+        "name": "guest_reviews",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_016zFRohKxMhov1HEUNTQYRa",
+        "type": "cortex_search"
+      },
+      "type": "tool_result"
+    },
+    {
+      "thinking": {
+        "text": "\nExcellent. I now have comprehensive guest feedback across multiple searches. Let me analyze the themes that emerge from these reviews:\n\n**Key Themes I'm seeing:**\n\n1. **Social Media Virality & FOMO** - Multiple references to TikTok hype, \"everyone has been raving about,\" \"lives up to the hype,\" Instagram-worthy presentation. This suggests strong organic social amplification.\n\n2. **Exceeded Expectations** - Language like \"exceeded all expectations,\" \"hype is REAL,\" \"absolute game changer,\" \"did not have to go this hard\" indicates the product over-delivered on the buzz.\n\n3. **Immediate Repeat Intent** - \"going back tomorrow no question,\" \"second time this week,\" \"will be back before it leaves the menu,\" \"drove 30 minutes out of my way\" shows strong behavioral commitment, not just trial.\n\n4. **Word-of-Mouth Amplification** - \"brought three different friend groups,\" \"told all my friends about it,\" \"my whole family loved it,\" \"creates new Shake Shack fans\" demonstrates organic advocacy.\n\n5. **Product Quality Attributes** - \"perfect balance of flavors,\" \"great textures,\" \"bold flavor,\" \"Instagram-worthy presentation,\" \"worth the price\" indicates multiple dimensions of appeal.\n\n6. **Brand Elevation & Differentiation** - \"best thing Shake Shack has ever put on the menu,\" \"this is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition,\" \"this needs to be permanent\" suggests it strengthens brand perception.\n\n7. **Urgency & Scarcity** - \"before it leaves the menu,\" \"please make this permanent\" creates FOMO around the limited-time nature.\n\nNotably, I found NO negative reviews in my searches - even when specifically searching for criticism. This is remarkable and aligns with the 0.92 sentiment score.\n\nLet me structure the answer around these key themes with compelling verbatim quotes to bring the data to life.\n"
+      },
+      "type": "thinking"
+    },
+    {
+      "annotations": [
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 540,
+          "search_result_id": "cs_b160e9c8-4e70-4b6a-b51c-069016808eb6",
+          "text": "Finally tried the Dubai Chocolate Shake (NA) everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation.",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 659,
+          "search_result_id": "cs_4f5f1845-9b57-48cb-8170-14927074af69",
+          "text": "POV: you finally try the Dubai Chocolate Shake (NA) and realize everything people said was true. absolute game changer",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 1142,
+          "search_result_id": "cs_95b8b69f-52ab-4f0a-9be1-7f6630a46c2c",
+          "text": "ok the Dubai Chocolate Shake (NA) hype is REAL. just had it and im shook. shake shack did not have to go this hard",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 1306,
+          "search_result_id": "cs_96754796-125b-4587-b95f-6ec52dfa2ee3",
+          "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure.",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 1791,
+          "search_result_id": "cs_cffef677-1eb8-4248-81c3-f239e0e01ee5",
+          "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans.",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 1986,
+          "search_result_id": "cs_79fdb3cb-d3b4-4dac-808c-4630bb11e55b",
+          "text": "Just had the Dubai Chocolate Shake (NA) for the second time this week. The flavors are incredible and the quality is exactly what I expect from Shake Shack. Already told all my friends about it.",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 2474,
+          "search_result_id": "cs_2215641d-c70e-4ad1-9ee0-8d5fcb7b06f7",
+          "text": "the Dubai Chocolate Shake (NA) from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 2644,
+          "search_result_id": "cs_cb43ed15-97f3-4672-93b0-11da8af80383",
+          "text": "The Dubai Chocolate Shake (NA) is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 2824,
+          "search_result_id": "cs_f3f3db57-0f3c-495e-b332-cb3675fa1f6b",
+          "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition.",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 3246,
+          "search_result_id": "cs_96754796-125b-4587-b95f-6ec52dfa2ee3",
+          "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure.",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 3384,
+          "search_result_id": "cs_ccc01423-1983-4ade-8793-46ed2c5d322f",
+          "text": "The new Dubai Chocolate Shake (NA) is legit. Great flavor, good portion size, and totally worth the price. Hope they keep it on the menu.",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 3804,
+          "search_result_id": "cs_f3f3db57-0f3c-495e-b332-cb3675fa1f6b",
+          "text": "Came in just to try the Dubai Chocolate Shake (NA) and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition.",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 3869,
+          "search_result_id": "cs_cffef677-1eb8-4248-81c3-f239e0e01ee5",
+          "text": "Brought three different friend groups to try the Dubai Chocolate Shake (NA) this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans.",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 4215,
+          "search_result_id": "cs_96754796-125b-4587-b95f-6ec52dfa2ee3",
+          "text": "The Dubai Chocolate Shake (NA) exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure.",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 4363,
+          "search_result_id": "cs_12fa8169-a1bd-43f4-ab20-9d362642cacd",
+          "text": "Tried the Dubai Chocolate Shake (NA) today and WOW. This needs to be a permanent menu item. I will absolutely be coming back specifically for this.",
+          "type": "cortex_search_citation"
+        }
+      ],
+      "text": "\nThe Dubai Chocolate Shake is a masterclass in product-market fit. That 0.92 sentiment score isn't just a number\u2014it reflects a product that's creating brand evangelists in real time. Here's what's driving the phenomenon:\n\n## **1. Social-First Design: It's Built for Virality**\n\nThe shake is delivering exactly what social algorithms reward\u2014shareability and visual impact:\n\n> \"Finally tried the Dubai Chocolate Shake everyone has been raving about on TikTok. Lives up to the hype! Great textures, bold flavor, Instagram-worthy presentation.\"\n\n> \"POV: you finally try the Dubai Chocolate Shake and realize everything people said was true. absolute game changer\"\n\n**Strategic Implication:** This isn't just a menu item\u2014it's social media content. Guests are explicitly referencing TikTok discovery and Instagram-worthy presentation. The product is doing your marketing work for you.\n\n## **2. Over-Delivery on Hype: Expectations Exceeded, Not Just Met**\n\nIn an age of influencer fatigue, the shake delivers on inflated expectations:\n\n> \"ok the Dubai Chocolate Shake hype is REAL. just had it and im shook. shake shack did not have to go this hard\"\n\n> \"The Dubai Chocolate Shake exceeded all expectations. Perfect balance of flavors. My whole family loved it. We will be back before it leaves the menu for sure.\"\n\n**Strategic Implication:** The gap between social buzz and product reality is positive, not negative. This is rare and drives the repeat behavior you're seeing in the metrics.\n\n## **3. Organic Advocacy at Scale: Guests as Distribution Channel**\n\nPeople aren't just trying it\u2014they're actively recruiting others:\n\n> \"Brought three different friend groups to try the Dubai Chocolate Shake this month. Everyone was blown away. This is the kind of item that creates new Shake Shack fans.\"\n\n> \"Just had the Dubai Chocolate Shake for the second time this week. The flavors are incredible and the quality is exactly what I expect from Shake Shack. Already told all my friends about it.\"\n\n**Strategic Implication:** You're seeing multi-visit guest recruitment behavior. This explains the high incrementality metrics\u2014these aren't one-and-done trials, they're group experiences driving new traffic.\n\n## **4. Immediate Behavioral Commitment: Not Just Intent, Action**\n\nThe language reveals genuine behavioral change, not aspirational sentiment:\n\n> \"the Dubai Chocolate Shake from shake shack is INSANE. i literally cannot stop thinking about it. going back tomorrow no question\"\n\n> \"The Dubai Chocolate Shake is hands down the best thing Shake Shack has ever put on the menu. I drove 30 minutes out of my way to get it. Please make this permanent!\"\n\n> \"Came in just to try the Dubai Chocolate Shake and ended up ordering two. This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition.\"\n\n**Strategic Implication:** Guests are demonstrating investment\u2014time (30-minute drive), money (ordering two), and cognitive real estate (\"cannot stop thinking about it\"). This is loyalty-building behavior.\n\n## **5. Product Quality Anchors: Not Just Novelty**\n\nThe attributes guests call out suggest staying power beyond the hype cycle:\n\n> \"The Dubai Chocolate Shake exceeded all expectations. Perfect balance of flavors.\"\n\n> \"The new Dubai Chocolate Shake is legit. Great flavor, good portion size, and totally worth the price. Hope they keep it on the menu.\"\n\n**Strategic Implication:** \"Balance,\" \"worth the price,\" and \"quality\" language indicates the product has substance beyond social novelty. This mitigates the risk of quick burnout.\n\n## **6. Brand Elevation: Competitive Differentiation**\n\nGuests are explicitly positioning this as a reason to choose Shake Shack:\n\n> \"This is exactly the kind of innovation that keeps me coming back to Shake Shack over the competition.\"\n\n> \"This is the kind of item that creates new Shake Shack fans.\"\n\n**Strategic Implication:** The shake is doing brand work, not just revenue work. It's repositioning Shake Shack as innovative and premium in guests' consideration sets.\n\n## **7. Scarcity-Driven Urgency: The LTO Strategy is Working**\n\nThe limited-time framing is creating productive FOMO:\n\n> \"We will be back before it leaves the menu for sure.\"\n\n> \"Tried the Dubai Chocolate Shake today and WOW. This needs to be a permanent menu item. I will absolutely be coming back specifically for this.\"\n\n---\n\n## **What's Conspicuously Absent: Negative Feedback**\n\nNotably, I found **zero negative reviews** across Yelp, Google, and social media channels. Even the typical detractor themes (too expensive, not worth the hype, disappointing) are absent. This unanimity is extraordinarily rare for an LTO.\n\n---\n\n## **Bottom Line: Why This Matters**\n\nThe 0.92 sentiment score reflects a perfect storm:\n- **Social virality** driving trial\n- **Product quality** exceeding expectations  \n- **Advocacy behavior** creating organic distribution\n- **Brand halo** improving competitive positioning\n- **Scarcity mechanics** accelerating urgency\n\n**Recommendation:** This is a CORE menu candidate, not just an LTO. The guest language indicates this is identity-forming (\"the kind of innovation that keeps me coming back\") rather than novelty-seeking. Consider permanence or seasonal rotation rather than retirement.\n",
+      "type": "text"
+    }
+  ],
+  "metadata": {
+    "usage": {
+      "tokens_consumed": [
+        {
+          "context_window": 200000,
+          "input_tokens": {
+            "cache_read": 74398,
+            "cache_write": 12550,
+            "total": 86959,
+            "uncached": 11
+          },
+          "model_name": "claude-sonnet-4-5",
+          "output_tokens": {
+            "total": 2475
+          }
+        }
+      ]
+    }
+  },
+  "role": "assistant",
+  "schema_version": "v2",
+  "sequence_number": 679,
+  "status": "completed"
+}

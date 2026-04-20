@@ -1,0 +1,403 @@
+{
+  "content": [
+    {
+      "thinking": {
+        "text": "This question looks similar to a verified analyst query. Let me try to use the analyst tool."
+      },
+      "type": "thinking"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "previous_related_tool_result_id": "",
+          "query": "How did the Dubai Chocolate Shake, Hot Honey Chicken, and K-Shack BBQ Burger compare on incremental traffic lift, attach rates, and incrementality scores?",
+          "reference_vqrs": [
+            {
+              "question": "Compare the K-Shack launch to the Dubai Chocolate Shake",
+              "sql": "SELECT ITEM_NAME, LTO_CAMPAIGN_NAME, ROUND(AVG(LTO_INCREMENTAL_TRAFFIC_PCT), 1) AS incremental_traffic_pct, ROUND(AVG(LTO_ATTACH_RATE), 1) AS attach_rate, ROUND(AVG(LTO_SOCIAL_SENTIMENT), 2) AS social_sentiment, ROUND(AVG(LTO_REPEAT_PURCHASE_RATE), 1) AS repeat_purchase_rate, ROUND(AVG(LTO_GUEST_OVERLAP_PCT), 1) AS guest_overlap_pct, SUM(QUANTITY) AS total_units FROM DEMO_DB.SHAKE_SHACK.MKT_MENU_PERFORMANCE_MART WHERE LTO_CAMPAIGN_NAME LIKE '%K-Shack%' OR LTO_CAMPAIGN_NAME LIKE '%Dubai Chocolate%' GROUP BY ITEM_NAME, LTO_CAMPAIGN_NAME ORDER BY total_units DESC\n",
+              "confidence": 0.6307201,
+              "name": "KSHACK_VS_DUBAI",
+              "verified_at": 1711500000,
+              "verified_by": "demo"
+            }
+          ]
+        },
+        "name": "menu_lto",
+        "tool_use_id": "tooluse_5021ec94b2134436864e01",
+        "type": "cortex_analyst_text_to_sql"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "query_id": "01c3d78a-0812-9dca-0053-fc07169043c2",
+              "result_set": {
+                "data": [
+                  [
+                    "Dubai Chocolate Shake (NA)",
+                    "Dubai Chocolate Shake NA",
+                    "18.0",
+                    "22.0",
+                    "95.00",
+                    "65737",
+                    "29971"
+                  ],
+                  [
+                    "Hot Honey Chicken",
+                    "Hot Honey Chicken Launch",
+                    "11.0",
+                    "20.0",
+                    "80.00",
+                    "28247",
+                    "12745"
+                  ],
+                  [
+                    "K-Shack BBQ Burger",
+                    "K-Shack BBQ Burger Launch",
+                    "12.0",
+                    "18.5",
+                    "82.00",
+                    "6997",
+                    "3189"
+                  ]
+                ],
+                "resultSetMetaData": {
+                  "format": "jsonv2",
+                  "numRows": 3,
+                  "partition": 0,
+                  "partitionInfo": [
+                    {
+                      "rowCount": 3,
+                      "uncompressedSize": 282
+                    }
+                  ],
+                  "rowType": [
+                    {
+                      "length": 100,
+                      "name": "ITEM_NAME",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "text"
+                    },
+                    {
+                      "length": 200,
+                      "name": "LTO_CAMPAIGN_NAME",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "text"
+                    },
+                    {
+                      "length": 0,
+                      "name": "INCREMENTAL_TRAFFIC_PCT",
+                      "nullable": true,
+                      "precision": 24,
+                      "scale": 1,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "ATTACH_RATE",
+                      "nullable": true,
+                      "precision": 24,
+                      "scale": 1,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "INCREMENTALITY_SCORE",
+                      "nullable": true,
+                      "precision": 24,
+                      "scale": 2,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "TOTAL_UNITS",
+                      "nullable": true,
+                      "precision": 17,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "UNIQUE_TRANSACTIONS",
+                      "nullable": false,
+                      "precision": 18,
+                      "scale": 0,
+                      "type": "fixed"
+                    }
+                  ]
+                },
+                "statementHandle": "01c3d78a-0812-9dca-0053-fc07169043c2"
+              },
+              "result_set_truncated": false,
+              "sql": "WITH __menu_performance AS (\n  SELECT\n    item_name,\n    lto_campaign_name,\n    transaction_id,\n    lto_attach_rate,\n    lto_incrementality_score,\n    lto_incremental_traffic_pct,\n    quantity\n  FROM DEMO_DB.SHAKE_SHACK.MKT_MENU_PERFORMANCE_MART\n)\nSELECT\n  item_name,\n  lto_campaign_name,\n  ROUND(AVG(lto_incremental_traffic_pct), 1) AS incremental_traffic_pct,\n  ROUND(AVG(lto_attach_rate), 1) AS attach_rate,\n  ROUND(AVG(lto_incrementality_score), 2) AS incrementality_score,\n  SUM(quantity) AS total_units,\n  COUNT(DISTINCT transaction_id) AS unique_transactions\nFROM __menu_performance\nWHERE\n  lto_campaign_name LIKE '%Dubai Chocolate%'\n  OR item_name LIKE '%Hot Honey Chicken%'\n  OR lto_campaign_name LIKE '%K-Shack BBQ%'\nGROUP BY\n  item_name,\n  lto_campaign_name\nORDER BY\n  total_units DESC NULLS LAST\n -- Generated by Cortex Analyst (request_id: 33545c3f-2931-44ce-a27d-2503cd6afa68)\n;",
+              "text": "The question is clear and I can answer it with the following SQL.",
+              "verified_query_used": true
+            },
+            "type": "json"
+          }
+        ],
+        "name": "menu_lto",
+        "status": "success",
+        "tool_use_id": "tooluse_5021ec94b2134436864e01",
+        "type": "cortex_analyst_text_to_sql"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "skill_name": "system_chart_workflow"
+        },
+        "name": "server_skill",
+        "tool_use_id": "toolu_bdrk_018bUDQgQUsypwkQZPqpKw4a",
+        "type": "server_skill"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "content": "# Skill: system_chart_workflow\n\n**Description**: Chart generation workflow -- when to generate charts, mandatory visualization rules, chart citing format.\n\n## Instructions\n\n\n# Chart Workflow\n\n## When to Generate Charts\n- SQL results with 2+ rows AND numerical metrics (revenue, sales, counts, growth, percentages)\n- Comparisons: metrics by region/product/team/category\n- Rankings: top N customers, bottom performers, leaderboards\n- Time series: monthly trends, year-over-year growth, daily patterns\n- Distributions: category breakdowns, segment analysis\n\n## When NOT to Chart\n- Single scalar values (\"What is total revenue?\" \u2192 answer \"$X\", no chart)\n- Purely textual data\n- When the user explicitly asks for a table only\n\n## Chart Generation Process\n1. Evaluate if SQL results would benefit from visualization\n2. Load the `chart_generation_instructions` skill for detailed chart creation guidance\n3. Follow the skill instructions to call the data_to_chart tool\n\n## Citing Charts\nAfter receiving a data_to_chart tool result:\n- Say \"Please find the visualization below.\" (or similar context) inside the <answer> block\n- Include `<chart>toolUseId</chart>` where toolUseId is from the data_to_chart tool result\n- Valid format: `<chart>tooluse_8n3P5qRk7aWzJ1cYxTvEfg</chart>`\n- **CRITICAL**: Use the tool_use_id from data_to_chart, NOT from SQL tools. SQL tool IDs cause rendering errors.\n- If the data_to_chart result contains warnings, do NOT cite the chart \u2014 fix the issue first.\n- Never reference chart colors (e.g., \"the blue line\", \"red bars\") \u2014 users can customize colors.",
+              "skill_name": "system_chart_workflow"
+            },
+            "type": "json"
+          }
+        ],
+        "name": "server_skill",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_018bUDQgQUsypwkQZPqpKw4a",
+        "type": "server_skill"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "skill_name": "chart_generation_instructions"
+        },
+        "name": "server_skill",
+        "tool_use_id": "toolu_bdrk_012HW7Q3mE3bFFwMGZ9r1Mk7",
+        "type": "server_skill"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "content": "# Skill: chart_generation_instructions\n\n**Description**: Provides instructions for deciding WHEN to generate a chart and HOW to generate a chart to enhance answers with beautiful visualizations\n\n## Instructions\n\n\n# WHEN\n\nThis section describes WHEN to generate a chart - read it carefully.\n\n**PHASE 1: DECIDING TO GENERATE A CHART** (happens DURING your reasoning, BEFORE you have a chart tool result)\n\nInspecting results from cortex_analyst_text_to_sql, you MUST evaluate in <thinking>:\n\n**Step 1: Should I generate a chart?**\n  - Prefer charts over tables for: comparisons, trends, rankings, distributions, time-series\n  - MUST generate charts when SQL results have 2+ rows with numerical metrics (revenue, sales, counts, growth rates, percentages)\n  - Example of MANDATORY chart scenarios:\n    - Comparisons: revenue by region, sales by product, performance by team\n    - Rankings: top 10 customers, bottom performers, leaderboards\n    - Time series: monthly trends, year-over-year growth, daily metrics\n    - Distributions: category breakdowns, segment analysis\n  - Do NOT chart: singular values (e.g., \"What is total revenue?\" \u2192 just answer \"The total revenue is $X\")\n  - For generic tools: ONLY chartable if \"execution_type\": \"table_function\" (check the execution_type field in the result)\n  - Use the tool_use_id (not the query_id value) when calling the chart tool\n\n**Step 2: Is the SQL result visualization-ready?**\n  - Check: row count, column names, aggregation level, data shape\n  - Check if the question mentions a specific chart type that should be generated. If it does, check if the SQL result is visualization-ready for the requested chart type. Remember that you should call data_to_chart with specific chart type in the question.\n  - **IMPORTANT - Check custom instructions**: Review the system prompt for any custom response instructions or chart-related preferences. Custom instructions should take precedence over recommendations in this guide, unless they are breaking the system. For example, if custom instructions say \"always use bar charts for time series\", you MUST use a bar chart even though this guide recommends line charts for time series. Double-check any instructions under \"[Important Case-specific Instructions]\" section in the system prompt, and apply any chart-relevant guidance.\n\n**Step 3: Prepare data and generate a chart**\n  - If data is NOT visualization-ready \u2192 Use vega-lite transform to filter the data (preferred) OR execute a new SQL query to transform the data (BEFORE calling data_to_chart again).\n  - Always provide context text BEFORE the chart block, then show the chart (all within the <answer> block).\n\n**Step 4: Consider generating multiple charts**\n  - You CAN generate multiple charts when a single chart would be insufficient or misleading:\n    - **Different scales**: When metrics have vastly different magnitudes (e.g., revenue in millions vs. growth rate in percentages), a single chart may hide patterns in smaller values. Create separate charts for each scale.\n    - **Different perspectives**: When the user's question benefits from multiple views (e.g., \"analyze sales performance\" could show both a trend over time AND a breakdown by category).\n    - **Comparison clarity**: When comparing items with very different value ranges, separate charts can make each comparison more straightforward.\n  - To generate multiple charts:\n    1. Call data_to_chart multiple times, once for each chart\n    2. In Phase 2, present each chart with a brief label explaining what it shows. Remember to cite each chart separately\n    3. Example: \"Here's the revenue trend:\" followed by chart 1, then \"And here's the growth rate trend:\" followed by chart 2\n  - Do NOT generate multiple charts just to show more visualizations - only when it genuinely improves understanding.\n\n**PHASE 2: PRESENTING THE CHART** (happens AFTER you have a chart tool result in conversation history)\n\nOnce you have called data_to_chart tool and received a tool result:\n  * Find the data_to_chart tool result with the chart in conversation history\n  * Say \"Please find the visualization below.\" (or similar context) inside the <answer> block\n  * Provide the <chart>toolUseId</chart> block inside the <answer> block where toolUseId is from the data_to_chart tool result\n  * Valid chart block format: <chart>tooluse_8n3P5qRk7aWzJ1cYxTvEfg</chart>\n  * If you cannot find ANY valid tool results from data_to_chart tool in conversation history, just say \"I couldn't generate a valid visualization.\"\n  * **AVOID REPETITION**: When user did not ask for a chart explicitly, your chart response comes AFTER your initial response in the conversation. Do NOT repeat information already provided in <answer> tags before generating the chart:\n    - Do NOT repeat the summary or analysis from your first response\n    - Introduce the chart and optionally add NEW observations visible only in the visualization (e.g., visual patterns, outliers that stand out graphically) or new findings that you were not aware of before.\n  * **DO NOT CITE CHARTS WITH WARNINGS**: If the data_to_chart tool result contains ANY warnings (e.g., \"too many unique categories\" etc.), you MUST:\n    1. Do NOT cite the chart - charts with warnings will render incorrectly or fail\n    2. Understand the warning returned and try to improve:\n      a. if error is about too many elements (e.g. too many bar charts), issue new cortex_analyst_text_to_sql call to filter the data\n      b. if error is about chart specification itself (e.g. column used in multiple encodings), call data_to_chart with fixed specification\n    3. The only possible scenario where you can cite a chart with a warning is when the user explicitly asked for a chart that would have properties described in the warning (e.g., a multi-line chart with more than 5 colors).\n  * All chart blocks must be placed inside the <answer> block, not outside of it.\n  * DO NOT use tool IDs from cortex_analyst_text_to_sql tool results to generate a chart block. These will cause rendering errors. ONLY use data_to_chart tool use IDs in chart blocks.\n  * DO NOT reference or describe chart colors (e.g., \"the blue line\", \"red bars\") in your <thinking> or <answer> sections, as colors can be customized by users and may differ from the chart specification.\n\n# HOW\n\nThis section describes how chart specification should be generated.\n\n## Available chart types\nBelow is the full list of chart types that you should generate. You should reject asks for any other chart types.\n\n* Bar chart\n  * ideal for comparisons, top N, rankings\n  * supports up to 20 unique values per nominal axis (after applying transforms)\n  * supports up to 5 unique values per color axis\n  * For larger datasets, ALWAYS use top-N transforms to limit results to 10-15 items\n\n* Line chart\n  * ideal for trends over time\n  * supports up to 5 unique values per color axis\n  * **CRITICAL**: x-axis values MUST be unique within each color series (no duplicate x values). If data has duplicate x values, aggregate them first with SQL or choose a different chart type\n* Pie chart\n  * ideal for part-to-whole relationships\n  * supports up to 15 values\n* Scatter chart\n  * should be used only for showing correlations between two numerical variables\n  * should NOT be used for top X questions, use bar or line chart instead\n  * requires at least 5 distinct values per axis (both x and y must have 5+ unique values)\n* Heatmap chart\n  * should be used only for showing patterns in data across two categorical dimensions\n  * should NOT be used for top X questions, use bar or line chart instead\n  * requires data with at least 3 columns for x, y (categorical) and color (quantitative) axes\n  * requires at least 2 distinct values per x and y axes, but not more than 20 distinct values per x and y axes\n  * you should not create a heatmap with temporal or ordinal data on x or y axes, unless specifically asked by the user\n\n\n## Chart specification\n\nWhen you want to generate a chart you just need to provide vega lite chart specification as a json string and use data_to_chart tool to validate chart correctness.\n\nProvide the minimum required configuration: mark, encoding (with field and type), and title. Optionally include transform (for fold, top-N, custom colors) and config. The data field will be added by the system in postprocessing.\nDo not include aggregations or transformations when not required.\n\nFor marks, use only one of the following:\n- \"bar\" for bar charts\n- \"line\" for line charts\n- \"arc\" for pie charts\n- \"point\" for scatter charts\n- \"rect\" for heatmaps\n\nEncoding types can be: \"quantitative\", \"temporal\", \"ordinal\", or \"nominal\".\nUse: \"quantitative\" for numbers, \"temporal\" for years, times and data-times, \"ordinal\" for ordered categories, and \"nominal\" for unordered categories.\nTitle should be a string.\n\n### IMPORTANT INSTRUCTIONS FOR TRANSFORMS:\n* Use the \"fold\" transform ONLY when charting data from multiple columns that need to be pivoted.\n* The column names in the fold array MUST exactly match column names from the SQL result (case-sensitive). Verify each column exists before using it.\n* When the user question is best visualized using a top-N bar chart (e.g. \"top 10\", \"highest value\", etc.), you MUST use transforms to filter the data to show only the selected top-N items.\n* To filter to top-N for bar charts, use this exact pattern in the \"transform\" array (place it BEFORE any other transforms like fold):\n  1. Add a window transform to rank the data: {\"window\": [{\"op\": \"rank\", \"as\": \"rank\"}], \"sort\": [{\"field\": \"<quantitative_field>\", \"order\": \"descending\"}]}\n  2. Add a filter transform: {\"filter\": \"datum.rank <= N\"}\nwhere <quantitative_field> is the field you're ranking by (the measure/metric), and N is the number you want to limit to.\n* The \"sort\" field in the window transform should be the quantitative field (y-axis for horizontal bars, x-axis for vertical bars).\n* Use \"descending\" order for \"top\" or \"highest\", and \"ascending\" order for \"bottom\" or \"lowest\".\n* When combining top-N filtering with other transforms (like fold or calculate), ALWAYS place the window and filter transforms FIRST in the transform array, then add other transforms after.\n* Only use window/filter transforms for limiting to top-N when necessary to produce a top-N bar chart - do not add them otherwise.\n* N should always be less than 20.\n* IMPORTANT: top-N transforms should ONLY be used for bar charts (mark: bar). NEVER use window, sort and filter transform with line charts.\n* When user asks for a top-N line chart, you should see that data is already filtered to top-N. Generate a line chart config without the window, sort and filter transform.\n\n### CRITICAL RULES (violating these will cause chart generation to fail):\n* **NEVER use the same field in multiple encodings** - each field can only appear ONCE across x, y, color, theta, yOffset, xOffset, etc.\n  - Example: If you use \"SALES\" for x-axis, you CANNOT also use \"SALES\" for color or y-axis\n  - Example: If you have a grouped bar chart with yOffset, the yOffset field must be different from x and y fields\n  - **Before creating your encoding, list out all the fields you plan to use and verify each field is used only once**\n* **Verify column names exist in the data** - before using any column name in encoding or fold transform, check that it exists exactly as shown in the SQL result columns. Column names are case-sensitive \u2014 use the casing EXACTLY as shown in the TABLE with data.\n* Do not use color encoding for quantitative, temporal, or ordinal fields for bar and line charts - color must be nominal type only.\n* **For scatter charts**: Both x and y axes must have at least 5 distinct values. If the data has fewer distinct values on either axis, use a different chart type (like bar chart).\n\n### Additional rules:\n* Pay attention to the requested chart type and generate the chart accordingly. If the chart type was not explicitly provided, you should suggest the best possible chart type from the available types.\n* Do not generate line charts where all fields are either ordinal or temporal.\n* Do not generate bar charts where all fields are ordinal.\n* If you selected \"bar\" for the mark, use horizontal bars (\"x\" and \"y\" swapped - \"y\" field is ordinal/nominal and \"x\" field is quantitative), whenever the ordinal/nominal field does not resemble time (e.g. year, day number, date).\n* In-particular, if you selected \"bar\" for the mark, always use horizontal bars when the bar labels (ordinal/nominal field values) are long strings in the TABLE with data.\n* For bar charts, ensure each (categorical_field, color_field) tuple is unique. If duplicates exist, add one of the transforms:\n  - Filter: {\"filter\": \"datum.<field> == '<value>'\"}\n  - Aggregate: {\"aggregate\": [{\"op\": \"sum\", \"field\": \"<quant>\", \"as\": \"<quant>\"}], \"groupby\": [\"<category>\", \"<color>\"]}\n* Do not use \"x\" and \"y\" encodings for arc mark. USE \"theta\" and \"color\" encodings instead.\n* Do not generate scatter (point) charts where any of the fields is temporal or ordinal.\n* To generate heatmap, you must choose categorical fields for both \"x\" and \"y\" encodings and a quantitative field for the \"color\" encoding.\n* NEVER generate concatenated views (NEVER use hconcat, vconcat, concat).\n* Add readable axis titles as \"title\" in both \"x\", \"y\" and \"color\" field, if applicable.\n* When using the fold transform, always include a calculate transform to rename the folded field names to a more readable format.\n* If you know the data is incomplete (e.g., partial month), include this context in the chart title (e.g., \"June 2025 (Partial)\").\n\n### Examples\n\nEach example shows: User Question \u2192 Data Shape \u2192 Why This Chart \u2192 Spec\n\n---\n\n**Example 1: Line Chart - Time Series Trend**\n\n**User Question**: \"How did monthly sales change over the past year?\"\n\n**SQL Result** (12 rows):\n| DATE       | TOTAL_SALES |\n|------------|-------------|\n| 2024-01-01 | 45000       |\n| 2024-02-01 | 52000       |\n| ... (12 rows total) |    |\n\n**Why Line Chart**: Time series data showing change over time \u2192 Line chart is ideal for trends.\n\n**Chart Spec**:\n{\n  \"title\": \"Monthly Sales Trend (2024)\",\n  \"mark\": \"line\",\n  \"encoding\": {\n    \"x\": {\"field\": \"DATE\", \"title\": \"Month\", \"type\": \"temporal\"},\n    \"y\": {\"field\": \"TOTAL_SALES\", \"title\": \"Total Sales\", \"type\": \"quantitative\"}\n  }\n}\n\n---\n\n**Example 2: Horizontal Bar Chart - Rankings**\n\n**User Question**: \"Which are the top 10 accounts by usage?\"\n\n**SQL Result** (50 rows):\n| ACCOUNT_NAME        | TOTAL_USAGE |\n|---------------------|-------------|\n| Acme Corporation    | 15420       |\n| Global Industries   | 12350       |\n| ... (50 rows total) |             |\n\n**Why Horizontal Bar Chart**: Ranking question with text labels (account names are long strings) \u2192 Horizontal bar chart. Need top-N transform since data has 50 rows but question asks for top 10.\n\n**Chart Spec**:\n{\n  \"title\": \"Top 10 Accounts by Usage\",\n  \"transform\": [\n    {\"window\": [{\"op\": \"rank\", \"as\": \"rank\"}], \"sort\": [{\"field\": \"TOTAL_USAGE\", \"order\": \"descending\"}]},\n    {\"filter\": \"datum.rank <= 10\"}\n  ],\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"TOTAL_USAGE\", \"title\": \"Total Usage\", \"type\": \"quantitative\"},\n    \"y\": {\"field\": \"ACCOUNT_NAME\", \"title\": \"Account\", \"type\": \"nominal\", \"sort\": \"-x\"}\n  }\n}\n\n---\n\n**Example 3: Vertical Bar Chart - Time-Based Categories**\n\n**User Question**: \"Show daily page views for last week\"\n\n**SQL Result** (7 rows):\n| DATE_DAY   | TOTAL_VIEWS |\n|------------|-------------|\n| 2024-03-18 | 8500        |\n| 2024-03-19 | 9200        |\n| ... (7 rows) |           |\n\n**Why Vertical Bar Chart**: Time-based categories (dates) on x-axis \u2192 Vertical bar chart (x is temporal, y is quantitative). Small number of rows, no transform needed.\n\n**Chart Spec**:\n{\n  \"title\": \"Daily Page Views (March 18-24, 2024)\",\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"DATE_DAY\", \"title\": \"Date\", \"type\": \"temporal\"},\n    \"y\": {\"field\": \"TOTAL_VIEWS\", \"title\": \"Daily Views\", \"type\": \"quantitative\"}\n  }\n}\n\n---\n\n**Example 4: Multi-Line Chart with Fold Transform**\n\n**User Question**: \"Compare sales of Product A, B, and C over time\"\n\n**SQL Result** (12 rows, multiple value columns):\n| WEEK       | PRODUCT_A | PRODUCT_B | PRODUCT_C |\n|------------|-----------|-----------|-----------|\n| 2024-01-07 | 1200      | 800       | 1500      |\n| 2024-01-14 | 1350      | 950       | 1420      |\n| ... (12 rows) |        |           |           |\n\n**Why Multi-Line with Fold**: Comparing multiple series over time. Data has separate columns for each product \u2192 Need fold transform to pivot columns into rows, then use \"key\" for color.\n\n**Chart Spec**:\n{\n  \"title\": \"Product Sales Comparison by Week\",\n  \"transform\": [\n    {\"fold\": [\"PRODUCT_A\", \"PRODUCT_B\", \"PRODUCT_C\"]},\n    {\"calculate\": \"({'PRODUCT_A': 'Product A', 'PRODUCT_B': 'Product B', 'PRODUCT_C': 'Product C'})[datum.key]\", \"as\": \"key\"}\n  ],\n  \"mark\": \"line\",\n  \"encoding\": {\n    \"x\": {\"field\": \"WEEK\", \"title\": \"Week\", \"type\": \"temporal\"},\n    \"y\": {\"field\": \"value\", \"title\": \"Sales\", \"type\": \"quantitative\"},\n    \"color\": {\"field\": \"key\", \"type\": \"nominal\", \"title\": \"Product\"}\n  }\n}\n\n---\n\n**Example 5: Pie Chart - Part-to-Whole**\n\n**User Question**: \"What percentage of revenue comes from each product category?\"\n\n**SQL Result** (5 rows):\n| CATEGORY    | REVENUE_PCT |\n|-------------|-------------|\n| Electronics | 35.2        |\n| Clothing    | 28.1        |\n| Home        | 18.5        |\n| Sports      | 12.0        |\n| Other       | 6.2         |\n\n**Why Pie Chart**: Showing percentages that sum to 100% (part-to-whole relationship) with small number of categories (5) \u2192 Pie chart is ideal.\n\n**Chart Spec**:\n{\n  \"title\": \"Revenue Distribution by Category\",\n  \"mark\": \"arc\",\n  \"encoding\": {\n    \"theta\": {\"field\": \"REVENUE_PCT\", \"type\": \"quantitative\", \"title\": \"Revenue %\"},\n    \"color\": {\"field\": \"CATEGORY\", \"type\": \"nominal\", \"title\": \"Category\"}\n  }\n}\n\n---\n\n**Example 6: Scatter Chart - Correlation Analysis**\n\n**User Question**: \"Is there a relationship between marketing spend and sales?\"\n\n**SQL Result** (100 rows):\n| MARKETING_SPEND | SALES_AMOUNT |\n|-----------------|--------------|\n| 5000            | 42000        |\n| 12000           | 78000        |\n| ... (100 rows, both columns have many distinct values) |\n\n**Why Scatter Chart**: Two quantitative variables, looking for correlation. Both axes have many distinct values (100+ data points) \u2192 Scatter chart is appropriate.\n\n**Chart Spec**:\n{\n  \"title\": \"Marketing Spend vs. Sales Correlation\",\n  \"mark\": \"point\",\n  \"encoding\": {\n    \"x\": {\"field\": \"MARKETING_SPEND\", \"type\": \"quantitative\", \"title\": \"Marketing Spend\"},\n    \"y\": {\"field\": \"SALES_AMOUNT\", \"type\": \"quantitative\", \"title\": \"Sales Amount\"}\n  }\n}\n\n---\n\n**Example 7: Heatmap - Two Categorical Dimensions**\n\n**User Question**: \"Show sales performance across regions and product categories\"\n\n**SQL Result** (20 rows):\n| REGION      | CATEGORY    | SALES   |\n|-------------|-------------|---------|\n| North       | Electronics | 125000  |\n| North       | Clothing    | 89000   |\n| South       | Electronics | 142000  |\n| ... (4 regions x 5 categories = 20 rows) |\n\n**Why Heatmap**: Two categorical dimensions (region, category) with one quantitative measure (sales). Shows patterns across the matrix \u2192 Heatmap is ideal.\n\n**Chart Spec**:\n{\n  \"title\": \"Sales by Region and Category\",\n  \"mark\": \"rect\",\n  \"encoding\": {\n    \"x\": {\"field\": \"CATEGORY\", \"type\": \"nominal\", \"title\": \"Product Category\"},\n    \"y\": {\"field\": \"REGION\", \"type\": \"nominal\", \"title\": \"Region\"},\n    \"color\": {\"field\": \"SALES\", \"type\": \"quantitative\", \"title\": \"Sales\"}\n  }\n}\n\n---\n\n**Example 8: Bottom-N Bar Chart**\n\n**User Question**: \"Which 5 regions have the lowest market share?\"\n\n**SQL Result** (25 rows):\n| REGION          | MARKET_SHARE |\n|-----------------|--------------|\n| Central Europe  | 2.1          |\n| Southeast Asia  | 3.4          |\n| ... (25 rows)   |              |\n\n**Why Horizontal Bar with Ascending Sort**: Bottom-N question \u2192 Use window transform with ascending order to get lowest values first.\n\n**Chart Spec**:\n{\n  \"title\": \"Bottom 5 Regions by Market Share\",\n  \"transform\": [\n    {\"window\": [{\"op\": \"rank\", \"as\": \"rank\"}], \"sort\": [{\"field\": \"MARKET_SHARE\", \"order\": \"ascending\"}]},\n    {\"filter\": \"datum.rank <= 5\"}\n  ],\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"MARKET_SHARE\", \"title\": \"Market Share (%)\", \"type\": \"quantitative\"},\n    \"y\": {\"field\": \"REGION\", \"title\": \"Region\", \"type\": \"nominal\", \"sort\": \"x\"}\n  }\n}\n\n---\n\n**Example 9: Grouped Bar Chart with Top-N and Fold**\n\n**User Question**: \"Show capacity and utilization for our top 5 accounts\"\n\n**SQL Result** (50 rows, two metrics per account):\n| ACCOUNT_NAME     | CAPACITY | UTILIZATION_RATE |\n|------------------|----------|------------------|\n| Acme Corp        | 10000    | 78.5             |\n| Global Inc       | 8500     | 92.1             |\n| ... (50 rows)    |          |                  |\n\n**Why Grouped Bar with Transforms**: Need to show two metrics side-by-side for top 5 accounts. Requires: (1) top-N filter first, (2) fold to combine metrics, (3) yOffset for grouping.\n\n**Chart Spec**:\n{\n  \"title\": \"Top 5 Accounts: Capacity vs Utilization\",\n  \"transform\": [\n    {\"window\": [{\"op\": \"rank\", \"as\": \"rank\"}], \"sort\": [{\"field\": \"CAPACITY\", \"order\": \"descending\"}]},\n    {\"filter\": \"datum.rank <= 5\"},\n    {\"fold\": [\"CAPACITY\", \"UTILIZATION_RATE\"]},\n    {\"calculate\": \"({'CAPACITY': 'Capacity', 'UTILIZATION_RATE': 'Utilization Rate (%)'})[datum.key]\", \"as\": \"key\"}\n  ],\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"value\", \"title\": \"Value\", \"type\": \"quantitative\"},\n    \"y\": {\"field\": \"ACCOUNT_NAME\", \"title\": \"Account\", \"type\": \"nominal\", \"sort\": \"-x\"},\n    \"yOffset\": {\"field\": \"key\", \"type\": \"nominal\"},\n    \"color\": {\"field\": \"key\", \"title\": \"Metric\", \"type\": \"nominal\"}\n  }\n}\n\n---\n\n**Example 11: Custom Instructions Override - Chart Type and Colors**\n\n**Custom Instructions**: \"Always use bar charts instead of line charts for time series data. Use blue for revenue.\"\n\n**User Question**: \"Show monthly revenue for 2024\"\n\n**SQL Result** (12 rows):\n| MONTH      | REVENUE   |\n|------------|-----------|\n| 2024-01-01 | 125000    |\n| 2024-02-01 | 142000    |\n| ... (12 rows) |        |\n\n**Why Bar Chart (NOT Line) with Custom Color**: Even though this is time series data (which would normally use a line chart), the custom instructions explicitly require bar charts for time series. The custom color is applied via `scale` in the color encoding. Always follow custom instructions when they override default chart type or color selection.\n\n**Chart Spec**:\n{\n  \"title\": \"Monthly Revenue (2024)\",\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"MONTH\", \"title\": \"Month\", \"type\": \"temporal\"},\n    \"y\": {\"field\": \"REVENUE\", \"title\": \"Revenue\", \"type\": \"quantitative\"},\n    \"color\": {\"datum\": \"Revenue\", \"scale\": {\"range\": [\"#1E90FF\"]}}\n  }\n}\n\n**Key Takeaway**: When custom instructions specify chart type or color preferences, they take priority over the default recommendations in this guide. Check the system prompt/custom instructions before deciding on chart type or colors.\n\n---\n\n**Example 12: Bar Chart with Duplicate Category-Color Tuples**\n\n**User Question**: \"Show total sales by region and product category\"\n\n**SQL Result** (12 rows \u2014 multiple rows per region/category pair due to sub-categories):\n| REGION | CATEGORY    | SUBCATEGORY | SALES  |\n|--------|-------------|-------------|--------|\n| North  | Electronics | Phones      | 50000  |\n| North  | Electronics | Laptops     | 75000  |\n| North  | Clothing    | Shoes       | 30000  |\n| South  | Electronics | Phones      | 60000  |\n| South  | Electronics | Laptops     | 40000  |\n| South  | Clothing    | Shoes       | 35000  |\n| ... (12 rows) |      |             |        |\n\n**Why Aggregate Transform**: The data has duplicate (REGION, CATEGORY) tuples (e.g., \"North + Electronics\" appears twice for Phones and Laptops). A bar chart with color encoding requires each (categorical_field, color_field) pair to be unique. Use an aggregate transform to sum SALES per (REGION, CATEGORY).\n\n**Chart Spec**:\n{\n  \"title\": \"Total Sales by Region and Category\",\n  \"transform\": [\n    {\"aggregate\": [{\"op\": \"sum\", \"field\": \"SALES\", \"as\": \"SALES\"}], \"groupby\": [\"REGION\", \"CATEGORY\"]}\n  ],\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"SALES\", \"title\": \"Total Sales\", \"type\": \"quantitative\"},\n    \"y\": {\"field\": \"REGION\", \"title\": \"Region\", \"type\": \"nominal\"},\n    \"color\": {\"field\": \"CATEGORY\", \"title\": \"Category\", \"type\": \"nominal\"}\n  }\n}\n\n---\n\n**Example 13: Custom Instructions - Colors, Background, and Styling**\n\n**Custom Instructions**: \"Use red for North, blue for South. Use a light gray background.\"\n\n**User Question**: \"Show monthly sales by region over the past year\"\n\n**SQL Result** (36 rows):\n| MONTH      | REGION | SALES  |\n|------------|--------|--------|\n| 2024-01-01 | North  | 85000  |\n| 2024-01-01 | South  | 62000  |\n| 2024-01-01 | West   | 73000  |\n| ... (36 rows, 3 regions) |  |\n\n**Why Line Chart with Custom Colors and Config**: Time series comparing multiple series \u2192 line chart with color encoding. Custom instructions specify colors for SOME series (North=red, South=blue) while other series (West) should get automatic colors \u2192 use a `calculate` transform to assign explicit colors to `_color`, then reference it via `scale.range.field` in the color encoding. The system will automatically add a fallback palette for series without explicit colors. Global styling like background color belongs in the `config` object.\n\n**Chart Spec**:\n{\n  \"title\": \"Monthly Sales by Region (2024)\",\n  \"config\": {\n    \"background\": \"lightgray\"\n  },\n  \"transform\": [{\n    \"calculate\": \"datum.REGION === 'North' ? 'red' : datum.REGION === 'South' ? 'blue' : ''\",\n    \"as\": \"_color\"\n  }],\n  \"mark\": \"line\",\n  \"encoding\": {\n    \"x\": {\"field\": \"MONTH\", \"title\": \"Month\", \"type\": \"temporal\"},\n    \"y\": {\"field\": \"SALES\", \"title\": \"Sales\", \"type\": \"quantitative\"},\n    \"color\": {\"field\": \"REGION\", \"type\": \"nominal\", \"title\": \"Region\", \"scale\": {\"range\": {\"field\": \"_color\"}}}\n  }\n}\n\n**Key Takeaway**: When custom instructions specify colors or styling:\n1. **Per-series colors** \u2192 use a `calculate` transform with conditional color assignments (ternary chain), storing the result as `_color`. Use `\"scale\": {\"range\": {\"field\": \"_color\"}}` in the color encoding. End the ternary chain with `: ''` (empty string) \u2014 a fallback palette for unspecified series is added automatically. The color encoding's `field` should be the categorical field (e.g., `REGION`), NOT `_color`.\n2. **Global styling** (background, fonts, sizes, default colors) \u2192 use the `config` object:\n   - `background`: chart background color (e.g., `\"lightgray\"`, `\"#f0f0f0\"`)\n   - `axis.labelFontSize`, `axis.titleFontSize`: axis font sizes\n   - `title.fontSize`, `title.font`: chart title styling\n   - `mark.color`: default mark color when no color encoding is used\n   These defaults belong in `config`, NOT in individual encoding channels.\n\n---\n\n**Example 14: Custom Instructions - Highlight Specific Values (No Color Column)**\n\n**Custom Instructions**: \"Make the Marketing bar orange\"\n\n**User Question**: \"Show top 10 departments by budget\"\n\n**SQL Result** (25 rows):\n| DEPARTMENT  | BUDGET  |\n|-------------|---------|\n| Marketing   | 150000  |\n| Engineering | 120000  |\n| ... (25 rows)|        |\n\n**Why Horizontal Bar with Custom Highlighting**: Ranking question with text labels \u2192 horizontal bar chart with top-N. Custom instructions want specific values highlighted. Since there is no color column for multi-series grouping, use the \"simple\" color pattern: a `calculate` transform assigns hex colors to `_color`, and `scale: null` uses them as literal colors.\n\n**Chart Spec**:\n{\n  \"title\": \"Top 10 Departments by Budget\",\n  \"transform\": [\n    {\"window\": [{\"op\": \"rank\", \"as\": \"rank\"}], \"sort\": [{\"field\": \"BUDGET\", \"order\": \"descending\"}]},\n    {\"filter\": \"datum.rank <= 10\"},\n    {\"calculate\": \"datum.DEPARTMENT === 'Marketing' ? '#FF6B35' : '#4c78a8'\", \"as\": \"_color\"}\n  ],\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"BUDGET\", \"title\": \"Budget\", \"type\": \"quantitative\"},\n    \"y\": {\"field\": \"DEPARTMENT\", \"title\": \"Department\", \"type\": \"nominal\", \"sort\": \"-x\"},\n    \"color\": {\"field\": \"_color\", \"type\": \"nominal\", \"scale\": null, \"legend\": null}\n  }\n}\n\n**Key Takeaway**: When custom instructions specify colors but the chart does NOT have an explicit color column (no multi-series grouping via color encoding), use the \"simple\" color pattern:\n1. **Color transform** \u2192 add a `calculate` transform that assigns hex colors to `_color` via ternary conditions. End with a fallback color for unmatched values (e.g., `'#4c78a8'`).\n2. **Color encoding** \u2192 use `\"color\": {\"field\": \"_color\", \"type\": \"nominal\", \"scale\": null, \"legend\": null}` \u2014 `scale: null` tells Vega-Lite to use the raw hex values as literal colors.\n3. **Transform ordering** \u2192 the `_color` calculate transform MUST be the LAST transform in the array (after window, filter, fold, etc.).\n4. **When to use** \u2192 use this pattern when color is for visual emphasis only, NOT for multi-series grouping. For multi-series charts (charts with a color column for grouping), use Example 13's `scale.range.field` pattern instead.\n\n---\n\n**IMPORTANT NOTES:**\n- Top-N transforms (window + filter) should ONLY be used for bar charts. NEVER use them with line charts.\n- When user asks for \"top N line chart\", you should see SQL already filtered the data. Generate line chart without window/filter transforms.\n- Always use \"sort\": \"-x\" on the categorical axis when using top-N transforms to preserve the ranking order (and \"sort\": \"x\" when asking about bottom-N).\n\nNow please provide a suggestion for the best possible chart.\nJust provide the JSON object representing a Vega-lite specification as in examples above and use it only as an input to the data_to_chart tool.\n\n---\n\n# WARNING HANDLING\n\nIf the chart tool returns a warning, you must fix the issue before citing the chart, unless some behaviour is explicitly requested by the user. Below are the most common warnings and how to resolve them:\n\n## 1. \"Bar chart has too many unique categories (bars)\"\n\n**Cause**: The bar chart has more than 20 unique values on the categorical axis.\n\n**Fix**:\n- Preferred solution is to use window + filter transforms to limit to top-N (N <= 15 recommended):\n  - Add: {\"window\": [{\"op\": \"rank\", \"as\": \"rank\"}], \"sort\": [{\"field\": \"METRIC_FIELD\", \"order\": \"descending\"}]}\n  - Add: {\"filter\": \"datum.rank <= 15\"}\n- Alternative solution (only if applicable):\n  - Run a new SQL query with LIMIT or TOP clause to reduce rows before charting\n\n## 2. \"Same field used in multiple axes\"\n\n**Cause**: The same column name appears in multiple encodings (e.g., same field for both x and color, or y and yOffset).\n\n**Fix**: Each field can ONLY be used in ONE encoding. Before creating your chart spec:\n  1. List all fields you plan to use\n  2. Verify each field is assigned to exactly one encoding\n  - BAD: x=\"CATEGORY\", color=\"CATEGORY\" (same field twice)\n  - GOOD: x=\"CATEGORY\", color=\"REGION\" (different fields)\n  - For grouped bar charts: yOffset field MUST be different from x and y fields\n\n## 3. \"Color encoding has too many distinct values\"\n\n**Cause**: The color field has more than 5 unique values (for bar/line charts) or 15 values (for pie charts).\n\n**Fix**: Reduce the number of color categories:\n  - Run new SQL to GROUP BY and aggregate data into fewer categories (e.g., \"Other\" bucket)\n  - Use top-N transform to filter to top 5 categories before applying fold\n  - Consider removing color encoding entirely if not essential to the visualization\n  - For comparisons with many series, consider multiple separate charts instead\n\n## 4. \"Line charts do not support filter/sort/window transforms\"\n\n**Cause**: Line charts cannot use window, sort, or filter transforms - these are only allowed for bar charts.\n\n**Fix**: Remove all transforms from the line chart spec and pre-filter data in SQL instead:\n  - BAD: Line chart with {\"window\": [...], \"filter\": ...}\n  - GOOD: Line chart with no transforms, SQL: SELECT ... ORDER BY date LIMIT 10\n  - If user asks for \"top N line chart\", you should see SQL already filtered the data and generate line chart without transforms\n\n## 5. \"Line chart has non-unique x values\"\n\n**Cause**: Within a single color series, the x-axis has duplicate values, causing vertical lines in the chart.\n\n**Fix**: Aggregate data so each x value appears only once per color group:\n  - Preferred solution: Use vega-lite aggregate transform to combine duplicate x values:\n    - Add: {\"aggregate\": [{\"op\": \"sum\", \"field\": \"METRIC_FIELD\", \"as\": \"METRIC_FIELD\"}], \"groupby\": [\"X_FIELD\"]}\n    - For multi-series (with color): {\"aggregate\": [{\"op\": \"sum\", \"field\": \"METRIC_FIELD\", \"as\": \"METRIC_FIELD\"}], \"groupby\": [\"X_FIELD\", \"COLOR_FIELD\"]}\n    - Replace \"sum\" with appropriate operation: \"sum\", \"mean\", \"min\", \"max\", \"count\", etc.\n  - Alternative solution: Run new SQL with GROUP BY on the x-axis field and aggregate the y-axis value\n    - Example: SELECT date, SUM(sales) FROM ... GROUP BY date\n  - If comparing multiple series (color), ensure x values are unique WITHIN each series\n\n## 6. \"Bar chart has too many unique categories per color\"\n\n**Cause**: When using color encoding, each color group has more than 20 bars.\n\n**Fix**: Similar to warning #1, but applies per color group:\n  - Use top-N transform to limit bars: {\"filter\": \"datum.rank <= 10\"}\n  - OR reduce color categories first (see warning #3), then limit bars\n  - Consider simplifying to a single-color bar chart\n\n## 7. \"X-axis has insufficient distinct values for scatter charts\" / \"Y-axis has insufficient distinct values for scatter charts\"\n\n**Cause**: Scatter charts require at least 5 distinct values on BOTH x and y axes to show meaningful correlations.\n\n**Fix**: Use a different chart type:\n  - If data has few distinct x or y values, scatter chart is not appropriate\n  - Use bar chart for comparisons with categorical data\n  - Use line chart for time-series with few data points\n  - Only use scatter when both axes have 5+ unique numeric values\n\n---\n\n**GENERAL WARNING RECOVERY STRATEGY**:\n1. Read the warning or error message carefully\n2. If the warning is about data limits (too many bars, colors, etc.) \u2192 Use vega-lite transform to filter/aggregate the data (preferred when applicable due to lower latency) OR run new SQL to filter/aggregate data\n3. If warning is about chart specification (field used twice, wrong transform) \u2192 Fix the chart spec and retry\n4. If chart type is inappropriate for the data \u2192 Choose a different chart type\n\nFinal notes:\n* Pay special attention to limits described in \"Available chart types\" - violating these limits will result in warnings and you MUST NOT cite charts with warnings (unless some behaviour is explicitly requested by the user)\n* Double check chart-related custom instruction provided in [Important Case-specific Instructions] section of system prompt.\n* Remember that the \"data\" field will be added in post processing, NEVER add that field to chart_spec.\n* Do not include width and height fields. This will be added in postprocessing.\n* Only single layer charts are allowed. You must provide only \"title\", \"mark\", \"encoding\" and (optionally) \"transform\" and \"config\" fields.",
+              "skill_name": "chart_generation_instructions"
+            },
+            "type": "json"
+          }
+        ],
+        "name": "server_skill",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_012HW7Q3mE3bFFwMGZ9r1Mk7",
+        "type": "server_skill"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "chart": "{\n  \"title\": \"LTO Performance Comparison: Traffic Lift, Attach Rate & Incrementality\",\n  \"transform\": [\n    {\"fold\": [\"INCREMENTAL_TRAFFIC_PCT\", \"ATTACH_RATE\", \"INCREMENTALITY_SCORE\"]},\n    {\"calculate\": \"({'INCREMENTAL_TRAFFIC_PCT': 'Incremental Traffic %', 'ATTACH_RATE': 'Attach Rate %', 'INCREMENTALITY_SCORE': 'Incrementality Score'})[datum.key]\", \"as\": \"key\"}\n  ],\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"value\", \"title\": \"Performance Metric Value\", \"type\": \"quantitative\"},\n    \"y\": {\"field\": \"ITEM_NAME\", \"title\": \"LTO Item\", \"type\": \"nominal\", \"sort\": \"-x\"},\n    \"yOffset\": {\"field\": \"key\", \"type\": \"nominal\"},\n    \"color\": {\"field\": \"key\", \"title\": \"Metric\", \"type\": \"nominal\"}\n  }\n}",
+          "question": "THIS FIELD WILL BE DEPRECATED SOON. Please stop using it and use the 'chart' field instead.",
+          "tool_result_id": "tooluse_5021ec94b2134436864e01"
+        },
+        "name": "data_to_chart",
+        "tool_use_id": "toolu_bdrk_019LjDXbeorNuxTXD8hrchqp",
+        "type": "data_to_chart"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "charts": [
+                "{\"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\", \"data\": {\"values\": [{\"ATTACH_RATE\": \"22.0\", \"INCREMENTALITY_SCORE\": \"95.00\", \"INCREMENTAL_TRAFFIC_PCT\": \"18.0\", \"ITEM_NAME\": \"Dubai Chocolate Shake (NA)\"}, {\"ATTACH_RATE\": \"20.0\", \"INCREMENTALITY_SCORE\": \"80.00\", \"INCREMENTAL_TRAFFIC_PCT\": \"11.0\", \"ITEM_NAME\": \"Hot Honey Chicken\"}, {\"ATTACH_RATE\": \"18.5\", \"INCREMENTALITY_SCORE\": \"82.00\", \"INCREMENTAL_TRAFFIC_PCT\": \"12.0\", \"ITEM_NAME\": \"K-Shack BBQ Burger\"}]}, \"encoding\": {\"color\": {\"field\": \"key\", \"title\": \"Metric\", \"type\": \"nominal\"}, \"x\": {\"field\": \"value\", \"title\": \"Performance Metric Value\", \"type\": \"quantitative\", \"sort\": null, \"axis\": {\"labelSeparation\": 25}}, \"y\": {\"field\": \"ITEM_NAME\", \"sort\": \"-x\", \"title\": \"LTO Item\", \"type\": \"nominal\"}, \"tooltip\": [{\"field\": \"value\", \"type\": \"quantitative\", \"title\": \"Performance Metric Value\", \"format\": \",.6~f\"}, {\"field\": \"ITEM_NAME\", \"type\": \"nominal\", \"title\": \"LTO Item\"}, {\"field\": \"key\", \"type\": \"nominal\", \"title\": \"Metric\"}], \"yOffset\": {\"field\": \"key\", \"title\": \"Metric\", \"type\": \"nominal\"}}, \"mark\": \"bar\", \"title\": \"LTO Performance Comparison: Traffic Lift, Attach Rate & Incrementality\", \"transform\": [{\"fold\": [\"INCREMENTAL_TRAFFIC_PCT\", \"ATTACH_RATE\", \"INCREMENTALITY_SCORE\"]}, {\"as\": \"key\", \"calculate\": \"({'INCREMENTAL_TRAFFIC_PCT': 'Incremental Traffic %', 'ATTACH_RATE': 'Attach Rate %', 'INCREMENTALITY_SCORE': 'Incrementality Score'})[datum.key]\"}], \"usermeta\": {\"snowflake\": {\"columnRoles\": {\"ATTACH_RATE\": \"measure\", \"INCREMENTALITY_SCORE\": \"measure\", \"INCREMENTAL_TRAFFIC_PCT\": \"measure\", \"ITEM_NAME\": \"dimension\", \"LTO_CAMPAIGN_NAME\": \"dimension\", \"TOTAL_UNITS\": \"measure\", \"UNIQUE_TRANSACTIONS\": \"metric\"}}}}"
+              ]
+            },
+            "type": "json"
+          }
+        ],
+        "name": "data_to_chart",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_019LjDXbeorNuxTXD8hrchqp",
+        "type": "data_to_chart"
+      },
+      "type": "tool_result"
+    },
+    {
+      "thinking": {
+        "text": "\nGreat! I have the data and have generated a chart. Now let me present the findings in the strategic executive format.\n\nLooking at the data:\n- Dubai Chocolate Shake: 18% incremental traffic, 22% attach rate, 95 incrementality score - This is the clear winner with 65,737 units sold\n- Hot Honey Chicken: 11% incremental traffic, 20% attach rate, 80 incrementality score - 28,247 units sold\n- K-Shack BBQ Burger: 12% incremental traffic, 18.5% attach rate, 82 incrementality score - 6,997 units sold\n\nThe Dubai Chocolate Shake is significantly outperforming on all key metrics. The incrementality score of 95 is exceptionally high (above the 70 threshold for \"strong\"), and the 18% traffic lift means nearly 1 in 5 transactions during the campaign were truly incremental visits driven by this item.\n\nI should present this as a clear strategic finding with the data table and the chart visualization.\n"
+      },
+      "type": "thinking"
+    },
+    {
+      "text": "\n**Dubai Chocolate Shake is the breakout winner, outperforming both savory LTOs on every key metric.**\n\nThe Dubai Chocolate Shake drove **18% incremental traffic lift** \u2014 64% higher than Hot Honey Chicken and 50% higher than K-Shack BBQ Burger. With an **incrementality score of 95** (well above the 70 threshold for \"strong\"), this item generated true new visits rather than cannibalizing existing orders. The **22% attach rate** means more than 1 in 5 transactions included this item during the campaign window.\n\n",
+      "type": "text"
+    },
+    {
+      "table": {
+        "query_id": "01c3d78a-0812-9dca-0053-fc07169043c2",
+        "result_set": {
+          "data": [
+            [
+              "Dubai Chocolate Shake (NA)",
+              "Dubai Chocolate Shake NA",
+              "18.0",
+              "22.0",
+              "95.00",
+              "65737",
+              "29971"
+            ],
+            [
+              "Hot Honey Chicken",
+              "Hot Honey Chicken Launch",
+              "11.0",
+              "20.0",
+              "80.00",
+              "28247",
+              "12745"
+            ],
+            [
+              "K-Shack BBQ Burger",
+              "K-Shack BBQ Burger Launch",
+              "12.0",
+              "18.5",
+              "82.00",
+              "6997",
+              "3189"
+            ]
+          ],
+          "resultSetMetaData": {
+            "format": "jsonv2",
+            "numRows": 3,
+            "partition": 0,
+            "rowType": [
+              {
+                "length": 100,
+                "name": "ITEM_NAME",
+                "nullable": true,
+                "precision": 0,
+                "scale": 0,
+                "type": "text"
+              },
+              {
+                "length": 200,
+                "name": "LTO_CAMPAIGN_NAME",
+                "nullable": true,
+                "precision": 0,
+                "scale": 0,
+                "type": "text"
+              },
+              {
+                "length": 0,
+                "name": "INCREMENTAL_TRAFFIC_PCT",
+                "nullable": true,
+                "precision": 24,
+                "scale": 1,
+                "type": "fixed"
+              },
+              {
+                "length": 0,
+                "name": "ATTACH_RATE",
+                "nullable": true,
+                "precision": 24,
+                "scale": 1,
+                "type": "fixed"
+              },
+              {
+                "length": 0,
+                "name": "INCREMENTALITY_SCORE",
+                "nullable": true,
+                "precision": 24,
+                "scale": 2,
+                "type": "fixed"
+              },
+              {
+                "length": 0,
+                "name": "TOTAL_UNITS",
+                "nullable": true,
+                "precision": 17,
+                "scale": 0,
+                "type": "fixed"
+              },
+              {
+                "length": 0,
+                "name": "UNIQUE_TRANSACTIONS",
+                "nullable": false,
+                "precision": 18,
+                "scale": 0,
+                "type": "fixed"
+              }
+            ]
+          },
+          "statementHandle": "01c3d78a-0812-9dca-0053-fc07169043c2"
+        },
+        "title": "LTO Performance Comparison: Dubai Chocolate Shake vs. Hot Honey Chicken vs. K-Shack BBQ Burger",
+        "tool_use_id": "tooluse_5021ec94b2134436864e01"
+      },
+      "type": "table"
+    },
+    {
+      "text": "\n\nHot Honey Chicken and K-Shack BBQ Burger both delivered solid performance with incrementality scores in the low 80s and double-digit traffic lift, but neither approached the viral appeal of the Dubai Chocolate Shake, which sold **65,737 units** across 29,971 unique transactions \u2014 more than double Hot Honey Chicken's volume and nearly 10x K-Shack's volume.\n\n",
+      "type": "text"
+    },
+    {
+      "chart": {
+        "chart_spec": "{\"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\", \"data\": {\"values\": [{\"ATTACH_RATE\": \"22.0\", \"INCREMENTALITY_SCORE\": \"95.00\", \"INCREMENTAL_TRAFFIC_PCT\": \"18.0\", \"ITEM_NAME\": \"Dubai Chocolate Shake (NA)\"}, {\"ATTACH_RATE\": \"20.0\", \"INCREMENTALITY_SCORE\": \"80.00\", \"INCREMENTAL_TRAFFIC_PCT\": \"11.0\", \"ITEM_NAME\": \"Hot Honey Chicken\"}, {\"ATTACH_RATE\": \"18.5\", \"INCREMENTALITY_SCORE\": \"82.00\", \"INCREMENTAL_TRAFFIC_PCT\": \"12.0\", \"ITEM_NAME\": \"K-Shack BBQ Burger\"}]}, \"encoding\": {\"color\": {\"field\": \"key\", \"title\": \"Metric\", \"type\": \"nominal\"}, \"x\": {\"field\": \"value\", \"title\": \"Performance Metric Value\", \"type\": \"quantitative\", \"sort\": null, \"axis\": {\"labelSeparation\": 25}}, \"y\": {\"field\": \"ITEM_NAME\", \"sort\": \"-x\", \"title\": \"LTO Item\", \"type\": \"nominal\"}, \"tooltip\": [{\"field\": \"value\", \"type\": \"quantitative\", \"title\": \"Performance Metric Value\", \"format\": \",.6~f\"}, {\"field\": \"ITEM_NAME\", \"type\": \"nominal\", \"title\": \"LTO Item\"}, {\"field\": \"key\", \"type\": \"nominal\", \"title\": \"Metric\"}], \"yOffset\": {\"field\": \"key\", \"title\": \"Metric\", \"type\": \"nominal\"}}, \"mark\": \"bar\", \"title\": \"LTO Performance Comparison: Traffic Lift, Attach Rate & Incrementality\", \"transform\": [{\"fold\": [\"INCREMENTAL_TRAFFIC_PCT\", \"ATTACH_RATE\", \"INCREMENTALITY_SCORE\"]}, {\"as\": \"key\", \"calculate\": \"({'INCREMENTAL_TRAFFIC_PCT': 'Incremental Traffic %', 'ATTACH_RATE': 'Attach Rate %', 'INCREMENTALITY_SCORE': 'Incrementality Score'})[datum.key]\"}], \"usermeta\": {\"snowflake\": {\"columnRoles\": {\"ATTACH_RATE\": \"measure\", \"INCREMENTALITY_SCORE\": \"measure\", \"INCREMENTAL_TRAFFIC_PCT\": \"measure\", \"ITEM_NAME\": \"dimension\", \"LTO_CAMPAIGN_NAME\": \"dimension\", \"TOTAL_UNITS\": \"measure\", \"UNIQUE_TRANSACTIONS\": \"metric\"}}}}",
+        "tool_use_id": "toolu_bdrk_019LjDXbeorNuxTXD8hrchqp"
+      },
+      "type": "chart"
+    },
+    {
+      "text": "\n\n**Strategic Recommendation:**\n- **Dubai Chocolate Shake**: Fast-track to SCALE status. Consider extending the campaign window or bringing it back seasonally given the exceptional incrementality and volume.\n- **Hot Honey Chicken**: SCALE candidate with solid fundamentals (80 incrementality, 20% attach rate), but monitor cannibalization and margin impact.\n- **K-Shack BBQ Burger**: Move to PILOT in select high-volume markets. Lower unit sales suggest regional appeal may be limited \u2014 test geographic fit before broader rollout.\n",
+      "type": "text"
+    }
+  ],
+  "metadata": {
+    "run_id": "360710603881-23639530062120974",
+    "thread_id": 360710603881,
+    "usage": {
+      "tokens_consumed": [
+        {
+          "context_window": 200000,
+          "input_tokens": {
+            "cache_read": 76232,
+            "cache_write": 13672,
+            "total": 89920,
+            "uncached": 16
+          },
+          "model_name": "claude-sonnet-4-5",
+          "output_tokens": {
+            "total": 1224
+          }
+        }
+      ]
+    },
+    "user_message_id": 23639530062120974,
+    "assistant_message_id": 23639530062120978
+  },
+  "role": "assistant",
+  "schema_version": "v2",
+  "sequence_number": 299,
+  "status": "completed"
+}
