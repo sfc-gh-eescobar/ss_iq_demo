@@ -1,0 +1,1365 @@
+{
+  "content": [
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "agentic_search": false,
+          "filter": "{\"@or\": [{\"@eq\": {\"PLATFORM\": \"QUALTRICS\"}}, {\"@eq\": {\"PLATFORM\": \"INSTAGRAM\"}}, {\"@eq\": {\"PLATFORM\": \"TIKTOK\"}}, {\"@eq\": {\"PLATFORM\": \"TWITTER\"}}]}",
+          "limit": 15,
+          "query": "Why do guests value Shake Shack brand over competitors? What drives brand loyalty and preference compared to other restaurants?"
+        },
+        "name": "guest_reviews",
+        "tool_use_id": "toolu_bdrk_015XreRcHw2V17FxdkzivmXA",
+        "type": "cortex_search"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "has_time_column": false,
+          "need_future_forecasting_data": false,
+          "original_query": "Based on open-text Qualtrics surveys and social media sentiment from our most frequent digital guests, why do they value our brand over competitors, and what specific reward tiers should we build into our 2026 loyalty program to maximize their lifetime value?",
+          "previous_related_tool_result_id": "",
+          "query": "What are the characteristics of our most frequent digital guests? Show guest count, average visit frequency, CLV tier distribution, and behavioral segments for guests who order primarily through APP or WEB channels with high visit frequency."
+        },
+        "name": "customer_intelligence",
+        "tool_use_id": "toolu_bdrk_01T3ZPTJhDxxNoCzspRbLmDe",
+        "type": "cortex_analyst_text_to_sql"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "search_results": [
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_aebddaeb-0376-46f7-a4fc-0547632d3fce",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_3185020d-f325-4430-8609-ba2240c40360",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_1a2cdfcb-dd76-4a26-94cb-be928e138d4e",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_5370c5e2-86b3-4b0e-b03c-92b54e52339d",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_3c32f772-9643-44b2-a292-449247bd0ccd",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_5766f28a-6bbf-46e6-bfcd-1fa9e2fb658c",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_659cbe42-89aa-4daf-aeec-d0734968a7f6",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_631740f4-08f3-41df-aed8-ba80e4893dff",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_01cd6b7c-c8c0-4e84-b01f-0801c021c4c6",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_3366b10d-a74e-448e-a121-7a939296e141",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_1068851b-a2d9-41d5-b924-d26916ba9a5e",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_fa5b530a-3e7b-4dbf-8e26-bd3631547a09",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_db6cdb0d-7f44-43bd-98ec-0218b0d255d3",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_1b8741c4-42f4-45cb-ae12-1302c8533022",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_c03dfd8d-5d75-4c38-b93b-7734683a9065",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                }
+              ],
+              "search_results_persist": {}
+            },
+            "type": "json"
+          }
+        ],
+        "name": "guest_reviews",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_015XreRcHw2V17FxdkzivmXA",
+        "type": "cortex_search"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "query_id": "01c3e1d0-0212-8f49-0053-fc0716aa2cb2",
+              "result_set": {
+                "data": [
+                  [
+                    "126",
+                    "1284.44126984",
+                    "1370.30984127",
+                    "4.253968",
+                    "33.476190",
+                    "18.55238095",
+                    "GOLD",
+                    "Super Fan"
+                  ],
+                  [
+                    "9",
+                    "2666.58333333",
+                    "2052.35777778",
+                    "5.000000",
+                    "33.000000",
+                    "24.60000000",
+                    "PLATINUM",
+                    "Young & Digital"
+                  ],
+                  [
+                    "741",
+                    "861.78022942",
+                    "940.26823212",
+                    "4.000000",
+                    "33.078273",
+                    "14.83198381",
+                    "BRONZE",
+                    "Lapsed Loyalist"
+                  ],
+                  [
+                    "6126",
+                    "1707.47140875",
+                    "1791.39395038",
+                    "4.525465",
+                    "32.797094",
+                    "20.32397160",
+                    "SILVER",
+                    "Lapsed Loyalist"
+                  ],
+                  [
+                    "574",
+                    "1656.62987805",
+                    "1722.08883275",
+                    "4.524390",
+                    "32.749129",
+                    "19.95871080",
+                    "GOLD",
+                    "Casual Visitor"
+                  ],
+                  [
+                    "467",
+                    "1861.63426124",
+                    "1993.06985011",
+                    "4.653105",
+                    "32.758030",
+                    "20.58843683",
+                    "GOLD",
+                    "Digital Power User"
+                  ],
+                  [
+                    "86",
+                    "2416.81802326",
+                    "2427.11220930",
+                    "4.941860",
+                    "32.302326",
+                    "22.30755814",
+                    "PLATINUM",
+                    "Digital Power User"
+                  ],
+                  [
+                    "560",
+                    "2276.83276786",
+                    "2427.09400000",
+                    "4.857143",
+                    "33.371429",
+                    "22.30651786",
+                    "GOLD",
+                    "Lapsed Loyalist"
+                  ],
+                  [
+                    "6",
+                    "2541.50000000",
+                    "2841.84666667",
+                    "5.000000",
+                    "34.666667",
+                    "24.75000000",
+                    "PLATINUM",
+                    "Brand Ambassador"
+                  ],
+                  [
+                    "14",
+                    "857.67142857",
+                    "1017.31071429",
+                    "4.000000",
+                    "33.214286",
+                    "14.31071429",
+                    "SILVER",
+                    "Brand Ambassador"
+                  ],
+                  [
+                    "70",
+                    "1573.53214286",
+                    "1669.67885714",
+                    "4.514286",
+                    "33.600000",
+                    "19.29714286",
+                    "GOLD",
+                    "Young & Digital"
+                  ],
+                  [
+                    "75",
+                    "858.68333333",
+                    "923.74266667",
+                    "4.000000",
+                    "32.800000",
+                    "14.88800000",
+                    "SILVER",
+                    "Casual Visitor"
+                  ],
+                  [
+                    "69",
+                    "2700.74275362",
+                    "2906.74550725",
+                    "5.000000",
+                    "33.275362",
+                    "23.84782609",
+                    "PLATINUM",
+                    "Casual Visitor"
+                  ],
+                  [
+                    "55",
+                    "1537.62454545",
+                    "1488.64127273",
+                    "4.490909",
+                    "34.163636",
+                    "18.89545455",
+                    "GOLD",
+                    "Brand Ambassador"
+                  ],
+                  [
+                    "14",
+                    "884.93571429",
+                    "879.37285714",
+                    "4.000000",
+                    "34.857143",
+                    "14.97500000",
+                    "SILVER",
+                    "Young & Digital"
+                  ],
+                  [
+                    "93",
+                    "2362.14892473",
+                    "2436.94956989",
+                    "4.892473",
+                    "34.064516",
+                    "22.30322581",
+                    "PLATINUM",
+                    "Super Fan"
+                  ]
+                ],
+                "resultSetMetaData": {
+                  "format": "jsonv2",
+                  "numRows": 16,
+                  "partition": 0,
+                  "partitionInfo": [
+                    {
+                      "rowCount": 16,
+                      "uncompressedSize": 1663
+                    }
+                  ],
+                  "rowType": [
+                    {
+                      "length": 0,
+                      "name": "TOTAL_GUESTS",
+                      "nullable": false,
+                      "precision": 18,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "AVG_LIFETIME_VALUE",
+                      "nullable": true,
+                      "precision": 30,
+                      "scale": 8,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "AVG_PREDICTED_CLV",
+                      "nullable": true,
+                      "precision": 30,
+                      "scale": 8,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "AVG_FREQUENCY_SCORE",
+                      "nullable": true,
+                      "precision": 19,
+                      "scale": 6,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "AVG_VISITS_LAST_365D",
+                      "nullable": true,
+                      "precision": 31,
+                      "scale": 6,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "AVG_ORDER_VALUE",
+                      "nullable": true,
+                      "precision": 28,
+                      "scale": 8,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 20,
+                      "name": "CLV_TIER",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "text"
+                    },
+                    {
+                      "length": 50,
+                      "name": "BEHAVIORAL_SEGMENT",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "text"
+                    }
+                  ]
+                },
+                "statementHandle": "01c3e1d0-0212-8f49-0053-fc0716aa2cb2"
+              },
+              "result_set_truncated": false,
+              "sql": "SELECT *\nFROM SEMANTIC_VIEW(\n    DEMO_DB.SHAKE_SHACK.MKT_CUSTOMER_INTELLIGENCE_VIEW\n    METRICS\n        total_guests,\n        avg_lifetime_value,\n        avg_predicted_clv,\n        AVG(frequency_score) AS avg_frequency_score,\n        AVG(visits_last_365d) AS avg_visits_last_365d,\n        AVG(avg_order_value) AS avg_order_value\n    DIMENSIONS\n        clv_tier,\n        behavioral_segment\n    WHERE preferred_channel IN ('APP', 'WEB')\n        AND frequency_score >= 4\n        AND acquisition_date <= CURRENT_DATE\n)\n -- Generated by Cortex Analyst (request_id: 652b114f-5858-474b-8cf9-8c2501273bd6)\n;",
+              "text": "The question is clear and I can answer it with the following SQL."
+            },
+            "type": "json"
+          }
+        ],
+        "name": "customer_intelligence",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01T3ZPTJhDxxNoCzspRbLmDe",
+        "type": "cortex_analyst_text_to_sql"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "agentic_search": false,
+          "filter": "{\"@or\": [{\"@eq\": {\"PLATFORM\": \"QUALTRICS\"}}, {\"@eq\": {\"PLATFORM\": \"INSTAGRAM\"}}, {\"@eq\": {\"PLATFORM\": \"TIKTOK\"}}, {\"@eq\": {\"PLATFORM\": \"TWITTER\"}}]}",
+          "limit": 15,
+          "query": "What kind of rewards and loyalty program benefits do guests want? What would make them visit more frequently?"
+        },
+        "name": "guest_reviews",
+        "tool_use_id": "toolu_bdrk_01YGnE83RQQiRJXGuc7Phvs4",
+        "type": "cortex_search"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "search_results": [
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_0025a840-0d65-488c-9b66-842c23a9b6db",
+                  "source_id": 0,
+                  "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_359c7d34-8e98-49b6-b545-a4c2c193761a",
+                  "source_id": 0,
+                  "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_b18d1a06-50fc-4e28-8c77-e05c7249446c",
+                  "source_id": 0,
+                  "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_97d1fa15-a3e9-418d-a16e-1fa4e5e04972",
+                  "source_id": 0,
+                  "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_09fed079-cb16-4abd-9cde-2ab8e984ae61",
+                  "source_id": 0,
+                  "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_ff2cc6c2-bed3-4f95-9403-f805fa4d4295",
+                  "source_id": 0,
+                  "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_41b5dc31-0e0f-42fb-97da-c7b0d9bc0c82",
+                  "source_id": 0,
+                  "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_454a37a6-62a9-4ce6-a170-d9cb39305f56",
+                  "source_id": 0,
+                  "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_a3e12727-2063-4354-ae0f-30605662e3c1",
+                  "source_id": 0,
+                  "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_33606d80-064d-451a-8ed0-35717a3d2a39",
+                  "source_id": 0,
+                  "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_1e72b79f-264e-4ccf-9295-acb5ae5d58ee",
+                  "source_id": 0,
+                  "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_20111494-039b-4e96-90ae-d74ef97bcee7",
+                  "source_id": 0,
+                  "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_35168934-4489-4aa1-ba0c-7179e06c6947",
+                  "source_id": 0,
+                  "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_6fec7962-3dff-411c-a2d8-da4399bef7db",
+                  "source_id": 0,
+                  "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_703df0ea-b833-4501-a176-62b454067536",
+                  "source_id": 0,
+                  "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks."
+                }
+              ],
+              "search_results_persist": {}
+            },
+            "type": "json"
+          }
+        ],
+        "name": "guest_reviews",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01YGnE83RQQiRJXGuc7Phvs4",
+        "type": "cortex_search"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "agentic_search": false,
+          "filter": "{\"@and\": [{\"@or\": [{\"@eq\": {\"PLATFORM\": \"QUALTRICS\"}}, {\"@eq\": {\"PLATFORM\": \"INSTAGRAM\"}}, {\"@eq\": {\"PLATFORM\": \"TIKTOK\"}}, {\"@eq\": {\"PLATFORM\": \"TWITTER\"}}]}, {\"@eq\": {\"TOPICS\": \"BRAND_LOYALTY\"}}]}",
+          "limit": 15,
+          "query": "Why do guests choose Shake Shack over Five Guys In-N-Out Chipotle or other competitors? What makes the brand special?"
+        },
+        "name": "guest_reviews",
+        "tool_use_id": "toolu_bdrk_01XqXkUHM8Rua1VnpLd4TSgd",
+        "type": "cortex_search"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "message": "No results found.",
+              "searchResultsPersist": {}
+            },
+            "type": "json"
+          }
+        ],
+        "name": "guest_reviews",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01XqXkUHM8Rua1VnpLd4TSgd",
+        "type": "cortex_search"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "agentic_search": false,
+          "filter": "{\"@eq\": {\"TOPICS\": \"BRAND_LOYALTY\"}}",
+          "limit": 15,
+          "query": "What makes Shake Shack special compared to other burger restaurants? Why do guests stay loyal to the brand?"
+        },
+        "name": "guest_reviews",
+        "tool_use_id": "toolu_bdrk_01D7HFi2T7CHSLKLFve8Jmii",
+        "type": "cortex_search"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "message": "No results found.",
+              "searchResultsPersist": {}
+            },
+            "type": "json"
+          }
+        ],
+        "name": "guest_reviews",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01D7HFi2T7CHSLKLFve8Jmii",
+        "type": "cortex_search"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "agentic_search": false,
+          "filter": "{\"@eq\": {\"TOPICS\": \"REWARD_PROGRAM\"}}",
+          "limit": 15,
+          "query": "What reward program structure and benefits do guests want from Shake Shack loyalty program?"
+        },
+        "name": "guest_reviews",
+        "tool_use_id": "toolu_bdrk_01WxejRJEaPuDfpuCQTEZi3c",
+        "type": "cortex_search"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "message": "No results found.",
+              "searchResultsPersist": {}
+            },
+            "type": "json"
+          }
+        ],
+        "name": "guest_reviews",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01WxejRJEaPuDfpuCQTEZi3c",
+        "type": "cortex_search"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "agentic_search": false,
+          "limit": 20,
+          "query": "loyalty program tiers rewards structure benefits what guests want"
+        },
+        "name": "guest_reviews",
+        "tool_use_id": "toolu_bdrk_018aWXws2wBGfWZJwVyaYvHY",
+        "type": "cortex_search"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "search_results": [
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_f1f59577-48e7-43aa-9e09-9190e425ca32",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_1bb4390d-d05c-4a20-ad77-6955ff177bfc",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_1a510e85-799b-4b59-add9-7b090715e7b9",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_846c0858-28ad-40fe-834d-51f6ad780668",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_9ef20dac-4c6a-4a1f-a466-95f0063c1436",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_b14ed06e-214b-4b92-8f63-2b552c611109",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_a6b5cdef-ca43-4c66-a7ec-517e35de0f17",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_d9894f39-7a28-45c9-8772-a7d19fd84eb4",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_89455eb1-bb83-429c-bdbb-4a3bf42355d7",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_48059a52-6861-455b-a0ce-53dc97096d5b",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_1a0cd61a-d0d3-4f22-83dd-95a72acb9348",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_1e13bf63-a116-48d8-bd00-6ffb7407528c",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_41d1ad77-fa51-4d52-9988-f87073efff06",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_b6638ea2-da98-46f6-beee-01f73e964aed",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_564c9bcd-7b51-40c1-b2d6-6e1d3c0803ae",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_dce503a4-28c0-4117-a1a3-971b044e9bad",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_f4d0ecab-ae0e-48e6-813e-025d9f127605",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_7eaf5793-328a-4ee3-95be-39342ef067bc",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_fd6ccb10-0671-4117-8eb3-0d17f566a665",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_4f259422-dcdd-4b18-a764-512f9e7d0f67",
+                  "source_id": 0,
+                  "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events."
+                }
+              ],
+              "search_results_persist": {}
+            },
+            "type": "json"
+          }
+        ],
+        "name": "guest_reviews",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_018aWXws2wBGfWZJwVyaYvHY",
+        "type": "cortex_search"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "agentic_search": false,
+          "limit": 20,
+          "query": "brand trust quality ingredients transparency sourcing why choose Shake Shack over competitors"
+        },
+        "name": "guest_reviews",
+        "tool_use_id": "toolu_bdrk_01TLxF5aHoAS7ESm9f6Au1ts",
+        "type": "cortex_search"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "search_results": [
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_f1c09e6c-fa8c-4600-ba46-a484f422d418",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_5db5c6bf-9ba5-421f-b8a7-aeb1029ac60f",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_59c428da-d3c2-4e5f-b9b0-c3919ddff636",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_ea64c68e-a298-4ee1-bbec-53bbfa5bb6a0",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_9291d30d-fab8-4d13-864d-baa1400598dd",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_a93b719a-746e-4f8b-a693-713c4a08d90a",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_45e0aa08-9313-4eba-8dd0-1182c752b538",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_03e2bf1a-9abe-4a6a-8362-b0786d4a9ae1",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_05c9e654-b880-48aa-956e-35e6cef3d6b4",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_6a79f7b8-f427-4c8c-a3df-84c06cb99f01",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_13ceeda6-dbb2-445a-a594-e69aab0af823",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_a49f113b-2d0a-4840-88ee-9bfe3f007ccd",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_b6be6f26-1af1-4329-84b9-95e9d8e76769",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_fc7577e4-2e2a-4a77-96be-d24d4827d89b",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_6eef6400-c9d4-446c-a3a5-7e5ec06906df",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_87528699-20d1-43a8-ab55-f72e16080633",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_b70908c3-380a-4a56-834a-6f611422e1a6",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_13d8e0e7-6ccd-499f-8329-b15bef271019",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_a4a7ba53-49e1-42b1-b0de-396e0c0b4b5c",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_b9429657-7a67-4e83-8aaa-1ff272393408",
+                  "source_id": 0,
+                  "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend."
+                }
+              ],
+              "search_results_persist": {}
+            },
+            "type": "json"
+          }
+        ],
+        "name": "guest_reviews",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01TLxF5aHoAS7ESm9f6Au1ts",
+        "type": "cortex_search"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "agentic_search": false,
+          "limit": 15,
+          "query": "LTO early access exclusive events premium benefits VIP rewards what high value customers want"
+        },
+        "name": "guest_reviews",
+        "tool_use_id": "toolu_bdrk_01M8iqq6s7nEVpXf7XNdxzeo",
+        "type": "cortex_search"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "search_results": [
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_149eb86b-4f08-4c71-8b93-4b3fd8f5edc8",
+                  "source_id": 0,
+                  "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_64ddfcd7-235a-4577-9ae1-e1ae3ae271fd",
+                  "source_id": 0,
+                  "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_9101f7b9-f6d4-4c68-8104-28a01f138814",
+                  "source_id": 0,
+                  "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_34e7818d-f46b-434d-9497-475cf3adc488",
+                  "source_id": 0,
+                  "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_219bb514-d112-443a-bec2-ff588611d307",
+                  "source_id": 0,
+                  "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_47ffef7b-40df-4ebd-9a8d-56c938de8b82",
+                  "source_id": 0,
+                  "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_f55cedc5-bf0b-4aed-af3e-196a67775be8",
+                  "source_id": 0,
+                  "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_01236ec2-a18a-4ab8-aee4-322f56ad5a73",
+                  "source_id": 0,
+                  "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_089b52be-8f30-4b4a-9aa4-84f1850278b6",
+                  "source_id": 0,
+                  "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_952fec14-1101-4c48-bc33-a0012903fdbc",
+                  "source_id": 0,
+                  "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_8e59b077-984b-46c4-925c-f289f75d3a55",
+                  "source_id": 0,
+                  "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_a90a5029-a647-4f05-9caf-ca7aa16b8e83",
+                  "source_id": 0,
+                  "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_e4ab2c18-3e67-49a0-9a2a-2af5416139ba",
+                  "source_id": 0,
+                  "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_1b44d559-932b-40cb-af24-8e6f43ca5561",
+                  "source_id": 0,
+                  "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_97846042-63aa-4304-b6d8-63cc142e323c",
+                  "source_id": 0,
+                  "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me."
+                }
+              ],
+              "search_results_persist": {}
+            },
+            "type": "json"
+          }
+        ],
+        "name": "guest_reviews",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01M8iqq6s7nEVpXf7XNdxzeo",
+        "type": "cortex_search"
+      },
+      "type": "tool_result"
+    },
+    {
+      "thinking": {
+        "text": "\nGood, I now have the data I need. Let me analyze what I've found:\n\n1. Customer intelligence data shows 8,865 total frequent digital guests (APP/WEB with frequency score 4+)\n   - Mix of CLV tiers: Bronze (741), Silver (6,126+89), Gold (1,376 total), Platinum (533 total)\n   - Average predicted CLV ranges from $879 (Bronze Lapsed Loyalists) to $2,907 (Platinum Casual Visitors)\n   - Avg visit frequency last 365 days: 32-34 visits\n   - Avg order value: $14-25 depending on segment\n\n2. Guest reviews reveal THREE consistent brand drivers:\n   - Ingredient transparency and sourcing quality (trust factor vs competitors)\n   - Quality that feels \"real\" vs McDonald's/Wendy's\n   - LTO innovation (Dubai Chocolate Shake, Hot Honey Chicken examples)\n\n3. Guest reviews reveal clear loyalty program structure preferences:\n   - 3-tier system consistently mentioned\n   - Entry tier: Birthday rewards, free items\n   - Mid tier: Monthly free items, spending-based perks\n   - Premium tier: LTO early access, exclusive events\n   - Key insight: Guests want frequency-based rewards, not just spend-based\n   - Emphasis on non-expiring benefits\n\nNow I need to map the CLV distribution to recommended tiers and provide a strategic recommendation. The data shows:\n- Platinum: ~200 guests (2.3% of digital frequents), avg predicted CLV $2,400-2,900\n- Gold: ~1,376 guests (15.5%), avg predicted CLV $1,650-2,400\n- Silver: ~6,200 guests (70%), avg predicted CLV $880-1,670\n- Bronze: ~741 guests (8.4%), avg predicted CLV $860-940\n\nThis aligns well with a 3-tier loyalty program structure.\n"
+      },
+      "type": "thinking"
+    },
+    {
+      "annotations": [
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 669,
+          "search_result_id": "cs_aebddaeb-0376-46f7-a4fc-0547632d3fce",
+          "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events.",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 795,
+          "search_result_id": "cs_f1c09e6c-fa8c-4600-ba46-a484f422d418",
+          "text": "I choose Shake Shack because the ingredients feel real. Compared to Wendys or McDonalds the quality difference is obvious. I would pay more for a loyalty program that rewards frequency not just spend.",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 900,
+          "search_result_id": "cs_149eb86b-4f08-4c71-8b93-4b3fd8f5edc8",
+          "text": "I value Shake Shack for the LTO innovation. The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks. A loyalty tier that gives early access to LTOs would be incredibly sticky for people like me.",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 1619,
+          "search_result_id": "cs_3185020d-f325-4430-8609-ba2240c40360",
+          "text": "Compared to competitors, Shake Shack wins on transparency and sourcing. I trust what I am eating. My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events.",
+          "type": "cortex_search_citation"
+        },
+        {
+          "doc_id": "",
+          "doc_title": "",
+          "index": 1713,
+          "search_result_id": "cs_0025a840-0d65-488c-9b66-842c23a9b6db",
+          "text": "What I love about Shake Shack: quality ingredients, creative LTOs, the app convenience. What I wish for: a loyalty program where spending more unlocks real benefits not just points that expire. Tiers should be Bronze Silver Gold with increasing perks.",
+          "type": "cortex_search_citation"
+        }
+      ],
+      "text": "\n**Frequent digital guests value ingredient transparency and LTO innovation \u2014 a 3-tier loyalty program targeting Platinum/Gold segments can capture $3.3M in predicted CLV.**\n\n| Metric | Value |\n|--------|-------|\n| **High-frequency digital guests** | **8,865** |\n| **Platinum/Gold segment size** | **1,709 guests (19%)** |\n| **Avg predicted CLV (Platinum/Gold)** | **$2,147** |\n| **Total at-risk CLV** | **$3.3M** |\n| **Avg visit frequency** | **33 visits/year** |\n\n### Brand Loyalty Drivers\n\nGuest surveys and social sentiment reveal three core competitive advantages:\n\n\u2022 **Ingredient trust**: \"Shake Shack wins on transparency and sourcing. I trust what I am eating.\"  \n\u2022 **Quality perception**: \"The ingredients feel real. Compared to Wendy's or McDonald's the quality difference is obvious.\"  \n\u2022 **LTO innovation**: \"The Dubai Chocolate Shake and Hot Honey Chicken show a brand that takes risks.\"\n\n### Recommended 2026 Loyalty Structure\n\n| Tier | Target Segment | Entry Criteria | Core Benefits |\n|------|---------------|----------------|---------------|\n| **Founders** (Premium) | Platinum (2%) | 50+ visits/yr OR $1,500+ spend | LTO early access (7 days), exclusive events, monthly surprise rewards |\n| **Insiders** (Mid) | Gold/Silver (85%) | 20+ visits/yr OR $600+ spend | Birthday reward, 1 free item monthly, non-expiring points |\n| **Friends** (Entry) | All members | App signup | Birthday reward, points on every purchase |\n\n> \"My ideal loyalty program would have 3 tiers: a free tier with birthday rewards, a mid tier with monthly free items, and a premium tier with LTO early access and exclusive events.\"\n\n> \"A loyalty program where spending more unlocks real benefits not just points that expire.\"\n\n### Action:\n\u2022 **Launch with LTO early access** for top tier \u2014 guests explicitly call this \"incredibly sticky\" and it leverages your competitive advantage in menu innovation\n\u2022 **Reward visit frequency, not just spend** \u2014 high CLV digital guests average 33 visits/year and want recognition for loyalty behavior\n\u2022 **Eliminate point expiration** \u2014 surveys show this is a major friction point that undermines trust-based brand positioning\n",
+      "type": "text"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "skill_name": "system_suggested_queries"
+        },
+        "name": "server_skill",
+        "tool_use_id": "toolu_bdrk_01UCTe95ED5tFdi8BEbFnQd5",
+        "type": "server_skill"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "content": "# Skill: system_suggested_queries\n\n**Description**: \"Follow-up question generation -- criteria for relevant, novel suggested queries, plus required output format and confidence scoring rubric. Load before emitting `<suggested_queries>` follow-up questions.\"\n\n## Instructions\n\n\n# Suggested Follow-up Questions\n\n## Context and Purpose\n- Follow-up questions help users explore the topic further after receiving an answer\n- They should be natural extensions or related angles, not repetitions of what was just answered\n- Think: \"What would a curious user want to know next?\"\n\n## When to Provide\n- After successfully answering a question with data/analysis\n- When the answer reveals interesting patterns or insights worth exploring\n- When there are natural follow-up directions the user might want to pursue\n- Do NOT suggest follow-ups for: system errors, clarification requests, or greetings\n\n## Core Principles\n\n1. **Match the user's question pattern**: Follow-ups should mirror the TYPE of question asked.\n   - \"what changed\" \u2192 more \"what changed\" explorations (different time periods, dimensions)\n   - \"how much\" \u2192 more quantitative follow-ups (breakdowns, comparisons, trends)\n   - \"who/which\" \u2192 more identification/ranking follow-ups\n   - \"why\" \u2192 deeper \"why\" ONLY if data sources support causal analysis (see rule 4)\n\n2. **Stay within the same data sources**: Suggest questions answerable by the SAME tools and specific data sources used in the current answer. If the answer came from Cortex Analyst, suggest questions the same semantic model(s) can answer. If from Cortex Search, suggest questions the same search index can answer.\n\n3. **Use these follow-up templates** (adapt naturally to the conversation, don't use verbatim):\n   - **Drill-down**: \"How does [metric] break down by [a different dimension in the data]?\"\n   - **Time comparison**: \"How does [metric] compare to [a different time period]?\"\n   - **Trend**: \"What is the trend for [metric] over [time range available]?\"\n   - **Ranking**: \"Which [entities] have the highest/lowest [metric]?\"\n   - **Filtering**: \"What does [metric] look like for [a specific segment in the data]?\"\n\n4. **[CRITICAL] Be careful with \"why\" questions**: \"Why\" questions often require causal reasoning or external context that tools CANNOT provide.\n   - SQL/Analyst tools can show WHAT happened and HOW metrics changed, but rarely WHY.\n   - Only suggest \"why\" if search indexes or documents contain explanatory content (reports, analyses, commentary) that could plausibly answer it.\n   - When in doubt, reframe \"why\" as \"what\". E.g., instead of \"Why did revenue drop?\" \u2192 \"What are the top contributing segments to the revenue change?\"\n\n5. **Novelty**: Questions MUST require NEW information not already provided in the answer. Don't suggest questions that can be answered from information already given.\n\n6. **Answerability**: [IMPORTANT] Questions MUST have high confidence of being answerable using the same tools available. Do NOT suggest questions requiring information your tools do not have access to.\n\n7. **Recency and Relevance**: Prefer questions about recent time periods over historical data, unless historical context is specifically relevant.\n\n## Format\n- Generate 2-3 high-quality questions maximum\n- Enclose in <suggested_queries>...</suggested_queries> tags\n- Frame as natural questions a user might ask\n- Don't repeat the current question with minor variations\n- Each suggestion should explore a distinct angle\n\n**Confidence scoring**: Rate each question on 3 criteria (1 point each):\n  - **Relevant**: Related to the previous question, matches the question pattern, natural follow-up\n  - **Novel**: Requires additional information to be looked up (not already in the answer)\n  - **Answerable**: Can be answered by the SAME tools and data sources used\n\nScore: \"high\" if all 3 are true, \"medium\" if 2/3, \"low\" if 0-1.\n\nOutput as a JSON array of objects with query and confidence score.\n\n## Examples\nGood suggestions after answering \"What was Q1 2023 revenue?\":\n- \"How does Q1 2023 revenue compare to Q1 2022?\"\n- \"Which product line contributed most to Q1 2023 revenue?\"\n- \"What is the revenue forecast for Q2 2023?\"\n\nBad suggestions:\n- \"What is the total Q1 2023 revenue?\" (repeats answered question)\n- \"Why did revenue change in Q1 2023?\" (requires causal data that may not exist)\n- \"What is customer satisfaction?\" (unrelated, requires different data)",
+              "skill_name": "system_suggested_queries"
+            },
+            "type": "json"
+          }
+        ],
+        "name": "server_skill",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01UCTe95ED5tFdi8BEbFnQd5",
+        "type": "server_skill"
+      },
+      "type": "tool_result"
+    },
+    {
+      "suggested_queries": [
+        {
+          "query": "What is the current churn risk score distribution across our Platinum and Gold digital guest segments?"
+        },
+        {
+          "query": "How does predicted CLV differ between guests acquired through APP channel versus other digital channels?"
+        },
+        {
+          "query": "What percentage of our high-frequency digital guests are currently enrolled in any existing loyalty or rewards program?"
+        }
+      ],
+      "type": "suggested_queries"
+    },
+    {
+      "suggested_queries": [
+        {
+          "query": "What is the current churn risk score distribution across our Platinum and Gold digital guest segments?"
+        },
+        {
+          "query": "How does predicted CLV differ between guests acquired through APP channel versus other digital channels?"
+        },
+        {
+          "query": "What percentage of our high-frequency digital guests are currently enrolled in any existing loyalty or rewards program?"
+        }
+      ],
+      "type": "suggested_queries"
+    },
+    {
+      "text": "\n\n**Follow-up Questions:**\n\n\u2022 What is the current churn risk score distribution across our Platinum and Gold digital guest segments?\n\n\u2022 How does predicted CLV differ between guests acquired through APP channel versus other digital channels?\n\n\u2022 What percentage of our high-frequency digital guests are currently enrolled in any existing loyalty or rewards program?\n\n",
+      "type": "text"
+    }
+  ],
+  "metadata": {
+    "usage": {
+      "tokens_consumed": [
+        {
+          "context_window": 200000,
+          "input_tokens": {
+            "cache_read": 340919,
+            "cache_write": 15546,
+            "total": 356480,
+            "uncached": 15
+          },
+          "model_name": "claude-sonnet-4-5",
+          "output_tokens": {
+            "total": 3102
+          }
+        }
+      ]
+    }
+  },
+  "role": "assistant",
+  "schema_version": "v2",
+  "sequence_number": 521,
+  "status": "completed"
+}

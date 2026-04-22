@@ -1,0 +1,870 @@
+{
+  "content": [
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "has_time_column": true,
+          "need_future_forecasting_data": false,
+          "original_query": "What was the incremental impact of our 1-3-5 app promotion on overall guest traffic and digital check averages during the fourth quarter compared to non-app users?",
+          "previous_related_tool_result_id": "",
+          "query": "Compare average order value and order counts for APP channel versus other channels during Q4 2025 (October through December 2025)"
+        },
+        "name": "channel_financial",
+        "tool_use_id": "toolu_bdrk_01VfdBmW4F4QvLiz1u6gXfpk",
+        "type": "cortex_analyst_text_to_sql"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "has_time_column": true,
+          "need_future_forecasting_data": false,
+          "original_query": "What was the incremental impact of our 1-3-5 app promotion on overall guest traffic and digital check averages during the fourth quarter compared to non-app users?",
+          "previous_related_tool_result_id": "",
+          "query": "Show the performance of the 1-3-5 app promotion (promo code APP135) during Q4 2025, including total guests acquired, retention rate, and comparison to other acquisition methods"
+        },
+        "name": "retention_cohort",
+        "tool_use_id": "toolu_bdrk_01RC8GdzVXKENGYXC7T5JYmQ",
+        "type": "cortex_analyst_text_to_sql"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "query_id": "01c3e1b3-0212-adc7-0053-fc0716aab55e",
+              "result_set": {
+                "data": [
+                  [
+                    "1396",
+                    "89.3",
+                    "28.7",
+                    "400",
+                    "1247",
+                    "APP135"
+                  ],
+                  [
+                    "4715",
+                    "85.9",
+                    "66.2",
+                    "3122",
+                    "4049",
+                    ""
+                  ],
+                  [
+                    "61",
+                    "91.8",
+                    "44.3",
+                    "27",
+                    "56",
+                    "PROMO3"
+                  ],
+                  [
+                    "60",
+                    "80.0",
+                    "31.7",
+                    "19",
+                    "48",
+                    "PROMO15"
+                  ],
+                  [
+                    "60",
+                    "78.3",
+                    "38.3",
+                    "23",
+                    "47",
+                    "PROMO12"
+                  ],
+                  [
+                    "58",
+                    "84.5",
+                    "37.9",
+                    "22",
+                    "49",
+                    "PROMO18"
+                  ],
+                  [
+                    "57",
+                    "84.2",
+                    "45.6",
+                    "26",
+                    "48",
+                    "PROMO1"
+                  ],
+                  [
+                    "56",
+                    "91.1",
+                    "51.8",
+                    "29",
+                    "51",
+                    "PROMO9"
+                  ],
+                  [
+                    "55",
+                    "89.1",
+                    "36.4",
+                    "20",
+                    "49",
+                    "PROMO7"
+                  ],
+                  [
+                    "54",
+                    "85.2",
+                    "44.4",
+                    "24",
+                    "46",
+                    "PROMO11"
+                  ],
+                  [
+                    "53",
+                    "88.7",
+                    "52.8",
+                    "28",
+                    "47",
+                    "PROMO10"
+                  ],
+                  [
+                    "51",
+                    "86.3",
+                    "41.2",
+                    "21",
+                    "44",
+                    "PROMO5"
+                  ],
+                  [
+                    "51",
+                    "82.4",
+                    "43.1",
+                    "22",
+                    "42",
+                    "PROMO0"
+                  ],
+                  [
+                    "49",
+                    "79.6",
+                    "42.9",
+                    "21",
+                    "39",
+                    "PROMO17"
+                  ],
+                  [
+                    "47",
+                    "74.5",
+                    "48.9",
+                    "23",
+                    "35",
+                    "PROMO16"
+                  ],
+                  [
+                    "46",
+                    "89.1",
+                    "37.0",
+                    "17",
+                    "41",
+                    "PROMO13"
+                  ],
+                  [
+                    "45",
+                    "86.7",
+                    "31.1",
+                    "14",
+                    "39",
+                    "PROMO4"
+                  ],
+                  [
+                    "44",
+                    "81.8",
+                    "38.6",
+                    "17",
+                    "36",
+                    "PROMO19"
+                  ],
+                  [
+                    "41",
+                    "87.8",
+                    "53.7",
+                    "22",
+                    "36",
+                    "PROMO2"
+                  ],
+                  [
+                    "39",
+                    "89.7",
+                    "61.5",
+                    "24",
+                    "35",
+                    "PROMO14"
+                  ],
+                  [
+                    "38",
+                    "89.5",
+                    "47.4",
+                    "18",
+                    "34",
+                    "PROMO8"
+                  ],
+                  [
+                    "38",
+                    "86.8",
+                    "26.3",
+                    "10",
+                    "33",
+                    "PROMO6"
+                  ]
+                ],
+                "resultSetMetaData": {
+                  "format": "jsonv2",
+                  "numRows": 22,
+                  "partition": 0,
+                  "partitionInfo": [
+                    {
+                      "rowCount": 22,
+                      "uncompressedSize": 928
+                    }
+                  ],
+                  "rowType": [
+                    {
+                      "length": 0,
+                      "name": "TOTAL_ACQUIRED",
+                      "nullable": false,
+                      "precision": 18,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "RETENTION_RATE",
+                      "nullable": true,
+                      "precision": 23,
+                      "scale": 1,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "FULL_PRICE_RETURN_RATE",
+                      "nullable": true,
+                      "precision": 23,
+                      "scale": 1,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "FULL_PRICE_30D_COUNT",
+                      "nullable": true,
+                      "precision": 13,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "RETURNED_30D_COUNT",
+                      "nullable": true,
+                      "precision": 13,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 30,
+                      "name": "ACQUISITION_PROMO",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "text"
+                    }
+                  ]
+                },
+                "statementHandle": "01c3e1b3-0212-adc7-0053-fc0716aab55e"
+              },
+              "result_set_truncated": false,
+              "sql": "SELECT *\nFROM SEMANTIC_VIEW(\n    DEMO_DB.SHAKE_SHACK.MKT_RETENTION_COHORT_VIEW\n    METRICS total_acquired,\n            retention_rate,\n            full_price_return_rate,\n            full_price_30d_count,\n            returned_30d_count\n    DIMENSIONS acquisition_promo\n    WHERE first_visit_date >= '2025-10-01'\n      AND first_visit_date <= '2025-12-31'\n)\nORDER BY\n    CASE WHEN acquisition_promo = 'APP135' THEN 0 ELSE 1 END,\n    total_acquired DESC NULLS LAST\n -- Generated by Cortex Analyst (request_id: 8329fa39-d332-4553-8643-0e3556b5d34b)\n;",
+              "text": "The question is clear and I can answer it with the following SQL."
+            },
+            "type": "json"
+          }
+        ],
+        "name": "retention_cohort",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01RC8GdzVXKENGYXC7T5JYmQ",
+        "type": "cortex_analyst_text_to_sql"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "query_id": "01c3e1b3-0212-a874-0053-fc0716a9fd4a",
+              "result_set": {
+                "data": [
+                  [
+                    "APP",
+                    "APP",
+                    "172625",
+                    "21.78",
+                    "3759934.32",
+                    "8.75",
+                    "40.48",
+                    "2025-10-01",
+                    "2025-12-31",
+                    "172625"
+                  ],
+                  [
+                    "OTHER_CHANNELS",
+                    "IN_STORE",
+                    "125001",
+                    "21.74",
+                    "2717383.78",
+                    "8.75",
+                    "40.48",
+                    "2025-10-01",
+                    "2025-12-31",
+                    "125001"
+                  ],
+                  [
+                    "OTHER_CHANNELS",
+                    "KIOSK",
+                    "94301",
+                    "21.71",
+                    "2047356.26",
+                    "8.75",
+                    "40.48",
+                    "2025-10-01",
+                    "2025-12-31",
+                    "94301"
+                  ],
+                  [
+                    "OTHER_CHANNELS",
+                    "UBER_EATS",
+                    "85758",
+                    "21.74",
+                    "1864223.91",
+                    "8.75",
+                    "40.48",
+                    "2025-10-01",
+                    "2025-12-31",
+                    "85758"
+                  ],
+                  [
+                    "OTHER_CHANNELS",
+                    "DOORDASH",
+                    "67549",
+                    "21.85",
+                    "1475685.37",
+                    "8.75",
+                    "40.48",
+                    "2025-10-01",
+                    "2025-12-31",
+                    "67549"
+                  ],
+                  [
+                    "OTHER_CHANNELS",
+                    "GRUBHUB",
+                    "53875",
+                    "21.83",
+                    "1175930.81",
+                    "8.75",
+                    "40.48",
+                    "2025-10-01",
+                    "2025-12-31",
+                    "53875"
+                  ],
+                  [
+                    "OTHER_CHANNELS",
+                    "WEB",
+                    "23065",
+                    "21.90",
+                    "505156.63",
+                    "8.75",
+                    "40.48",
+                    "2025-10-01",
+                    "2025-12-31",
+                    "23065"
+                  ]
+                ],
+                "resultSetMetaData": {
+                  "format": "jsonv2",
+                  "numRows": 7,
+                  "partition": 0,
+                  "partitionInfo": [
+                    {
+                      "rowCount": 7,
+                      "uncompressedSize": 751
+                    }
+                  ],
+                  "rowType": [
+                    {
+                      "length": 14,
+                      "name": "CHANNEL_TYPE",
+                      "nullable": false,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "text"
+                    },
+                    {
+                      "length": 30,
+                      "name": "ORDER_CHANNEL",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "text"
+                    },
+                    {
+                      "length": 0,
+                      "name": "TRANSACTION_COUNT",
+                      "nullable": false,
+                      "precision": 18,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "AVG_ORDER_VALUE",
+                      "nullable": true,
+                      "precision": 29,
+                      "scale": 2,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "TOTAL_REVENUE",
+                      "nullable": true,
+                      "precision": 22,
+                      "scale": 2,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "MIN_ORDER_VALUE",
+                      "nullable": true,
+                      "precision": 10,
+                      "scale": 2,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "MAX_ORDER_VALUE",
+                      "nullable": true,
+                      "precision": 10,
+                      "scale": 2,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "START_DATE",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "date"
+                    },
+                    {
+                      "length": 0,
+                      "name": "END_DATE",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "date"
+                    },
+                    {
+                      "length": 0,
+                      "name": "DATE_COUNT",
+                      "nullable": false,
+                      "precision": 18,
+                      "scale": 0,
+                      "type": "fixed"
+                    }
+                  ]
+                },
+                "statementHandle": "01c3e1b3-0212-a874-0053-fc0716a9fd4a"
+              },
+              "result_set_truncated": false,
+              "sql": "WITH __channel_financial AS (\n  SELECT\n    order_channel,\n    transaction_date,\n    order_total\n  FROM DEMO_DB.SHAKE_SHACK.MKT_CHANNEL_FINANCIAL_MART\n)\nSELECT\n  CASE WHEN order_channel = 'APP' THEN 'APP' ELSE 'OTHER_CHANNELS' END AS channel_type,\n  order_channel,\n  COUNT(*) AS transaction_count,\n  ROUND(AVG(order_total), 2) AS avg_order_value,\n  ROUND(SUM(order_total), 2) AS total_revenue,\n  ROUND(MIN(order_total), 2) AS min_order_value,\n  ROUND(MAX(order_total), 2) AS max_order_value,\n  MIN(transaction_date) AS start_date,\n  MAX(transaction_date) AS end_date,\n  COUNT(transaction_date) AS date_count\nFROM __channel_financial\nWHERE\n  transaction_date >= '2025-10-01'\n  AND transaction_date <= '2025-12-31'\n  AND transaction_date <= CURRENT_DATE\nGROUP BY\n  CASE WHEN order_channel = 'APP' THEN 'APP' ELSE 'OTHER_CHANNELS' END,\n  order_channel\nORDER BY\n  channel_type ASC,\n  transaction_count DESC NULLS LAST\n -- Generated by Cortex Analyst (request_id: b9247a50-8e62-4e6a-8192-16ece98727d9)\n;",
+              "text": "The question is clear and I can answer it with the following SQL.",
+              "verified_query_used": true
+            },
+            "type": "json"
+          }
+        ],
+        "name": "channel_financial",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01VfdBmW4F4QvLiz1u6gXfpk",
+        "type": "cortex_analyst_text_to_sql"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "skill_name": "system_chart_workflow"
+        },
+        "name": "server_skill",
+        "tool_use_id": "toolu_bdrk_01NX9xRq5L95zrVxD5U8shw2",
+        "type": "server_skill"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "content": "# Skill: system_chart_workflow\n\n**Description**: Chart generation workflow -- when to generate charts, mandatory visualization rules, chart citing format.\n\n## Instructions\n\n\n# Chart Workflow\n\n## When to Generate Charts\n- SQL results with 2+ rows AND numerical metrics (revenue, sales, counts, growth, percentages)\n- Comparisons: metrics by region/product/team/category\n- Rankings: top N customers, bottom performers, leaderboards\n- Time series: monthly trends, year-over-year growth, daily patterns\n- Distributions: category breakdowns, segment analysis\n\n## When NOT to Chart\n- Single scalar values (\"What is total revenue?\" \u2192 answer \"$X\", no chart)\n- Purely textual data\n- When the user explicitly asks for a table only\n\n## Chart Generation Process\n1. Evaluate if SQL results would benefit from visualization\n2. Load the `chart_generation_instructions` skill for detailed chart creation guidance\n3. Follow the skill instructions to call the data_to_chart tool\n\n## Citing Charts\nAfter receiving a data_to_chart tool result:\n- Say \"Please find the visualization below.\" (or similar context) inside the <answer> block\n- Include `<chart>toolUseId</chart>` where toolUseId is from the data_to_chart tool result\n- Valid format: `<chart>tooluse_8n3P5qRk7aWzJ1cYxTvEfg</chart>`\n- **CRITICAL**: Use the tool_use_id from data_to_chart, NOT from SQL tools. SQL tool IDs cause rendering errors.\n- If the data_to_chart result contains warnings, do NOT cite the chart \u2014 fix the issue first.\n- Never reference chart colors (e.g., \"the blue line\", \"red bars\") \u2014 users can customize colors.",
+              "skill_name": "system_chart_workflow"
+            },
+            "type": "json"
+          }
+        ],
+        "name": "server_skill",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01NX9xRq5L95zrVxD5U8shw2",
+        "type": "server_skill"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "skill_name": "chart_generation_instructions"
+        },
+        "name": "server_skill",
+        "tool_use_id": "toolu_bdrk_012ScG6wuwbjgphDVg3RYyW7",
+        "type": "server_skill"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "content": "# Skill: chart_generation_instructions\n\n**Description**: Provides instructions for deciding WHEN to generate a chart and HOW to generate a chart to enhance answers with beautiful visualizations\n\n## Instructions\n\n\n# WHEN\n\nThis section describes WHEN to generate a chart - read it carefully.\n\n**PHASE 1: DECIDING TO GENERATE A CHART** (happens DURING your reasoning, BEFORE you have a chart tool result)\n\nInspecting results from cortex_analyst_text_to_sql, you MUST evaluate in <thinking>:\n\n**Step 1: Should I generate a chart?**\n  - Prefer charts over tables for: comparisons, trends, rankings, distributions, time-series\n  - MUST generate charts when SQL results have 2+ rows with numerical metrics (revenue, sales, counts, growth rates, percentages)\n  - Example of MANDATORY chart scenarios:\n    - Comparisons: revenue by region, sales by product, performance by team\n    - Rankings: top 10 customers, bottom performers, leaderboards\n    - Time series: monthly trends, year-over-year growth, daily metrics\n    - Distributions: category breakdowns, segment analysis\n  - Do NOT chart: singular values (e.g., \"What is total revenue?\" \u2192 just answer \"The total revenue is $X\")\n  - For generic tools: ONLY chartable if \"execution_type\": \"table_function\" (check the execution_type field in the result)\n  - Use the tool_use_id (not the query_id value) when calling the chart tool\n\n**Step 2: Is the SQL result visualization-ready?**\n  - Check: row count, column names, aggregation level, data shape\n  - Check if the question mentions a specific chart type that should be generated. If it does, check if the SQL result is visualization-ready for the requested chart type. Remember that you should call data_to_chart with specific chart type in the question.\n  - **IMPORTANT - Check custom instructions**: Review the system prompt for any custom response instructions or chart-related preferences. Custom instructions should take precedence over recommendations in this guide, unless they are breaking the system. For example, if custom instructions say \"always use bar charts for time series\", you MUST use a bar chart even though this guide recommends line charts for time series. Double-check any instructions under \"[Important Case-specific Instructions]\" section in the system prompt, and apply any chart-relevant guidance.\n\n**Step 3: Prepare data and generate a chart**\n  - If data is NOT visualization-ready \u2192 Use vega-lite transform to filter the data (preferred) OR execute a new SQL query to transform the data (BEFORE calling data_to_chart again).\n  - Always provide context text BEFORE the chart block, then show the chart (all within the <answer> block).\n\n**Step 4: Consider generating multiple charts**\n  - You CAN generate multiple charts when a single chart would be insufficient or misleading:\n    - **Different scales**: When metrics have vastly different magnitudes (e.g., revenue in millions vs. growth rate in percentages), a single chart may hide patterns in smaller values. Create separate charts for each scale.\n    - **Different perspectives**: When the user's question benefits from multiple views (e.g., \"analyze sales performance\" could show both a trend over time AND a breakdown by category).\n    - **Comparison clarity**: When comparing items with very different value ranges, separate charts can make each comparison more straightforward.\n  - To generate multiple charts:\n    1. Call data_to_chart multiple times, once for each chart\n    2. In Phase 2, present each chart with a brief label explaining what it shows. Remember to cite each chart separately\n    3. Example: \"Here's the revenue trend:\" followed by chart 1, then \"And here's the growth rate trend:\" followed by chart 2\n  - Do NOT generate multiple charts just to show more visualizations - only when it genuinely improves understanding.\n\n**PHASE 2: PRESENTING THE CHART** (happens AFTER you have a chart tool result in conversation history)\n\nOnce you have called data_to_chart tool and received a tool result:\n  * Find the data_to_chart tool result with the chart in conversation history\n  * Say \"Please find the visualization below.\" (or similar context) inside the <answer> block\n  * Provide the <chart>toolUseId</chart> block inside the <answer> block where toolUseId is from the data_to_chart tool result\n  * Valid chart block format: <chart>tooluse_8n3P5qRk7aWzJ1cYxTvEfg</chart>\n  * If you cannot find ANY valid tool results from data_to_chart tool in conversation history, just say \"I couldn't generate a valid visualization.\"\n  * **AVOID REPETITION**: When user did not ask for a chart explicitly, your chart response comes AFTER your initial response in the conversation. Do NOT repeat information already provided in <answer> tags before generating the chart:\n    - Do NOT repeat the summary or analysis from your first response\n    - Introduce the chart and optionally add NEW observations visible only in the visualization (e.g., visual patterns, outliers that stand out graphically) or new findings that you were not aware of before.\n  * **DO NOT CITE CHARTS WITH WARNINGS**: If the data_to_chart tool result contains ANY warnings (e.g., \"too many unique categories\" etc.), you MUST:\n    1. Do NOT cite the chart - charts with warnings will render incorrectly or fail\n    2. Understand the warning returned and try to improve:\n      a. if error is about too many elements (e.g. too many bar charts), issue new cortex_analyst_text_to_sql call to filter the data\n      b. if error is about chart specification itself (e.g. column used in multiple encodings), call data_to_chart with fixed specification\n    3. The only possible scenario where you can cite a chart with a warning is when the user explicitly asked for a chart that would have properties described in the warning (e.g., a multi-line chart with more than 5 colors).\n  * All chart blocks must be placed inside the <answer> block, not outside of it.\n  * DO NOT use tool IDs from cortex_analyst_text_to_sql tool results to generate a chart block. These will cause rendering errors. ONLY use data_to_chart tool use IDs in chart blocks.\n  * DO NOT reference or describe chart colors (e.g., \"the blue line\", \"red bars\") in your <thinking> or <answer> sections, as colors can be customized by users and may differ from the chart specification.\n\n# HOW\n\nThis section describes how chart specification should be generated.\n\n## Available chart types\nBelow is the full list of chart types that you should generate. You should reject asks for any other chart types.\n\n* Bar chart\n  * ideal for comparisons, top N, rankings\n  * supports up to 20 unique values per nominal axis (after applying transforms)\n  * supports up to 5 unique values per color axis\n  * For larger datasets, ALWAYS use top-N transforms to limit results to 10-15 items\n\n* Line chart\n  * ideal for trends over time\n  * supports up to 5 unique values per color axis\n  * **CRITICAL**: x-axis values MUST be unique within each color series (no duplicate x values). If data has duplicate x values, aggregate them first with SQL or choose a different chart type\n* Pie chart\n  * ideal for part-to-whole relationships\n  * supports up to 15 values\n* Scatter chart\n  * should be used only for showing correlations between two numerical variables\n  * should NOT be used for top X questions, use bar or line chart instead\n  * requires at least 5 distinct values per axis (both x and y must have 5+ unique values)\n* Heatmap chart\n  * should be used only for showing patterns in data across two categorical dimensions\n  * should NOT be used for top X questions, use bar or line chart instead\n  * requires data with at least 3 columns for x, y (categorical) and color (quantitative) axes\n  * requires at least 2 distinct values per x and y axes, but not more than 20 distinct values per x and y axes\n  * you should not create a heatmap with temporal or ordinal data on x or y axes, unless specifically asked by the user\n\n\n## Chart specification\n\nWhen you want to generate a chart you just need to provide vega lite chart specification as a json string and use data_to_chart tool to validate chart correctness.\n\nProvide the minimum required configuration: mark, encoding (with field and type), and title. Optionally include transform (for fold, top-N, custom colors) and config. The data field will be added by the system in postprocessing.\nDo not include aggregations or transformations when not required.\n\nFor marks, use only one of the following:\n- \"bar\" for bar charts\n- \"line\" for line charts\n- \"arc\" for pie charts\n- \"point\" for scatter charts\n- \"rect\" for heatmaps\n\nEncoding types can be: \"quantitative\", \"temporal\", \"ordinal\", or \"nominal\".\nUse: \"quantitative\" for numbers, \"temporal\" for years, times and data-times, \"ordinal\" for ordered categories, and \"nominal\" for unordered categories.\nTitle should be a string.\n\n### IMPORTANT INSTRUCTIONS FOR TRANSFORMS:\n* Use the \"fold\" transform ONLY when charting data from multiple columns that need to be pivoted.\n* The column names in the fold array MUST exactly match column names from the SQL result (case-sensitive). Verify each column exists before using it.\n* When the user question is best visualized using a top-N bar chart (e.g. \"top 10\", \"highest value\", etc.), you MUST use transforms to filter the data to show only the selected top-N items.\n* To filter to top-N for bar charts, use this exact pattern in the \"transform\" array (place it BEFORE any other transforms like fold):\n  1. Add a window transform to rank the data: {\"window\": [{\"op\": \"rank\", \"as\": \"rank\"}], \"sort\": [{\"field\": \"<quantitative_field>\", \"order\": \"descending\"}]}\n  2. Add a filter transform: {\"filter\": \"datum.rank <= N\"}\nwhere <quantitative_field> is the field you're ranking by (the measure/metric), and N is the number you want to limit to.\n* The \"sort\" field in the window transform should be the quantitative field (y-axis for horizontal bars, x-axis for vertical bars).\n* Use \"descending\" order for \"top\" or \"highest\", and \"ascending\" order for \"bottom\" or \"lowest\".\n* When combining top-N filtering with other transforms (like fold or calculate), ALWAYS place the window and filter transforms FIRST in the transform array, then add other transforms after.\n* Only use window/filter transforms for limiting to top-N when necessary to produce a top-N bar chart - do not add them otherwise.\n* N should always be less than 20.\n* IMPORTANT: top-N transforms should ONLY be used for bar charts (mark: bar). NEVER use window, sort and filter transform with line charts.\n* When user asks for a top-N line chart, you should see that data is already filtered to top-N. Generate a line chart config without the window, sort and filter transform.\n\n### CRITICAL RULES (violating these will cause chart generation to fail):\n* **NEVER use the same field in multiple encodings** - each field can only appear ONCE across x, y, color, theta, yOffset, xOffset, etc.\n  - Example: If you use \"SALES\" for x-axis, you CANNOT also use \"SALES\" for color or y-axis\n  - Example: If you have a grouped bar chart with yOffset, the yOffset field must be different from x and y fields\n  - **Before creating your encoding, list out all the fields you plan to use and verify each field is used only once**\n* **Verify column names exist in the data** - before using any column name in encoding or fold transform, check that it exists exactly as shown in the SQL result columns. Column names are case-sensitive \u2014 use the casing EXACTLY as shown in the TABLE with data.\n* Do not use color encoding for quantitative, temporal, or ordinal fields for bar and line charts - color must be nominal type only.\n* **For scatter charts**: Both x and y axes must have at least 5 distinct values. If the data has fewer distinct values on either axis, use a different chart type (like bar chart).\n\n### Additional rules:\n* Pay attention to the requested chart type and generate the chart accordingly. If the chart type was not explicitly provided, you should suggest the best possible chart type from the available types.\n* Do not generate line charts where all fields are either ordinal or temporal.\n* Do not generate bar charts where all fields are ordinal.\n* If you selected \"bar\" for the mark, use horizontal bars (\"x\" and \"y\" swapped - \"y\" field is ordinal/nominal and \"x\" field is quantitative), whenever the ordinal/nominal field does not resemble time (e.g. year, day number, date).\n* In-particular, if you selected \"bar\" for the mark, always use horizontal bars when the bar labels (ordinal/nominal field values) are long strings in the TABLE with data.\n* For bar charts, ensure each (categorical_field, color_field) tuple is unique. If duplicates exist, add one of the transforms:\n  - Filter: {\"filter\": \"datum.<field> == '<value>'\"}\n  - Aggregate: {\"aggregate\": [{\"op\": \"sum\", \"field\": \"<quant>\", \"as\": \"<quant>\"}], \"groupby\": [\"<category>\", \"<color>\"]}\n* Do not use \"x\" and \"y\" encodings for arc mark. USE \"theta\" and \"color\" encodings instead.\n* Do not generate scatter (point) charts where any of the fields is temporal or ordinal.\n* To generate heatmap, you must choose categorical fields for both \"x\" and \"y\" encodings and a quantitative field for the \"color\" encoding.\n* NEVER generate concatenated views (NEVER use hconcat, vconcat, concat).\n* Add readable axis titles as \"title\" in both \"x\", \"y\" and \"color\" field, if applicable.\n* When using the fold transform, always include a calculate transform to rename the folded field names to a more readable format.\n* If you know the data is incomplete (e.g., partial month), include this context in the chart title (e.g., \"June 2025 (Partial)\").\n\n### Examples\n\nEach example shows: User Question \u2192 Data Shape \u2192 Why This Chart \u2192 Spec\n\n---\n\n**Example 1: Line Chart - Time Series Trend**\n\n**User Question**: \"How did monthly sales change over the past year?\"\n\n**SQL Result** (12 rows):\n| DATE       | TOTAL_SALES |\n|------------|-------------|\n| 2024-01-01 | 45000       |\n| 2024-02-01 | 52000       |\n| ... (12 rows total) |    |\n\n**Why Line Chart**: Time series data showing change over time \u2192 Line chart is ideal for trends.\n\n**Chart Spec**:\n{\n  \"title\": \"Monthly Sales Trend (2024)\",\n  \"mark\": \"line\",\n  \"encoding\": {\n    \"x\": {\"field\": \"DATE\", \"title\": \"Month\", \"type\": \"temporal\"},\n    \"y\": {\"field\": \"TOTAL_SALES\", \"title\": \"Total Sales\", \"type\": \"quantitative\"}\n  }\n}\n\n---\n\n**Example 2: Horizontal Bar Chart - Rankings**\n\n**User Question**: \"Which are the top 10 accounts by usage?\"\n\n**SQL Result** (50 rows):\n| ACCOUNT_NAME        | TOTAL_USAGE |\n|---------------------|-------------|\n| Acme Corporation    | 15420       |\n| Global Industries   | 12350       |\n| ... (50 rows total) |             |\n\n**Why Horizontal Bar Chart**: Ranking question with text labels (account names are long strings) \u2192 Horizontal bar chart. Need top-N transform since data has 50 rows but question asks for top 10.\n\n**Chart Spec**:\n{\n  \"title\": \"Top 10 Accounts by Usage\",\n  \"transform\": [\n    {\"window\": [{\"op\": \"rank\", \"as\": \"rank\"}], \"sort\": [{\"field\": \"TOTAL_USAGE\", \"order\": \"descending\"}]},\n    {\"filter\": \"datum.rank <= 10\"}\n  ],\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"TOTAL_USAGE\", \"title\": \"Total Usage\", \"type\": \"quantitative\"},\n    \"y\": {\"field\": \"ACCOUNT_NAME\", \"title\": \"Account\", \"type\": \"nominal\", \"sort\": \"-x\"}\n  }\n}\n\n---\n\n**Example 3: Vertical Bar Chart - Time-Based Categories**\n\n**User Question**: \"Show daily page views for last week\"\n\n**SQL Result** (7 rows):\n| DATE_DAY   | TOTAL_VIEWS |\n|------------|-------------|\n| 2024-03-18 | 8500        |\n| 2024-03-19 | 9200        |\n| ... (7 rows) |           |\n\n**Why Vertical Bar Chart**: Time-based categories (dates) on x-axis \u2192 Vertical bar chart (x is temporal, y is quantitative). Small number of rows, no transform needed.\n\n**Chart Spec**:\n{\n  \"title\": \"Daily Page Views (March 18-24, 2024)\",\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"DATE_DAY\", \"title\": \"Date\", \"type\": \"temporal\"},\n    \"y\": {\"field\": \"TOTAL_VIEWS\", \"title\": \"Daily Views\", \"type\": \"quantitative\"}\n  }\n}\n\n---\n\n**Example 4: Multi-Line Chart with Fold Transform**\n\n**User Question**: \"Compare sales of Product A, B, and C over time\"\n\n**SQL Result** (12 rows, multiple value columns):\n| WEEK       | PRODUCT_A | PRODUCT_B | PRODUCT_C |\n|------------|-----------|-----------|-----------|\n| 2024-01-07 | 1200      | 800       | 1500      |\n| 2024-01-14 | 1350      | 950       | 1420      |\n| ... (12 rows) |        |           |           |\n\n**Why Multi-Line with Fold**: Comparing multiple series over time. Data has separate columns for each product \u2192 Need fold transform to pivot columns into rows, then use \"key\" for color.\n\n**Chart Spec**:\n{\n  \"title\": \"Product Sales Comparison by Week\",\n  \"transform\": [\n    {\"fold\": [\"PRODUCT_A\", \"PRODUCT_B\", \"PRODUCT_C\"]},\n    {\"calculate\": \"({'PRODUCT_A': 'Product A', 'PRODUCT_B': 'Product B', 'PRODUCT_C': 'Product C'})[datum.key]\", \"as\": \"key\"}\n  ],\n  \"mark\": \"line\",\n  \"encoding\": {\n    \"x\": {\"field\": \"WEEK\", \"title\": \"Week\", \"type\": \"temporal\"},\n    \"y\": {\"field\": \"value\", \"title\": \"Sales\", \"type\": \"quantitative\"},\n    \"color\": {\"field\": \"key\", \"type\": \"nominal\", \"title\": \"Product\"}\n  }\n}\n\n---\n\n**Example 5: Pie Chart - Part-to-Whole**\n\n**User Question**: \"What percentage of revenue comes from each product category?\"\n\n**SQL Result** (5 rows):\n| CATEGORY    | REVENUE_PCT |\n|-------------|-------------|\n| Electronics | 35.2        |\n| Clothing    | 28.1        |\n| Home        | 18.5        |\n| Sports      | 12.0        |\n| Other       | 6.2         |\n\n**Why Pie Chart**: Showing percentages that sum to 100% (part-to-whole relationship) with small number of categories (5) \u2192 Pie chart is ideal.\n\n**Chart Spec**:\n{\n  \"title\": \"Revenue Distribution by Category\",\n  \"mark\": \"arc\",\n  \"encoding\": {\n    \"theta\": {\"field\": \"REVENUE_PCT\", \"type\": \"quantitative\", \"title\": \"Revenue %\"},\n    \"color\": {\"field\": \"CATEGORY\", \"type\": \"nominal\", \"title\": \"Category\"}\n  }\n}\n\n---\n\n**Example 6: Scatter Chart - Correlation Analysis**\n\n**User Question**: \"Is there a relationship between marketing spend and sales?\"\n\n**SQL Result** (100 rows):\n| MARKETING_SPEND | SALES_AMOUNT |\n|-----------------|--------------|\n| 5000            | 42000        |\n| 12000           | 78000        |\n| ... (100 rows, both columns have many distinct values) |\n\n**Why Scatter Chart**: Two quantitative variables, looking for correlation. Both axes have many distinct values (100+ data points) \u2192 Scatter chart is appropriate.\n\n**Chart Spec**:\n{\n  \"title\": \"Marketing Spend vs. Sales Correlation\",\n  \"mark\": \"point\",\n  \"encoding\": {\n    \"x\": {\"field\": \"MARKETING_SPEND\", \"type\": \"quantitative\", \"title\": \"Marketing Spend\"},\n    \"y\": {\"field\": \"SALES_AMOUNT\", \"type\": \"quantitative\", \"title\": \"Sales Amount\"}\n  }\n}\n\n---\n\n**Example 7: Heatmap - Two Categorical Dimensions**\n\n**User Question**: \"Show sales performance across regions and product categories\"\n\n**SQL Result** (20 rows):\n| REGION      | CATEGORY    | SALES   |\n|-------------|-------------|---------|\n| North       | Electronics | 125000  |\n| North       | Clothing    | 89000   |\n| South       | Electronics | 142000  |\n| ... (4 regions x 5 categories = 20 rows) |\n\n**Why Heatmap**: Two categorical dimensions (region, category) with one quantitative measure (sales). Shows patterns across the matrix \u2192 Heatmap is ideal.\n\n**Chart Spec**:\n{\n  \"title\": \"Sales by Region and Category\",\n  \"mark\": \"rect\",\n  \"encoding\": {\n    \"x\": {\"field\": \"CATEGORY\", \"type\": \"nominal\", \"title\": \"Product Category\"},\n    \"y\": {\"field\": \"REGION\", \"type\": \"nominal\", \"title\": \"Region\"},\n    \"color\": {\"field\": \"SALES\", \"type\": \"quantitative\", \"title\": \"Sales\"}\n  }\n}\n\n---\n\n**Example 8: Bottom-N Bar Chart**\n\n**User Question**: \"Which 5 regions have the lowest market share?\"\n\n**SQL Result** (25 rows):\n| REGION          | MARKET_SHARE |\n|-----------------|--------------|\n| Central Europe  | 2.1          |\n| Southeast Asia  | 3.4          |\n| ... (25 rows)   |              |\n\n**Why Horizontal Bar with Ascending Sort**: Bottom-N question \u2192 Use window transform with ascending order to get lowest values first.\n\n**Chart Spec**:\n{\n  \"title\": \"Bottom 5 Regions by Market Share\",\n  \"transform\": [\n    {\"window\": [{\"op\": \"rank\", \"as\": \"rank\"}], \"sort\": [{\"field\": \"MARKET_SHARE\", \"order\": \"ascending\"}]},\n    {\"filter\": \"datum.rank <= 5\"}\n  ],\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"MARKET_SHARE\", \"title\": \"Market Share (%)\", \"type\": \"quantitative\"},\n    \"y\": {\"field\": \"REGION\", \"title\": \"Region\", \"type\": \"nominal\", \"sort\": \"x\"}\n  }\n}\n\n---\n\n**Example 9: Grouped Bar Chart with Top-N and Fold**\n\n**User Question**: \"Show capacity and utilization for our top 5 accounts\"\n\n**SQL Result** (50 rows, two metrics per account):\n| ACCOUNT_NAME     | CAPACITY | UTILIZATION_RATE |\n|------------------|----------|------------------|\n| Acme Corp        | 10000    | 78.5             |\n| Global Inc       | 8500     | 92.1             |\n| ... (50 rows)    |          |                  |\n\n**Why Grouped Bar with Transforms**: Need to show two metrics side-by-side for top 5 accounts. Requires: (1) top-N filter first, (2) fold to combine metrics, (3) yOffset for grouping.\n\n**Chart Spec**:\n{\n  \"title\": \"Top 5 Accounts: Capacity vs Utilization\",\n  \"transform\": [\n    {\"window\": [{\"op\": \"rank\", \"as\": \"rank\"}], \"sort\": [{\"field\": \"CAPACITY\", \"order\": \"descending\"}]},\n    {\"filter\": \"datum.rank <= 5\"},\n    {\"fold\": [\"CAPACITY\", \"UTILIZATION_RATE\"]},\n    {\"calculate\": \"({'CAPACITY': 'Capacity', 'UTILIZATION_RATE': 'Utilization Rate (%)'})[datum.key]\", \"as\": \"key\"}\n  ],\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"value\", \"title\": \"Value\", \"type\": \"quantitative\"},\n    \"y\": {\"field\": \"ACCOUNT_NAME\", \"title\": \"Account\", \"type\": \"nominal\", \"sort\": \"-x\"},\n    \"yOffset\": {\"field\": \"key\", \"type\": \"nominal\"},\n    \"color\": {\"field\": \"key\", \"title\": \"Metric\", \"type\": \"nominal\"}\n  }\n}\n\n---\n\n**Example 11: Custom Instructions Override - Chart Type and Colors**\n\n**Custom Instructions**: \"Always use bar charts instead of line charts for time series data. Use blue for revenue.\"\n\n**User Question**: \"Show monthly revenue for 2024\"\n\n**SQL Result** (12 rows):\n| MONTH      | REVENUE   |\n|------------|-----------|\n| 2024-01-01 | 125000    |\n| 2024-02-01 | 142000    |\n| ... (12 rows) |        |\n\n**Why Bar Chart (NOT Line) with Custom Color**: Even though this is time series data (which would normally use a line chart), the custom instructions explicitly require bar charts for time series. The custom color is applied via `scale` in the color encoding. Always follow custom instructions when they override default chart type or color selection.\n\n**Chart Spec**:\n{\n  \"title\": \"Monthly Revenue (2024)\",\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"MONTH\", \"title\": \"Month\", \"type\": \"temporal\"},\n    \"y\": {\"field\": \"REVENUE\", \"title\": \"Revenue\", \"type\": \"quantitative\"},\n    \"color\": {\"datum\": \"Revenue\", \"scale\": {\"range\": [\"#1E90FF\"]}}\n  }\n}\n\n**Key Takeaway**: When custom instructions specify chart type or color preferences, they take priority over the default recommendations in this guide. Check the system prompt/custom instructions before deciding on chart type or colors.\n\n---\n\n**Example 12: Bar Chart with Duplicate Category-Color Tuples**\n\n**User Question**: \"Show total sales by region and product category\"\n\n**SQL Result** (12 rows \u2014 multiple rows per region/category pair due to sub-categories):\n| REGION | CATEGORY    | SUBCATEGORY | SALES  |\n|--------|-------------|-------------|--------|\n| North  | Electronics | Phones      | 50000  |\n| North  | Electronics | Laptops     | 75000  |\n| North  | Clothing    | Shoes       | 30000  |\n| South  | Electronics | Phones      | 60000  |\n| South  | Electronics | Laptops     | 40000  |\n| South  | Clothing    | Shoes       | 35000  |\n| ... (12 rows) |      |             |        |\n\n**Why Aggregate Transform**: The data has duplicate (REGION, CATEGORY) tuples (e.g., \"North + Electronics\" appears twice for Phones and Laptops). A bar chart with color encoding requires each (categorical_field, color_field) pair to be unique. Use an aggregate transform to sum SALES per (REGION, CATEGORY).\n\n**Chart Spec**:\n{\n  \"title\": \"Total Sales by Region and Category\",\n  \"transform\": [\n    {\"aggregate\": [{\"op\": \"sum\", \"field\": \"SALES\", \"as\": \"SALES\"}], \"groupby\": [\"REGION\", \"CATEGORY\"]}\n  ],\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"SALES\", \"title\": \"Total Sales\", \"type\": \"quantitative\"},\n    \"y\": {\"field\": \"REGION\", \"title\": \"Region\", \"type\": \"nominal\"},\n    \"color\": {\"field\": \"CATEGORY\", \"title\": \"Category\", \"type\": \"nominal\"}\n  }\n}\n\n---\n\n**Example 13: Custom Instructions - Colors, Background, and Styling**\n\n**Custom Instructions**: \"Use red for North, blue for South. Use a light gray background.\"\n\n**User Question**: \"Show monthly sales by region over the past year\"\n\n**SQL Result** (36 rows):\n| MONTH      | REGION | SALES  |\n|------------|--------|--------|\n| 2024-01-01 | North  | 85000  |\n| 2024-01-01 | South  | 62000  |\n| 2024-01-01 | West   | 73000  |\n| ... (36 rows, 3 regions) |  |\n\n**Why Line Chart with Custom Colors and Config**: Time series comparing multiple series \u2192 line chart with color encoding. Custom instructions specify colors for SOME series (North=red, South=blue) while other series (West) should get automatic colors \u2192 use a `calculate` transform to assign explicit colors to `_color`, then reference it via `scale.range.field` in the color encoding. The system will automatically add a fallback palette for series without explicit colors. Global styling like background color belongs in the `config` object.\n\n**Chart Spec**:\n{\n  \"title\": \"Monthly Sales by Region (2024)\",\n  \"config\": {\n    \"background\": \"lightgray\"\n  },\n  \"transform\": [{\n    \"calculate\": \"datum.REGION === 'North' ? 'red' : datum.REGION === 'South' ? 'blue' : ''\",\n    \"as\": \"_color\"\n  }],\n  \"mark\": \"line\",\n  \"encoding\": {\n    \"x\": {\"field\": \"MONTH\", \"title\": \"Month\", \"type\": \"temporal\"},\n    \"y\": {\"field\": \"SALES\", \"title\": \"Sales\", \"type\": \"quantitative\"},\n    \"color\": {\"field\": \"REGION\", \"type\": \"nominal\", \"title\": \"Region\", \"scale\": {\"range\": {\"field\": \"_color\"}}}\n  }\n}\n\n**Key Takeaway**: When custom instructions specify colors or styling:\n1. **Per-series colors** \u2192 use a `calculate` transform with conditional color assignments (ternary chain), storing the result as `_color`. Use `\"scale\": {\"range\": {\"field\": \"_color\"}}` in the color encoding. End the ternary chain with `: ''` (empty string) \u2014 a fallback palette for unspecified series is added automatically. The color encoding's `field` should be the categorical field (e.g., `REGION`), NOT `_color`.\n2. **Global styling** (background, fonts, sizes, default colors) \u2192 use the `config` object:\n   - `background`: chart background color (e.g., `\"lightgray\"`, `\"#f0f0f0\"`)\n   - `axis.labelFontSize`, `axis.titleFontSize`: axis font sizes\n   - `title.fontSize`, `title.font`: chart title styling\n   - `mark.color`: default mark color when no color encoding is used\n   These defaults belong in `config`, NOT in individual encoding channels.\n\n---\n\n**Example 14: Custom Instructions - Highlight Specific Values (No Color Column)**\n\n**Custom Instructions**: \"Make the Marketing bar orange\"\n\n**User Question**: \"Show top 10 departments by budget\"\n\n**SQL Result** (25 rows):\n| DEPARTMENT  | BUDGET  |\n|-------------|---------|\n| Marketing   | 150000  |\n| Engineering | 120000  |\n| ... (25 rows)|        |\n\n**Why Horizontal Bar with Custom Highlighting**: Ranking question with text labels \u2192 horizontal bar chart with top-N. Custom instructions want specific values highlighted. Since there is no color column for multi-series grouping, use the \"simple\" color pattern: a `calculate` transform assigns hex colors to `_color`, and `scale: null` uses them as literal colors.\n\n**Chart Spec**:\n{\n  \"title\": \"Top 10 Departments by Budget\",\n  \"transform\": [\n    {\"window\": [{\"op\": \"rank\", \"as\": \"rank\"}], \"sort\": [{\"field\": \"BUDGET\", \"order\": \"descending\"}]},\n    {\"filter\": \"datum.rank <= 10\"},\n    {\"calculate\": \"datum.DEPARTMENT === 'Marketing' ? '#FF6B35' : '#4c78a8'\", \"as\": \"_color\"}\n  ],\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"BUDGET\", \"title\": \"Budget\", \"type\": \"quantitative\"},\n    \"y\": {\"field\": \"DEPARTMENT\", \"title\": \"Department\", \"type\": \"nominal\", \"sort\": \"-x\"},\n    \"color\": {\"field\": \"_color\", \"type\": \"nominal\", \"scale\": null, \"legend\": null}\n  }\n}\n\n**Key Takeaway**: When custom instructions specify colors but the chart does NOT have an explicit color column (no multi-series grouping via color encoding), use the \"simple\" color pattern:\n1. **Color transform** \u2192 add a `calculate` transform that assigns hex colors to `_color` via ternary conditions. End with a fallback color for unmatched values (e.g., `'#4c78a8'`).\n2. **Color encoding** \u2192 use `\"color\": {\"field\": \"_color\", \"type\": \"nominal\", \"scale\": null, \"legend\": null}` \u2014 `scale: null` tells Vega-Lite to use the raw hex values as literal colors.\n3. **Transform ordering** \u2192 the `_color` calculate transform MUST be the LAST transform in the array (after window, filter, fold, etc.).\n4. **When to use** \u2192 use this pattern when color is for visual emphasis only, NOT for multi-series grouping. For multi-series charts (charts with a color column for grouping), use Example 13's `scale.range.field` pattern instead.\n\n---\n\n**IMPORTANT NOTES:**\n- Top-N transforms (window + filter) should ONLY be used for bar charts. NEVER use them with line charts.\n- When user asks for \"top N line chart\", you should see SQL already filtered the data. Generate line chart without window/filter transforms.\n- Always use \"sort\": \"-x\" on the categorical axis when using top-N transforms to preserve the ranking order (and \"sort\": \"x\" when asking about bottom-N).\n\nNow please provide a suggestion for the best possible chart.\nJust provide the JSON object representing a Vega-lite specification as in examples above and use it only as an input to the data_to_chart tool.\n\n---\n\n# WARNING HANDLING\n\nIf the chart tool returns a warning, you must fix the issue before citing the chart, unless some behaviour is explicitly requested by the user. Below are the most common warnings and how to resolve them:\n\n## 1. \"Bar chart has too many unique categories (bars)\"\n\n**Cause**: The bar chart has more than 20 unique values on the categorical axis.\n\n**Fix**:\n- Preferred solution is to use window + filter transforms to limit to top-N (N <= 15 recommended):\n  - Add: {\"window\": [{\"op\": \"rank\", \"as\": \"rank\"}], \"sort\": [{\"field\": \"METRIC_FIELD\", \"order\": \"descending\"}]}\n  - Add: {\"filter\": \"datum.rank <= 15\"}\n- Alternative solution (only if applicable):\n  - Run a new SQL query with LIMIT or TOP clause to reduce rows before charting\n\n## 2. \"Same field used in multiple axes\"\n\n**Cause**: The same column name appears in multiple encodings (e.g., same field for both x and color, or y and yOffset).\n\n**Fix**: Each field can ONLY be used in ONE encoding. Before creating your chart spec:\n  1. List all fields you plan to use\n  2. Verify each field is assigned to exactly one encoding\n  - BAD: x=\"CATEGORY\", color=\"CATEGORY\" (same field twice)\n  - GOOD: x=\"CATEGORY\", color=\"REGION\" (different fields)\n  - For grouped bar charts: yOffset field MUST be different from x and y fields\n\n## 3. \"Color encoding has too many distinct values\"\n\n**Cause**: The color field has more than 5 unique values (for bar/line charts) or 15 values (for pie charts).\n\n**Fix**: Reduce the number of color categories:\n  - Run new SQL to GROUP BY and aggregate data into fewer categories (e.g., \"Other\" bucket)\n  - Use top-N transform to filter to top 5 categories before applying fold\n  - Consider removing color encoding entirely if not essential to the visualization\n  - For comparisons with many series, consider multiple separate charts instead\n\n## 4. \"Line charts do not support filter/sort/window transforms\"\n\n**Cause**: Line charts cannot use window, sort, or filter transforms - these are only allowed for bar charts.\n\n**Fix**: Remove all transforms from the line chart spec and pre-filter data in SQL instead:\n  - BAD: Line chart with {\"window\": [...], \"filter\": ...}\n  - GOOD: Line chart with no transforms, SQL: SELECT ... ORDER BY date LIMIT 10\n  - If user asks for \"top N line chart\", you should see SQL already filtered the data and generate line chart without transforms\n\n## 5. \"Line chart has non-unique x values\"\n\n**Cause**: Within a single color series, the x-axis has duplicate values, causing vertical lines in the chart.\n\n**Fix**: Aggregate data so each x value appears only once per color group:\n  - Preferred solution: Use vega-lite aggregate transform to combine duplicate x values:\n    - Add: {\"aggregate\": [{\"op\": \"sum\", \"field\": \"METRIC_FIELD\", \"as\": \"METRIC_FIELD\"}], \"groupby\": [\"X_FIELD\"]}\n    - For multi-series (with color): {\"aggregate\": [{\"op\": \"sum\", \"field\": \"METRIC_FIELD\", \"as\": \"METRIC_FIELD\"}], \"groupby\": [\"X_FIELD\", \"COLOR_FIELD\"]}\n    - Replace \"sum\" with appropriate operation: \"sum\", \"mean\", \"min\", \"max\", \"count\", etc.\n  - Alternative solution: Run new SQL with GROUP BY on the x-axis field and aggregate the y-axis value\n    - Example: SELECT date, SUM(sales) FROM ... GROUP BY date\n  - If comparing multiple series (color), ensure x values are unique WITHIN each series\n\n## 6. \"Bar chart has too many unique categories per color\"\n\n**Cause**: When using color encoding, each color group has more than 20 bars.\n\n**Fix**: Similar to warning #1, but applies per color group:\n  - Use top-N transform to limit bars: {\"filter\": \"datum.rank <= 10\"}\n  - OR reduce color categories first (see warning #3), then limit bars\n  - Consider simplifying to a single-color bar chart\n\n## 7. \"X-axis has insufficient distinct values for scatter charts\" / \"Y-axis has insufficient distinct values for scatter charts\"\n\n**Cause**: Scatter charts require at least 5 distinct values on BOTH x and y axes to show meaningful correlations.\n\n**Fix**: Use a different chart type:\n  - If data has few distinct x or y values, scatter chart is not appropriate\n  - Use bar chart for comparisons with categorical data\n  - Use line chart for time-series with few data points\n  - Only use scatter when both axes have 5+ unique numeric values\n\n---\n\n**GENERAL WARNING RECOVERY STRATEGY**:\n1. Read the warning or error message carefully\n2. If the warning is about data limits (too many bars, colors, etc.) \u2192 Use vega-lite transform to filter/aggregate the data (preferred when applicable due to lower latency) OR run new SQL to filter/aggregate data\n3. If warning is about chart specification (field used twice, wrong transform) \u2192 Fix the chart spec and retry\n4. If chart type is inappropriate for the data \u2192 Choose a different chart type\n\nFinal notes:\n* Pay special attention to limits described in \"Available chart types\" - violating these limits will result in warnings and you MUST NOT cite charts with warnings (unless some behaviour is explicitly requested by the user)\n* Double check chart-related custom instruction provided in [Important Case-specific Instructions] section of system prompt.\n* Remember that the \"data\" field will be added in post processing, NEVER add that field to chart_spec.\n* Do not include width and height fields. This will be added in postprocessing.\n* Only single layer charts are allowed. You must provide only \"title\", \"mark\", \"encoding\" and (optionally) \"transform\" and \"config\" fields.",
+              "skill_name": "chart_generation_instructions"
+            },
+            "type": "json"
+          }
+        ],
+        "name": "server_skill",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_012ScG6wuwbjgphDVg3RYyW7",
+        "type": "server_skill"
+      },
+      "type": "tool_result"
+    },
+    {
+      "thinking": {
+        "text": "\nThe user is asking about the incremental impact of the 1-3-5 app promotion on:\n1. Overall guest traffic\n2. Digital check averages\n3. Comparison to non-app users during Q4 2025\n\nI have received two tool results:\n\n**From retention_cohort:**\n- APP135 promo acquired 1,396 guests with 89.3% retention rate\n- Non-promo APP acquisition: 4,715 guests with 85.9% retention\n- The APP135 promo had the highest volume of guests acquired during Q4 2025\n- Retention rate for APP135 (89.3%) was higher than non-promo APP guests (85.9%)\n- Full-price return rate: APP135 was 28.7% vs 66.2% for non-promo\n\n**From channel_financial:**\n- APP channel: 172,625 transactions, $21.78 avg order value, $3.76M total revenue\n- Other channels combined: 449,549 transactions\n- In-Store: 125,001 transactions, $21.74 avg\n- Kiosk: 94,301 transactions, $21.71 avg\n- UberEats: 85,758 transactions, $21.74 avg\n- DoorDash: 67,549 transactions, $21.85 avg\n- GrubHub: 53,875 transactions, $21.83 avg\n- Web: 23,065 transactions, $21.90 avg\n\nKey findings:\n1. APP channel had virtually identical AOV to other channels ($21.78 vs $21.74-21.90 range)\n2. The 1-3-5 promo acquired 1,396 guests with strong retention (89.3%)\n3. However, the full-price return rate was significantly lower for APP135 (28.7%) vs non-promo APP guests (66.2%), suggesting promo dependency\n\nNow I need to present this in the executive format requested. Let me structure:\n- HEADLINE: One bold finding about the promo impact\n- SCORECARD: Key metrics table\n- ACTION: What to do next\n\nSince I have comparison data and multiple rows with numerical metrics, I should generate a chart. Looking at the data:\n- The retention_cohort data shows comparison between APP135 and other acquisition methods\n- The channel_financial data shows APP vs other channels\n\nI should create a bar chart comparing:\n1. Retention rates by acquisition method (showing APP135 vs others)\n2. Or average order values by channel\n\nLet me create a chart for the retention comparison, showing APP135 vs non-promo APP vs other promo codes. I'll limit to top acquisition methods.\n"
+      },
+      "type": "thinking"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "chart": "{\n  \"title\": \"Q4 2025 App Acquisition Performance by Promo\",\n  \"transform\": [\n    {\"window\": [{\"op\": \"rank\", \"as\": \"rank\"}], \"sort\": [{\"field\": \"TOTAL_ACQUIRED\", \"order\": \"descending\"}]},\n    {\"filter\": \"datum.rank <= 8\"}\n  ],\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"RETENTION_RATE\", \"title\": \"30-Day Retention Rate (%)\", \"type\": \"quantitative\"},\n    \"y\": {\"field\": \"ACQUISITION_PROMO\", \"title\": \"Acquisition Promo\", \"type\": \"nominal\", \"sort\": \"-x\"},\n    \"color\": {\n      \"field\": \"_highlight\",\n      \"type\": \"nominal\",\n      \"scale\": null,\n      \"legend\": null\n    }\n  }\n}",
+          "question": "THIS FIELD WILL BE DEPRECATED SOON. Please stop using it and use the 'chart' field instead.",
+          "tool_result_id": "toolu_bdrk_01RC8GdzVXKENGYXC7T5JYmQ"
+        },
+        "name": "data_to_chart",
+        "tool_use_id": "toolu_bdrk_01RVWWpKHXMg2HqURpSdaxxH",
+        "type": "data_to_chart"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "charts": [
+                "{\"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\", \"data\": {\"values\": [{\"ACQUISITION_PROMO\": \"APP135\", \"RETENTION_RATE\": 89.3, \"TOTAL_ACQUIRED\": \"1396\"}, {\"ACQUISITION_PROMO\": \"\", \"RETENTION_RATE\": 85.9, \"TOTAL_ACQUIRED\": \"4715\"}, {\"ACQUISITION_PROMO\": \"PROMO3\", \"RETENTION_RATE\": 91.8, \"TOTAL_ACQUIRED\": \"61\"}, {\"ACQUISITION_PROMO\": \"PROMO15\", \"RETENTION_RATE\": 80.0, \"TOTAL_ACQUIRED\": \"60\"}, {\"ACQUISITION_PROMO\": \"PROMO12\", \"RETENTION_RATE\": 78.3, \"TOTAL_ACQUIRED\": \"60\"}, {\"ACQUISITION_PROMO\": \"PROMO18\", \"RETENTION_RATE\": 84.5, \"TOTAL_ACQUIRED\": \"58\"}, {\"ACQUISITION_PROMO\": \"PROMO1\", \"RETENTION_RATE\": 84.2, \"TOTAL_ACQUIRED\": \"57\"}, {\"ACQUISITION_PROMO\": \"PROMO9\", \"RETENTION_RATE\": 91.1, \"TOTAL_ACQUIRED\": \"56\"}, {\"ACQUISITION_PROMO\": \"PROMO7\", \"RETENTION_RATE\": 89.1, \"TOTAL_ACQUIRED\": \"55\"}, {\"ACQUISITION_PROMO\": \"PROMO11\", \"RETENTION_RATE\": 85.2, \"TOTAL_ACQUIRED\": \"54\"}, {\"ACQUISITION_PROMO\": \"PROMO10\", \"RETENTION_RATE\": 88.7, \"TOTAL_ACQUIRED\": \"53\"}, {\"ACQUISITION_PROMO\": \"PROMO5\", \"RETENTION_RATE\": 86.3, \"TOTAL_ACQUIRED\": \"51\"}, {\"ACQUISITION_PROMO\": \"PROMO0\", \"RETENTION_RATE\": 82.4, \"TOTAL_ACQUIRED\": \"51\"}, {\"ACQUISITION_PROMO\": \"PROMO17\", \"RETENTION_RATE\": 79.6, \"TOTAL_ACQUIRED\": \"49\"}, {\"ACQUISITION_PROMO\": \"PROMO16\", \"RETENTION_RATE\": 74.5, \"TOTAL_ACQUIRED\": \"47\"}, {\"ACQUISITION_PROMO\": \"PROMO13\", \"RETENTION_RATE\": 89.1, \"TOTAL_ACQUIRED\": \"46\"}, {\"ACQUISITION_PROMO\": \"PROMO4\", \"RETENTION_RATE\": 86.7, \"TOTAL_ACQUIRED\": \"45\"}, {\"ACQUISITION_PROMO\": \"PROMO19\", \"RETENTION_RATE\": 81.8, \"TOTAL_ACQUIRED\": \"44\"}, {\"ACQUISITION_PROMO\": \"PROMO2\", \"RETENTION_RATE\": 87.8, \"TOTAL_ACQUIRED\": \"41\"}, {\"ACQUISITION_PROMO\": \"PROMO14\", \"RETENTION_RATE\": 89.7, \"TOTAL_ACQUIRED\": \"39\"}, {\"ACQUISITION_PROMO\": \"PROMO8\", \"RETENTION_RATE\": 89.5, \"TOTAL_ACQUIRED\": \"38\"}, {\"ACQUISITION_PROMO\": \"PROMO6\", \"RETENTION_RATE\": 86.8, \"TOTAL_ACQUIRED\": \"38\"}]}, \"encoding\": {\"color\": {\"field\": \"_highlight\", \"legend\": null, \"scale\": null, \"type\": \"nominal\"}, \"x\": {\"field\": \"RETENTION_RATE\", \"title\": \"30-Day Retention Rate (%)\", \"type\": \"quantitative\", \"sort\": null, \"axis\": {\"labelSeparation\": 25}}, \"y\": {\"field\": \"ACQUISITION_PROMO\", \"sort\": \"-x\", \"title\": \"Acquisition Promo\", \"type\": \"nominal\"}, \"tooltip\": [{\"field\": \"RETENTION_RATE\", \"type\": \"quantitative\", \"title\": \"30-Day Retention Rate (%)\", \"format\": \",.6~f\"}, {\"field\": \"ACQUISITION_PROMO\", \"type\": \"nominal\", \"title\": \"Acquisition Promo\"}, {\"field\": \"_highlight\", \"type\": \"nominal\", \"title\": \"_highlight\"}]}, \"mark\": \"bar\", \"title\": \"Q4 2025 App Acquisition Performance by Promo\", \"transform\": [{\"sort\": [{\"field\": \"TOTAL_ACQUIRED\", \"order\": \"descending\"}], \"window\": [{\"as\": \"rank\", \"op\": \"rank\"}]}, {\"filter\": \"datum.rank <= 8\"}], \"usermeta\": {\"snowflake\": {\"columnRoles\": {\"ACQUISITION_PROMO\": \"dimension\", \"FULL_PRICE_30D_COUNT\": \"metric\", \"FULL_PRICE_RETURN_RATE\": \"metric\", \"RETENTION_RATE\": \"metric\", \"RETURNED_30D_COUNT\": \"metric\", \"TOTAL_ACQUIRED\": \"metric\"}}}}"
+              ]
+            },
+            "type": "json"
+          }
+        ],
+        "name": "data_to_chart",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01RVWWpKHXMg2HqURpSdaxxH",
+        "type": "data_to_chart"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "skill_name": "system_suggested_queries"
+        },
+        "name": "server_skill",
+        "tool_use_id": "toolu_bdrk_01CKufyv2wvBoHBSLs9ZKKPL",
+        "type": "server_skill"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "content": "# Skill: system_suggested_queries\n\n**Description**: \"Follow-up question generation -- criteria for relevant, novel suggested queries, plus required output format and confidence scoring rubric. Load before emitting `<suggested_queries>` follow-up questions.\"\n\n## Instructions\n\n\n# Suggested Follow-up Questions\n\n## Context and Purpose\n- Follow-up questions help users explore the topic further after receiving an answer\n- They should be natural extensions or related angles, not repetitions of what was just answered\n- Think: \"What would a curious user want to know next?\"\n\n## When to Provide\n- After successfully answering a question with data/analysis\n- When the answer reveals interesting patterns or insights worth exploring\n- When there are natural follow-up directions the user might want to pursue\n- Do NOT suggest follow-ups for: system errors, clarification requests, or greetings\n\n## Core Principles\n\n1. **Match the user's question pattern**: Follow-ups should mirror the TYPE of question asked.\n   - \"what changed\" \u2192 more \"what changed\" explorations (different time periods, dimensions)\n   - \"how much\" \u2192 more quantitative follow-ups (breakdowns, comparisons, trends)\n   - \"who/which\" \u2192 more identification/ranking follow-ups\n   - \"why\" \u2192 deeper \"why\" ONLY if data sources support causal analysis (see rule 4)\n\n2. **Stay within the same data sources**: Suggest questions answerable by the SAME tools and specific data sources used in the current answer. If the answer came from Cortex Analyst, suggest questions the same semantic model(s) can answer. If from Cortex Search, suggest questions the same search index can answer.\n\n3. **Use these follow-up templates** (adapt naturally to the conversation, don't use verbatim):\n   - **Drill-down**: \"How does [metric] break down by [a different dimension in the data]?\"\n   - **Time comparison**: \"How does [metric] compare to [a different time period]?\"\n   - **Trend**: \"What is the trend for [metric] over [time range available]?\"\n   - **Ranking**: \"Which [entities] have the highest/lowest [metric]?\"\n   - **Filtering**: \"What does [metric] look like for [a specific segment in the data]?\"\n\n4. **[CRITICAL] Be careful with \"why\" questions**: \"Why\" questions often require causal reasoning or external context that tools CANNOT provide.\n   - SQL/Analyst tools can show WHAT happened and HOW metrics changed, but rarely WHY.\n   - Only suggest \"why\" if search indexes or documents contain explanatory content (reports, analyses, commentary) that could plausibly answer it.\n   - When in doubt, reframe \"why\" as \"what\". E.g., instead of \"Why did revenue drop?\" \u2192 \"What are the top contributing segments to the revenue change?\"\n\n5. **Novelty**: Questions MUST require NEW information not already provided in the answer. Don't suggest questions that can be answered from information already given.\n\n6. **Answerability**: [IMPORTANT] Questions MUST have high confidence of being answerable using the same tools available. Do NOT suggest questions requiring information your tools do not have access to.\n\n7. **Recency and Relevance**: Prefer questions about recent time periods over historical data, unless historical context is specifically relevant.\n\n## Format\n- Generate 2-3 high-quality questions maximum\n- Enclose in <suggested_queries>...</suggested_queries> tags\n- Frame as natural questions a user might ask\n- Don't repeat the current question with minor variations\n- Each suggestion should explore a distinct angle\n\n**Confidence scoring**: Rate each question on 3 criteria (1 point each):\n  - **Relevant**: Related to the previous question, matches the question pattern, natural follow-up\n  - **Novel**: Requires additional information to be looked up (not already in the answer)\n  - **Answerable**: Can be answered by the SAME tools and data sources used\n\nScore: \"high\" if all 3 are true, \"medium\" if 2/3, \"low\" if 0-1.\n\nOutput as a JSON array of objects with query and confidence score.\n\n## Examples\nGood suggestions after answering \"What was Q1 2023 revenue?\":\n- \"How does Q1 2023 revenue compare to Q1 2022?\"\n- \"Which product line contributed most to Q1 2023 revenue?\"\n- \"What is the revenue forecast for Q2 2023?\"\n\nBad suggestions:\n- \"What is the total Q1 2023 revenue?\" (repeats answered question)\n- \"Why did revenue change in Q1 2023?\" (requires causal data that may not exist)\n- \"What is customer satisfaction?\" (unrelated, requires different data)",
+              "skill_name": "system_suggested_queries"
+            },
+            "type": "json"
+          }
+        ],
+        "name": "server_skill",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01CKufyv2wvBoHBSLs9ZKKPL",
+        "type": "server_skill"
+      },
+      "type": "tool_result"
+    },
+    {
+      "text": "\n**The 1-3-5 promo drove strong acquisition volume but created significant promo dependency: only **29%** of APP135 guests returned at full price vs **66%** for organic app users.**\n\n| Metric | Value |\n|--------|-------|\n| APP135 Guests Acquired (Q4) | **1,396** |\n| 30-Day Retention Rate | **89.3%** |\n| Full-Price Return Rate | **28.7%** |\n| Non-Promo APP Retention | **85.9%** |\n| Non-Promo Full-Price Return | **66.2%** |\n| APP Avg Check (Q4) | **$21.78** |\n| Non-APP Avg Check | **$21.74-$21.90** |\n\n",
+      "type": "text"
+    },
+    {
+      "table": {
+        "query_id": "01c3e1b3-0212-a874-0053-fc0716a9fd4a",
+        "result_set": {
+          "data": [
+            [
+              "APP",
+              "APP",
+              "172625",
+              "21.78",
+              "3759934.32",
+              "8.75",
+              "40.48",
+              "2025-10-01",
+              "2025-12-31",
+              "172625"
+            ],
+            [
+              "OTHER_CHANNELS",
+              "IN_STORE",
+              "125001",
+              "21.74",
+              "2717383.78",
+              "8.75",
+              "40.48",
+              "2025-10-01",
+              "2025-12-31",
+              "125001"
+            ],
+            [
+              "OTHER_CHANNELS",
+              "KIOSK",
+              "94301",
+              "21.71",
+              "2047356.26",
+              "8.75",
+              "40.48",
+              "2025-10-01",
+              "2025-12-31",
+              "94301"
+            ],
+            [
+              "OTHER_CHANNELS",
+              "UBER_EATS",
+              "85758",
+              "21.74",
+              "1864223.91",
+              "8.75",
+              "40.48",
+              "2025-10-01",
+              "2025-12-31",
+              "85758"
+            ],
+            [
+              "OTHER_CHANNELS",
+              "DOORDASH",
+              "67549",
+              "21.85",
+              "1475685.37",
+              "8.75",
+              "40.48",
+              "2025-10-01",
+              "2025-12-31",
+              "67549"
+            ],
+            [
+              "OTHER_CHANNELS",
+              "GRUBHUB",
+              "53875",
+              "21.83",
+              "1175930.81",
+              "8.75",
+              "40.48",
+              "2025-10-01",
+              "2025-12-31",
+              "53875"
+            ],
+            [
+              "OTHER_CHANNELS",
+              "WEB",
+              "23065",
+              "21.90",
+              "505156.63",
+              "8.75",
+              "40.48",
+              "2025-10-01",
+              "2025-12-31",
+              "23065"
+            ]
+          ],
+          "resultSetMetaData": {
+            "format": "jsonv2",
+            "numRows": 7,
+            "partition": 0,
+            "rowType": [
+              {
+                "length": 14,
+                "name": "CHANNEL_TYPE",
+                "nullable": false,
+                "precision": 0,
+                "scale": 0,
+                "type": "text"
+              },
+              {
+                "length": 30,
+                "name": "ORDER_CHANNEL",
+                "nullable": true,
+                "precision": 0,
+                "scale": 0,
+                "type": "text"
+              },
+              {
+                "length": 0,
+                "name": "TRANSACTION_COUNT",
+                "nullable": false,
+                "precision": 18,
+                "scale": 0,
+                "type": "fixed"
+              },
+              {
+                "length": 0,
+                "name": "AVG_ORDER_VALUE",
+                "nullable": true,
+                "precision": 29,
+                "scale": 2,
+                "type": "fixed"
+              },
+              {
+                "length": 0,
+                "name": "TOTAL_REVENUE",
+                "nullable": true,
+                "precision": 22,
+                "scale": 2,
+                "type": "fixed"
+              },
+              {
+                "length": 0,
+                "name": "MIN_ORDER_VALUE",
+                "nullable": true,
+                "precision": 10,
+                "scale": 2,
+                "type": "fixed"
+              },
+              {
+                "length": 0,
+                "name": "MAX_ORDER_VALUE",
+                "nullable": true,
+                "precision": 10,
+                "scale": 2,
+                "type": "fixed"
+              },
+              {
+                "length": 0,
+                "name": "START_DATE",
+                "nullable": true,
+                "precision": 0,
+                "scale": 0,
+                "type": "date"
+              },
+              {
+                "length": 0,
+                "name": "END_DATE",
+                "nullable": true,
+                "precision": 0,
+                "scale": 0,
+                "type": "date"
+              },
+              {
+                "length": 0,
+                "name": "DATE_COUNT",
+                "nullable": false,
+                "precision": 18,
+                "scale": 0,
+                "type": "fixed"
+              }
+            ]
+          },
+          "statementHandle": "01c3e1b3-0212-a874-0053-fc0716a9fd4a"
+        },
+        "title": "Q4 2025 Channel Performance Comparison",
+        "tool_use_id": "toolu_bdrk_01VfdBmW4F4QvLiz1u6gXfpk"
+      },
+      "type": "table"
+    },
+    {
+      "text": "\n\n",
+      "type": "text"
+    },
+    {
+      "chart": {
+        "chart_spec": "{\"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\", \"data\": {\"values\": [{\"ACQUISITION_PROMO\": \"APP135\", \"RETENTION_RATE\": 89.3, \"TOTAL_ACQUIRED\": \"1396\"}, {\"ACQUISITION_PROMO\": \"\", \"RETENTION_RATE\": 85.9, \"TOTAL_ACQUIRED\": \"4715\"}, {\"ACQUISITION_PROMO\": \"PROMO3\", \"RETENTION_RATE\": 91.8, \"TOTAL_ACQUIRED\": \"61\"}, {\"ACQUISITION_PROMO\": \"PROMO15\", \"RETENTION_RATE\": 80.0, \"TOTAL_ACQUIRED\": \"60\"}, {\"ACQUISITION_PROMO\": \"PROMO12\", \"RETENTION_RATE\": 78.3, \"TOTAL_ACQUIRED\": \"60\"}, {\"ACQUISITION_PROMO\": \"PROMO18\", \"RETENTION_RATE\": 84.5, \"TOTAL_ACQUIRED\": \"58\"}, {\"ACQUISITION_PROMO\": \"PROMO1\", \"RETENTION_RATE\": 84.2, \"TOTAL_ACQUIRED\": \"57\"}, {\"ACQUISITION_PROMO\": \"PROMO9\", \"RETENTION_RATE\": 91.1, \"TOTAL_ACQUIRED\": \"56\"}, {\"ACQUISITION_PROMO\": \"PROMO7\", \"RETENTION_RATE\": 89.1, \"TOTAL_ACQUIRED\": \"55\"}, {\"ACQUISITION_PROMO\": \"PROMO11\", \"RETENTION_RATE\": 85.2, \"TOTAL_ACQUIRED\": \"54\"}, {\"ACQUISITION_PROMO\": \"PROMO10\", \"RETENTION_RATE\": 88.7, \"TOTAL_ACQUIRED\": \"53\"}, {\"ACQUISITION_PROMO\": \"PROMO5\", \"RETENTION_RATE\": 86.3, \"TOTAL_ACQUIRED\": \"51\"}, {\"ACQUISITION_PROMO\": \"PROMO0\", \"RETENTION_RATE\": 82.4, \"TOTAL_ACQUIRED\": \"51\"}, {\"ACQUISITION_PROMO\": \"PROMO17\", \"RETENTION_RATE\": 79.6, \"TOTAL_ACQUIRED\": \"49\"}, {\"ACQUISITION_PROMO\": \"PROMO16\", \"RETENTION_RATE\": 74.5, \"TOTAL_ACQUIRED\": \"47\"}, {\"ACQUISITION_PROMO\": \"PROMO13\", \"RETENTION_RATE\": 89.1, \"TOTAL_ACQUIRED\": \"46\"}, {\"ACQUISITION_PROMO\": \"PROMO4\", \"RETENTION_RATE\": 86.7, \"TOTAL_ACQUIRED\": \"45\"}, {\"ACQUISITION_PROMO\": \"PROMO19\", \"RETENTION_RATE\": 81.8, \"TOTAL_ACQUIRED\": \"44\"}, {\"ACQUISITION_PROMO\": \"PROMO2\", \"RETENTION_RATE\": 87.8, \"TOTAL_ACQUIRED\": \"41\"}, {\"ACQUISITION_PROMO\": \"PROMO14\", \"RETENTION_RATE\": 89.7, \"TOTAL_ACQUIRED\": \"39\"}, {\"ACQUISITION_PROMO\": \"PROMO8\", \"RETENTION_RATE\": 89.5, \"TOTAL_ACQUIRED\": \"38\"}, {\"ACQUISITION_PROMO\": \"PROMO6\", \"RETENTION_RATE\": 86.8, \"TOTAL_ACQUIRED\": \"38\"}]}, \"encoding\": {\"color\": {\"field\": \"_highlight\", \"legend\": null, \"scale\": null, \"type\": \"nominal\"}, \"x\": {\"field\": \"RETENTION_RATE\", \"title\": \"30-Day Retention Rate (%)\", \"type\": \"quantitative\", \"sort\": null, \"axis\": {\"labelSeparation\": 25}}, \"y\": {\"field\": \"ACQUISITION_PROMO\", \"sort\": \"-x\", \"title\": \"Acquisition Promo\", \"type\": \"nominal\"}, \"tooltip\": [{\"field\": \"RETENTION_RATE\", \"type\": \"quantitative\", \"title\": \"30-Day Retention Rate (%)\", \"format\": \",.6~f\"}, {\"field\": \"ACQUISITION_PROMO\", \"type\": \"nominal\", \"title\": \"Acquisition Promo\"}, {\"field\": \"_highlight\", \"type\": \"nominal\", \"title\": \"_highlight\"}]}, \"mark\": \"bar\", \"title\": \"Q4 2025 App Acquisition Performance by Promo\", \"transform\": [{\"sort\": [{\"field\": \"TOTAL_ACQUIRED\", \"order\": \"descending\"}], \"window\": [{\"as\": \"rank\", \"op\": \"rank\"}]}, {\"filter\": \"datum.rank <= 8\"}], \"usermeta\": {\"snowflake\": {\"columnRoles\": {\"ACQUISITION_PROMO\": \"dimension\", \"FULL_PRICE_30D_COUNT\": \"metric\", \"FULL_PRICE_RETURN_RATE\": \"metric\", \"RETENTION_RATE\": \"metric\", \"RETURNED_30D_COUNT\": \"metric\", \"TOTAL_ACQUIRED\": \"metric\"}}}}",
+        "tool_use_id": "toolu_bdrk_01RVWWpKHXMg2HqURpSdaxxH"
+      },
+      "type": "chart"
+    },
+    {
+      "text": "\n\n**Action:**\n- **Redesign app onboarding incentives** to prioritize sustainable engagement over volume\u2014APP135 guests show 2.3x lower full-price return rates than organic users, indicating heavy promo dependency\n- **Test a graduated discount structure** (e.g., decreasing offers over first 3 visits) to wean guests off discounts while maintaining the strong 89% initial retention\n- **Shift marketing spend toward loyalty tiers and frequency rewards** rather than front-loaded acquisition discounts\u2014the $3.8M in Q4 app revenue shows no AOV advantage vs other channels ($21.78 vs $21.74-21.90 range), meaning the value must come from repeat behavior, not transaction size\n",
+      "type": "text"
+    },
+    {
+      "suggested_queries": [
+        {
+          "query": "What was the LTV difference between APP135-acquired guests and organic app users over the 6 months following Q4 2025?"
+        },
+        {
+          "query": "How did the second and third visit discount redemption rates compare between APP135 guests and non-promo app users?"
+        },
+        {
+          "query": "Which CLV tier did APP135 guests fall into compared to other acquisition channels?"
+        }
+      ],
+      "type": "suggested_queries"
+    }
+  ],
+  "metadata": {
+    "usage": {
+      "tokens_consumed": [
+        {
+          "context_window": 200000,
+          "input_tokens": {
+            "cache_read": 121733,
+            "cache_write": 34954,
+            "total": 156709,
+            "uncached": 22
+          },
+          "model_name": "claude-sonnet-4-5",
+          "output_tokens": {
+            "total": 2130
+          }
+        }
+      ]
+    }
+  },
+  "role": "assistant",
+  "schema_version": "v2",
+  "sequence_number": 460,
+  "status": "completed"
+}
