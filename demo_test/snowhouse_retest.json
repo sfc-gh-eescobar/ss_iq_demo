@@ -1,0 +1,1163 @@
+{
+  "content": [
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {},
+        "name": "menu_lto",
+        "tool_use_id": "toolu_bdrk_01EDqqzRdUSmai1LDshWkq8w",
+        "type": "system_agentic_semantic_context"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "semantic_model_description": "Menu and LTO performance semantic view. Use MENU_PERFORMANCE for item-level metrics. Use LTO_CHANNEL_ATTACH with TRUE_CHANNEL_ATTACH_RATE metric for channel-level attach analysis (kiosk vs delivery).",
+              "semantic_model_key": "menu_lto",
+              "semantic_model_name": "mkt_menu_lto_view",
+              "semantic_view_fqn": "TEMP.EESCOBAR.MKT_MENU_LTO_VIEW",
+              "sql_best_practices": "## SQL Generation Rules and Best Practices\n\n**CRITICAL \u2014 Ambiguity Gate (check BEFORE writing SQL):**\nIf the user's question contains a business term that could map to more than one metric or dimension in the semantic model, STOP and do the following:\n1. Check the [Additional Instructions] section of your system prompt for an ambiguous terms table or clarification rules.\n2. If those instructions say to ask for clarification, you MUST respond with a clarification question to the user. Do NOT generate SQL. Do NOT pick what seems \"most likely.\"\n3. Only generate SQL if the term unambiguously maps to exactly one metric, or if no clarification rules exist in the Additional Instructions.\nViolating this gate by guessing a metric when clarification is required will produce incorrect results for the user.\n\nYou can write SQL against the provided semantic model to retrieve data. When doing so, you are an expert data scientist well-versed in BI concepts and your goal is to write accurate, readable queries to fetch the relevant data. Use the following sections as guidelines for your task.\n\nThe semantic model is explained in section 1. Standard SQL (using logical names from the semantic model, which are postprocessed to physical SQL) is detailed in section 2. General SQL rules are in section 3.\n\n### 1. How to use the Semantic Model\n\nA semantic model is intended to provide additional information about the relevant entities that you may want to query for an analysis.\n\nA semantic model is comprised of a set of logical tables. A logical table maps onto an actual SQL table or view, called a base table. Each logical table is comprised of facts, dimensions, and metrics.\n\n- **Facts** are row-level quantitative values (e.g., sales amount, quantity, cost). They are unaggregated and exist at the granularity of the table.\n- **Dimensions** are categorical attributes used to group, filter, and slice data (e.g., region, product category, date). They provide context to metrics. They are commonly used to GROUP BY.\n- **Metrics** are aggregations over facts using functions like SUM, AVG, COUNT. They represent business KPIs. If no aggregation is specified, use the default indicated in the column comment.\n\nMetrics can also exist at the model-level where they can span multiple logical tables.\n\nA semantic model can include the relationships between logical tables, specifying valid join paths. Only use the supported join paths provided; do not invent joins or switch left/right logical tables.\n\nA semantic model can include verified queries, which are SQL queries that are guaranteed to be correct for the corresponding user question.\n\nA logical table can include named filters, which are reusable WHERE-clause expressions (e.g., `is_active = TRUE`). Use these filters in your SQL when they match the user's intent rather than writing equivalent expressions from scratch.\n\nA semantic model can include admin-specified custom instructions which you should follow closely. The first is SQL generation custom instructions that affect how you write SQL. The next is question categorization custom instructions that indicate when you should or should not respond to a question. Question categorization custom instructions are a legacy field from another system, but try to follow them.\n\nA semantic model can include retrieved literals, which are the set of exact literals that are in some column of the base table; this can be helpful to match terms semantically (e.g. if the user asks about the price of all small cars, and there is a column called `car_types`, you could find `sedan-2door`, `sedan-4d`, `sports-2d` for your query, which are not text-wise related but semantically related).\n\n#### Advanced Features of Semantic Models\n\nA semantic model may define advanced features beyond basic facts, dimensions, and metrics.\n\n**Model-level metrics**: Metrics defined at the model level rather than within a single logical table. These metrics may span multiple tables. You must resolve the metric expression down to non-metric column references (facts and dimensions) and write the necessary joins yourself.\n\n**Asof joins**: A semantic model may contain **asof** relationship keys. Asof joins perform point-in-time lookups: each row from the left table is matched to the row in the right table whose key value is closest to (less than or equal to) the left key value. Use Snowflake's `ASOF JOIN ... MATCH_CONDITION(left.col >= right.col) ON equi_conditions` syntax as shown in the supported join paths.\n\n**Range joins**: A semantic model may contain **range** relationship keys. Range joins match each row from the left table to rows in the right table where the left column falls within a range defined by start/end columns. Use the non-equi join conditions as shown in the supported join paths (e.g., `(start_col IS NULL OR left_col >= start_col) AND (end_col IS NULL OR left_col < end_col)`).\n\n**Semi-additive metrics**: Some metrics in the semantic model may define `non_additive_dimensions`. These indicate the metric is **semi-additive** (e.g., a snapshot metric like account balance that should not be summed across time). Write subqueries with window functions (like `ROW_NUMBER`) to find the latest snapshot value.\n\n### 2. Writing Standard SQL against a Semantic Model\n\nStandard SQL uses the Snowflake SQL dialect with logical names from the semantic model. In this mode, you write queries using the logical table and column names (dimensions, facts, time_dimensions) defined in the semantic model. The SQL will be automatically postprocessed to resolve to physical table and column names before execution.\n\n- **Use Semantic Model Column Names**: ALWAYS use column names from the semantic model (dimensions and facts). The SQL will be automatically postprocessed to resolve to physical column names.\n- **Reference Logical Tables**: Use the logical table names from the semantic model with a `__` prefix. Do NOT use fully qualified physical table names (e.g., use `__orders` not `orders` or `DATABASE.SCHEMA.ORDERS`). This prefix is required for all table references, including in FROM, JOIN, and column qualifiers (e.g., `__orders.order_total`).\n- **Always query logical tables, not the underlying base tables**: The base tables can only be accessed through the logical tables using logical SQL. If you encounter errors running logical SQL, fix the query \u2014 do not fall back to querying base tables directly.\n- **Do not rewrite logical table CTEs**: The postprocessing step creates CTEs in the final SQL like `WITH __logical_table AS (SELECT ... FROM DB.SCH.BASE_TABLE)` to resolve the logical tables. You should NOT write these CTEs again on subsequent turns, as the SQL you write on logical tables in subsequent turns will be postprocessed to get the CTEs back. You can fully ignore those logical table CTEs.\n- **Identify metrics**: Metrics are typically calculations upon facts. If no specific aggregation mentioned, use the default aggregation indicated in the column comment.\n- **Identify dimensions for GROUP BY**: Dimensions provide context to data - they are descriptive attributes used to slice and dice data (e.g., geography, product categories, customer segments).\n- **Identify facts**: Facts are quantitative data that can be aggregated, summed, averaged, or counted. They are typically numeric fields.\n- **Count Correctly**: In single-table queries, use COUNT(DISTINCT column) for dimension columns that may have duplicate values. Use COUNT(column) without DISTINCT only if the column has unique values like a primary key.\n\nNote that you are not allowed to use all of the Snowflake SQL dialect, which is detailed in Section 3.\n\n### 3. Rules for SQL Generation\n\nAcross all queries you write, you should keep in mind these guidelines when they are relevant.\n\n**Current Date: 2026-04-24 (i.e., today is April 24, 2026)** - Use this as reference for relative time filters.\n\n#### Aggregation and Granularity\n- The primary key defines data granularity. When calculating metrics on different granularity, ALWAYS use GROUP BY to ensure correct aggregation.\n- Every column in SELECT must either have an aggregation function OR be included in GROUP BY.\n- Use PARTITION BY for window functions as needed.\n\n#### Time Series Analysis\n\n**IMPORTANT: ALWAYS use CURRENT_DATE (or CURRENT_TIMESTAMP) in SQL for any reference to \"today\", \"now\", or the current date. Do NOT hardcode specific date literals like '2026-03-22'. The current date provided above is for interpreting ambiguous time references only (e.g., inferring the year when not specified).**\n\n##### Current Date Reference\n- If a question asks about a specific month without a year (e.g., \"sales for March\"), assume the current year 2026.\n\n##### Time Frequency Conversion\n- For questions requiring time aggregation at different frequency than provided, use DATE_TRUNC() to convert and aggregate facts properly with GROUP BY.\n- To compare time to a NUMBER column, use DATE_PART() to extract year/month/day from a timestamp.\n- For day of week, use DAYOFWEEK() function.\n\n##### Calendar Time Units (week, month, year)\n- If the user asks about \"last week\", \"this month\", \"last year\", ALWAYS assume they mean the CALENDAR unit:\n  - \"last week\": DATE >= DATE_TRUNC('week', CURRENT_DATE - INTERVAL '1 week') AND DATE < DATE_TRUNC('week', CURRENT_DATE)\n  - \"this month\": DATE >= DATE_TRUNC('month', CURRENT_DATE)\n  - \"last year\": DATE >= DATE_TRUNC('year', CURRENT_DATE - INTERVAL '1 year') AND DATE < DATE_TRUNC('year', CURRENT_DATE)\n\n##### Past N Days\n- If the user asks \"past X days\" or \"last X days\", use: DATE >= DATEADD(day, -X, CURRENT_DATE)\n\n##### References to \"Today\" or \"Now\"\n- If the user mentions \"today\", \"as of today\", \"to today\", \"up to now\", \"until now\", or similar, ALWAYS use CURRENT_DATE in SQL.\n  - Example: \"from June 2025 to today\" \u2192 DATE >= '2025-06-01' AND DATE <= CURRENT_DATE\n  - Example: \"sales up to today\" \u2192 DATE <= CURRENT_DATE\n- Do NOT resolve \"today\" to a hardcoded date literal.\n\n##### Period-over-Period (DoD, MoM, YoY)\n- ALWAYS include current period, previous period, current value, and previous value in output columns.\n- Calculate BOTH absolute change AND percentage change unless specified otherwise.\n- DO NOT use LEAD() or LAG() for previous period values - these assume consecutive time data which may not be true.\n- Use self-joins or CTEs instead:\n```sql\nSELECT\n    curr.date AS curr_date,\n    prev.date AS prev_date,\n    curr.value AS curr_value,\n    prev.value AS prev_value,\n    curr.value - prev.value AS change,\n    (curr.value - prev.value) / NULLIF(prev.value, 0) AS pct_change\nFROM daily_table AS curr\nLEFT JOIN daily_table AS prev ON curr.date = prev.date + INTERVAL '1 day'\nORDER BY curr_date DESC NULLS LAST;\n```\n\n##### Rolling Window Metrics\n- For rolling metrics, ALWAYS: (1) aggregate by day/time granularity first, (2) create CTE to compute rolling metrics, (3) filter to time period last.\n```sql\nWITH daily_sales AS (\n    SELECT date, SUM(sales) AS daily_sales FROM table GROUP BY date\n),\nrolling_avg AS (\n    SELECT date, AVG(daily_sales) OVER (ORDER BY date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS rolling_avg_3d\n    FROM daily_sales\n)\nSELECT * FROM rolling_avg WHERE DATE_PART('YEAR', date) = 2026 ORDER BY date DESC NULLS LAST;\n```\n\n##### Missing Time Period\n- If no time range is specified, assume the ENTIRE available time period in the data.\n- Include MIN(date) as start_date and MAX(date) as end_date in output to show the time range used.\n\n#### Ranking, Sorting, and Top-K\n\n##### Sorting\n- When sorting by highest/lowest metric, ALWAYS include NULLS LAST: ORDER BY ratio DESC NULLS LAST\n- For time series without specific sorting, default to sorting time DESCENDING to show latest information first.\n\n##### Top K Queries\n- For simple top-K without partitions: use ORDER BY ... LIMIT K\n- For top-K within partitions (e.g., \"top 5 per month\"): use RANK() or ROW_NUMBER() OVER (PARTITION BY ... ORDER BY ...)\n```sql\nWITH ranked AS (\n    SELECT *, RANK() OVER (PARTITION BY month ORDER BY sales DESC NULLS LAST) AS rnk\n    FROM monthly_sales\n)\nSELECT * FROM ranked WHERE rnk <= 5 ORDER BY month DESC, rnk NULLS LAST;\n```\n\n#### Joins and Relationships\n- Use ONLY the supported join paths provided in the semantic model. Do not switch left/right tables.\n- When joining multiple tables, assign aliases and ALWAYS qualify columns with table alias in ALL clauses.\n- Avoid joins in subqueries; use CTEs instead.\n- Be aware of data granularity: when joining one-to-many or many-to-many, consider data duplication during aggregations.\n- Extract unique records when necessary to avoid double-counting:\n```sql\n-- WRONG: AVG(income) on joined table counts each customer multiple times\n-- CORRECT: Extract unique customers first, then aggregate\nWITH unique_customers AS (\n    SELECT DISTINCT customer_id, income, region FROM orders o JOIN customers c ON ...\n)\nSELECT region, AVG(income) FROM unique_customers GROUP BY region;\n```\n\n#### Handling Text and Literal Values\n- **Use sample_values for exact matching**: Dimensions include sample_values showing actual data values. Use these to match user-mentioned entities:\n  - If user says \"California\", check sample_values to see if values are \"CA\", \"California\", \"CALIFORNIA\", etc.\n  - If user mentions a product name, find the closest match in sample_values\n- **Case-Insensitive Matching**: Use ILIKE instead of LIKE or = when exact case is uncertain\n- **Pattern Matching**: Use ILIKE '%pattern%' to find partial matches when sample_values don't have an exact match\n- **Escape single quotes**: Use two single quotes ('') to escape literal single quotes in strings\n\n#### Ratios and Percentages\n- DO NOT multiply by 100 for ratio/percentage calculations. Keep numbers as decimals.\n\n#### Error Prevention and Snowflake Syntax\n- When creating table or column aliases, avoid Snowflake SQL keywords (e.g., \"to\", \"date\", \"order\")\n- Handle NULL values with COALESCE(column, default_value)\n- Use NULLIF to prevent division by zero: value / NULLIF(denominator, 0)\n- Use double quotes for case-sensitive identifiers: \"ColumnName\"\n- Use FLATTEN() for semi-structured/array data\n- Use QUALIFY for post-aggregation filtering with window functions\n- Use TRY_CAST or TRY_TO_NUMBER for safe type conversions\n",
+              "tables": [
+                {
+                  "description": "Pre-aggregated LTO attach rates by item, channel, market, and date. Use this for kiosk-vs-delivery attach rate analysis. Each row is one LTO item on one day at one market through one channel.",
+                  "dimensions": [
+                    {
+                      "data_type": "VARCHAR(50)",
+                      "description": "Market for attach row",
+                      "expr": "location_market",
+                      "name": "attach_location_market"
+                    },
+                    {
+                      "data_type": "VARCHAR(30)",
+                      "description": "Region for attach row",
+                      "expr": "location_region",
+                      "name": "attach_location_region"
+                    },
+                    {
+                      "data_type": "VARCHAR(200)",
+                      "description": "LTO campaign name",
+                      "expr": "lto_campaign_name",
+                      "name": "attach_lto_campaign_name"
+                    },
+                    {
+                      "data_type": "VARCHAR(30)",
+                      "description": "LTO menu category",
+                      "expr": "menu_category",
+                      "name": "attach_menu_category"
+                    },
+                    {
+                      "data_type": "VARCHAR(30)",
+                      "description": "Order channel for attach row (APP/KIOSK/IN_STORE/WEB/UBER_EATS/DOORDASH/GRUBHUB). Use with attach rate metrics for channel comparison.",
+                      "expr": "order_channel",
+                      "name": "attach_order_channel"
+                    },
+                    {
+                      "data_type": "VARCHAR(20)",
+                      "description": "LTO stage-gate status",
+                      "expr": "stage_gate_status",
+                      "name": "attach_stage_gate_status"
+                    },
+                    {
+                      "data_type": "DATE",
+                      "description": "Transaction date for attach row",
+                      "expr": "transaction_date",
+                      "name": "attach_transaction_date"
+                    },
+                    {
+                      "data_type": "VARCHAR(100)",
+                      "description": "Name of the LTO item (e.g. Big Shack, Dubai Chocolate Shake)",
+                      "expr": "lto_item_name",
+                      "name": "lto_item_name"
+                    },
+                    {
+                      "data_type": "VARCHAR(20)",
+                      "description": "LTO menu item ID",
+                      "expr": "lto_menu_item_id",
+                      "name": "lto_menu_item_id"
+                    }
+                  ],
+                  "facts": [
+                    {
+                      "data_type": "NUMBER(28,2)",
+                      "description": "Pre-computed channel attach rate percentage for this row",
+                      "expr": "channel_attach_rate_pct",
+                      "name": "channel_attach_rate_pct"
+                    },
+                    {
+                      "data_type": "NUMBER(18,0)",
+                      "description": "Total transactions in this channel on this date at this market (denominator for attach rate)",
+                      "expr": "channel_total_txns",
+                      "name": "channel_total_txns"
+                    },
+                    {
+                      "data_type": "NUMBER(22,2)",
+                      "description": "Revenue from this LTO in the channel on this date at this market",
+                      "expr": "lto_revenue",
+                      "name": "lto_revenue"
+                    },
+                    {
+                      "data_type": "NUMBER(18,0)",
+                      "description": "Transactions containing this LTO item in the channel on this date at this market",
+                      "expr": "lto_txns",
+                      "name": "lto_txns"
+                    },
+                    {
+                      "data_type": "NUMBER(17,0)",
+                      "description": "Units of this LTO sold in the channel on this date at this market",
+                      "expr": "lto_units",
+                      "name": "lto_units"
+                    }
+                  ],
+                  "metrics": [
+                    {
+                      "description": "Sum of channel total transactions across the filtered slice (denominator)",
+                      "expr": "SUM(lto_channel_attach.channel_total_txns)",
+                      "name": "sum_channel_total_txns"
+                    },
+                    {
+                      "description": "Sum of LTO revenue across the filtered slice",
+                      "expr": "SUM(lto_channel_attach.lto_revenue)",
+                      "name": "sum_lto_revenue"
+                    },
+                    {
+                      "description": "Sum of LTO transactions across the filtered slice",
+                      "expr": "SUM(lto_channel_attach.lto_txns)",
+                      "name": "sum_lto_txns"
+                    },
+                    {
+                      "description": "Sum of LTO units across the filtered slice",
+                      "expr": "SUM(lto_channel_attach.lto_units)",
+                      "name": "sum_lto_units"
+                    },
+                    {
+                      "description": "TRUE transaction-level LTO attach rate percentage. Computes (LTO transactions / channel total transactions) after aggregation. Use this to compare attach rates across ORDER_CHANNEL, LOCATION_MARKET, LTO_ITEM_NAME. Example: filter by LTO_ITEM_NAME = 'Big Shack' and group by ORDER_CHANNEL to see kiosk vs delivery attach.",
+                      "expr": "100.0 * SUM(lto_channel_attach.lto_txns) / NULLIF(SUM(lto_channel_attach.channel_total_txns), 0)",
+                      "name": "true_channel_attach_rate"
+                    }
+                  ],
+                  "name": "lto_channel_attach"
+                },
+                {
+                  "description": "Order item-level menu performance data with weather, commodity prices, and LTO campaign metrics.",
+                  "dimensions": [
+                    {
+                      "data_type": "VARCHAR(36)",
+                      "description": "Guest identifier",
+                      "expr": "guest_id",
+                      "name": "guest_id"
+                    },
+                    {
+                      "data_type": "BOOLEAN",
+                      "description": "Whether item is core menu",
+                      "expr": "is_core_menu",
+                      "name": "is_core_menu"
+                    },
+                    {
+                      "data_type": "BOOLEAN",
+                      "description": "Whether item is an LTO (true/false)",
+                      "expr": "is_lto",
+                      "name": "is_lto"
+                    },
+                    {
+                      "data_type": "VARCHAR(100)",
+                      "description": "Menu item name",
+                      "expr": "item_name",
+                      "name": "item_name"
+                    },
+                    {
+                      "data_type": "VARCHAR(20)",
+                      "description": "Location identifier",
+                      "expr": "location_id",
+                      "name": "location_id"
+                    },
+                    {
+                      "data_type": "VARCHAR(50)",
+                      "description": "Market where sold",
+                      "expr": "location_market",
+                      "name": "location_market"
+                    },
+                    {
+                      "data_type": "VARCHAR(30)",
+                      "description": "Region where sold",
+                      "expr": "location_region",
+                      "name": "location_region"
+                    },
+                    {
+                      "data_type": "VARCHAR(200)",
+                      "description": "Associated LTO campaign name",
+                      "expr": "lto_campaign_name",
+                      "name": "lto_campaign_name"
+                    },
+                    {
+                      "data_type": "VARCHAR(30)",
+                      "description": "LTO campaign outcome",
+                      "expr": "lto_outcome",
+                      "name": "lto_outcome"
+                    },
+                    {
+                      "data_type": "VARCHAR(30)",
+                      "description": "Menu category",
+                      "expr": "menu_category",
+                      "name": "menu_category"
+                    },
+                    {
+                      "data_type": "VARCHAR(30)",
+                      "description": "Region where item is available",
+                      "expr": "menu_region",
+                      "name": "menu_region"
+                    },
+                    {
+                      "data_type": "VARCHAR(50)",
+                      "description": "Menu subcategory",
+                      "expr": "menu_subcategory",
+                      "name": "menu_subcategory"
+                    },
+                    {
+                      "data_type": "VARCHAR(30)",
+                      "description": "Order channel (APP/KIOSK/IN_STORE/WEB/UBER_EATS/DOORDASH/GRUBHUB)",
+                      "expr": "order_channel",
+                      "name": "order_channel"
+                    },
+                    {
+                      "data_type": "VARCHAR(36)",
+                      "description": "Unique order item identifier",
+                      "expr": "order_item_id",
+                      "name": "order_item_id"
+                    },
+                    {
+                      "data_type": "BOOLEAN",
+                      "description": "Whether LTO promoted to core",
+                      "expr": "promoted_to_core",
+                      "name": "promoted_to_core"
+                    },
+                    {
+                      "data_type": "VARCHAR(20)",
+                      "description": "Primary protein",
+                      "expr": "protein_type",
+                      "name": "protein_type"
+                    },
+                    {
+                      "data_type": "VARCHAR(20)",
+                      "description": "Innovation stage-gate status",
+                      "expr": "stage_gate_status",
+                      "name": "stage_gate_status"
+                    },
+                    {
+                      "data_type": "DATE",
+                      "description": "Date of transaction",
+                      "expr": "transaction_date",
+                      "name": "transaction_date"
+                    },
+                    {
+                      "data_type": "VARCHAR(36)",
+                      "description": "Parent transaction",
+                      "expr": "transaction_id",
+                      "name": "transaction_id"
+                    },
+                    {
+                      "data_type": "VARCHAR(16777216)",
+                      "description": "Year-month of transaction",
+                      "expr": "txn_year_month",
+                      "name": "txn_year_month"
+                    },
+                    {
+                      "data_type": "VARCHAR(30)",
+                      "description": "Weather on transaction date",
+                      "expr": "weather_condition",
+                      "name": "weather_condition"
+                    }
+                  ],
+                  "facts": [
+                    {
+                      "data_type": "NUMBER(10,2)",
+                      "description": "Standard menu price",
+                      "expr": "base_price",
+                      "name": "base_price"
+                    },
+                    {
+                      "data_type": "NUMBER(10,2)",
+                      "description": "Food cost per unit",
+                      "expr": "food_cost",
+                      "name": "food_cost"
+                    },
+                    {
+                      "data_type": "NUMBER(5,2)",
+                      "description": "Food cost percentage",
+                      "expr": "food_cost_pct",
+                      "name": "food_cost_pct"
+                    },
+                    {
+                      "data_type": "NUMBER(5,1)",
+                      "description": "High temperature on transaction date",
+                      "expr": "high_temp_f",
+                      "name": "high_temp_f"
+                    },
+                    {
+                      "data_type": "NUMBER(16,2)",
+                      "description": "Gross profit for line item",
+                      "expr": "item_gross_profit",
+                      "name": "item_gross_profit"
+                    },
+                    {
+                      "data_type": "NUMBER(28,2)",
+                      "description": "Margin percentage for line item",
+                      "expr": "item_margin_pct",
+                      "name": "item_margin_pct"
+                    },
+                    {
+                      "data_type": "NUMBER(10,2)",
+                      "description": "Line item revenue",
+                      "expr": "line_total",
+                      "name": "line_total"
+                    },
+                    {
+                      "data_type": "NUMBER(5,2)",
+                      "description": "Campaign-level attach rate constant (20-28 percent). For channel slicing use LTO_CHANNEL_ATTACH table metrics instead.",
+                      "expr": "lto_attach_rate",
+                      "name": "lto_attach_rate"
+                    },
+                    {
+                      "data_type": "NUMBER(5,2)",
+                      "description": "LTO cannibalization percentage",
+                      "expr": "lto_cannibalization_pct",
+                      "name": "lto_cannibalization_pct"
+                    },
+                    {
+                      "data_type": "NUMBER(5,2)",
+                      "description": "Guest profile overlap between LTOs",
+                      "expr": "lto_guest_overlap_pct",
+                      "name": "lto_guest_overlap_pct"
+                    },
+                    {
+                      "data_type": "NUMBER(5,2)",
+                      "description": "LTO incrementality score 0-100",
+                      "expr": "lto_incrementality_score",
+                      "name": "lto_incrementality_score"
+                    },
+                    {
+                      "data_type": "NUMBER(5,2)",
+                      "description": "LTO incremental traffic percentage (campaign-level constant)",
+                      "expr": "lto_incremental_traffic_pct",
+                      "name": "lto_incremental_traffic_pct"
+                    },
+                    {
+                      "data_type": "NUMBER(5,2)",
+                      "description": "LTO repeat purchase rate",
+                      "expr": "lto_repeat_purchase_rate",
+                      "name": "lto_repeat_purchase_rate"
+                    },
+                    {
+                      "data_type": "NUMBER(5,2)",
+                      "description": "LTO social sentiment score",
+                      "expr": "lto_social_sentiment",
+                      "name": "lto_social_sentiment"
+                    },
+                    {
+                      "data_type": "NUMBER(5,2)",
+                      "description": "Precipitation in inches",
+                      "expr": "precipitation_in",
+                      "name": "precipitation_in"
+                    },
+                    {
+                      "data_type": "NUMBER(10,2)",
+                      "description": "Commodity price index for protein",
+                      "expr": "protein_price_index",
+                      "name": "protein_price_index"
+                    },
+                    {
+                      "data_type": "NUMBER(5,2)",
+                      "description": "Protein price year-over-year change",
+                      "expr": "protein_yoy_change",
+                      "name": "protein_yoy_change"
+                    },
+                    {
+                      "data_type": "NUMBER(5,0)",
+                      "description": "Quantity ordered",
+                      "expr": "quantity",
+                      "name": "quantity"
+                    },
+                    {
+                      "data_type": "NUMBER(10,2)",
+                      "description": "Actual sell price",
+                      "expr": "sold_price",
+                      "name": "sold_price"
+                    }
+                  ],
+                  "metrics": [
+                    {
+                      "description": "Average item margin percentage",
+                      "expr": "AVG(menu_performance.item_margin_pct)",
+                      "name": "avg_item_margin"
+                    },
+                    {
+                      "description": "Total gross profit",
+                      "expr": "SUM(menu_performance.item_gross_profit)",
+                      "name": "total_item_profit"
+                    },
+                    {
+                      "description": "Total item revenue",
+                      "expr": "SUM(menu_performance.line_total)",
+                      "name": "total_item_revenue"
+                    },
+                    {
+                      "description": "Total units sold",
+                      "expr": "SUM(menu_performance.quantity)",
+                      "name": "total_units_sold"
+                    }
+                  ],
+                  "name": "menu_performance",
+                  "primary_key": [
+                    "order_item_id"
+                  ]
+                }
+              ]
+            },
+            "type": "json"
+          }
+        ],
+        "name": "menu_lto",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01EDqqzRdUSmai1LDshWkq8w",
+        "type": "system_agentic_semantic_context"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "semantic_model": "menu_lto",
+          "sql": "\nSELECT\n    lto_item_name,\n    attach_order_channel,\n    SUM(lto_txns) AS lto_transactions,\n    SUM(channel_total_txns) AS channel_total_transactions,\n    100.0 * SUM(lto_txns) / NULLIF(SUM(channel_total_txns), 0) AS true_channel_attach_rate\nFROM __lto_channel_attach\nWHERE lto_item_name IN ('Big Shack', 'Dubai Chocolate Shake')\nGROUP BY lto_item_name, attach_order_channel\nORDER BY lto_item_name, true_channel_attach_rate DESC NULLS LAST\n"
+        },
+        "name": "system_execute_sql",
+        "tool_use_id": "toolu_bdrk_01PrMZtWoisa8EgJqht5ScmN",
+        "type": "system_execute_sql"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "query_id": "01c3ee78-0815-a4a4-0001-dd71d98dee37",
+              "result_set": {
+                "data": [
+                  [
+                    "Big Shack",
+                    "WEB",
+                    "1376",
+                    "14728",
+                    "9.342749"
+                  ],
+                  [
+                    "Big Shack",
+                    "APP",
+                    "11869",
+                    "158269",
+                    "7.499258"
+                  ],
+                  [
+                    "Big Shack",
+                    "KIOSK",
+                    "6045",
+                    "82025",
+                    "7.369704"
+                  ],
+                  [
+                    "Big Shack",
+                    "IN_STORE",
+                    "7869",
+                    "111159",
+                    "7.079049"
+                  ],
+                  [
+                    "Big Shack",
+                    "GRUBHUB",
+                    "1695",
+                    "34790",
+                    "4.872090"
+                  ],
+                  [
+                    "Big Shack",
+                    "DOORDASH",
+                    "2092",
+                    "46334",
+                    "4.515043"
+                  ],
+                  [
+                    "Big Shack",
+                    "UBER_EATS",
+                    "2706",
+                    "63482",
+                    "4.262626"
+                  ]
+                ],
+                "resultSetMetaData": {
+                  "format": "jsonv2",
+                  "numRows": 7,
+                  "partition": 0,
+                  "partitionInfo": [
+                    {
+                      "rowCount": 7,
+                      "uncompressedSize": 363
+                    }
+                  ],
+                  "rowType": [
+                    {
+                      "length": 100,
+                      "name": "LTO_ITEM_NAME",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "text"
+                    },
+                    {
+                      "length": 30,
+                      "name": "ATTACH_ORDER_CHANNEL",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "text"
+                    },
+                    {
+                      "length": 0,
+                      "name": "LTO_TRANSACTIONS",
+                      "nullable": true,
+                      "precision": 30,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "CHANNEL_TOTAL_TRANSACTIONS",
+                      "nullable": true,
+                      "precision": 30,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "TRUE_CHANNEL_ATTACH_RATE",
+                      "nullable": true,
+                      "precision": 38,
+                      "scale": 6,
+                      "type": "fixed"
+                    }
+                  ]
+                },
+                "statementHandle": "01c3ee78-0815-a4a4-0001-dd71d98dee37"
+              },
+              "semantic_model_path": "TEMP.EESCOBAR.MKT_MENU_LTO_VIEW",
+              "sql": "WITH __lto_channel_attach AS (\n  SELECT\n    order_channel AS attach_order_channel,\n    lto_item_name,\n    channel_total_txns,\n    lto_txns\n  FROM TEMP.EESCOBAR.MKT_LTO_CHANNEL_ATTACH\n)\nSELECT\n  lto_item_name,\n  attach_order_channel,\n  SUM(lto_txns) AS lto_transactions,\n  SUM(channel_total_txns) AS channel_total_transactions,\n  100.0 * SUM(lto_txns) / NULLIF(NULLIF(SUM(channel_total_txns), 0), 0) AS true_channel_attach_rate\nFROM __lto_channel_attach\nWHERE\n  lto_item_name IN ('Big Shack', 'Dubai Chocolate Shake')\nGROUP BY\n  lto_item_name,\n  attach_order_channel\nORDER BY\n  lto_item_name,\n  true_channel_attach_rate DESC NULLS LAST /* Generated by Cortex */;"
+            },
+            "type": "json"
+          }
+        ],
+        "name": "system_execute_sql",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01PrMZtWoisa8EgJqht5ScmN",
+        "type": "system_execute_sql"
+      },
+      "type": "tool_result"
+    },
+    {
+      "thinking": {
+        "text": "\nThe query returned results only for Big Shack, but not for Dubai Chocolate Shake. Let me check if Dubai Chocolate Shake data exists or if it has a different name in the database.\n\nLet me run another query to see all available LTO items to check the exact naming:\n"
+      },
+      "type": "thinking"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "semantic_model": "menu_lto",
+          "sql": "\nSELECT DISTINCT lto_item_name\nFROM __lto_channel_attach\nWHERE lto_item_name ILIKE '%dubai%' OR lto_item_name ILIKE '%chocolate%'\nORDER BY lto_item_name\n"
+        },
+        "name": "system_execute_sql",
+        "tool_use_id": "toolu_bdrk_01YAejktP3nfkDnLY4gAzRyh",
+        "type": "system_execute_sql"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "query_id": "01c3ee78-0815-9d22-0001-dd71d98f385b",
+              "result_set": {
+                "data": [
+                  [
+                    "Chocolate Pretzel Shake"
+                  ],
+                  [
+                    "Dubai Chocolate Shake (NA)"
+                  ]
+                ],
+                "resultSetMetaData": {
+                  "format": "jsonv2",
+                  "numRows": 2,
+                  "partition": 0,
+                  "partitionInfo": [
+                    {
+                      "rowCount": 2,
+                      "uncompressedSize": 70
+                    }
+                  ],
+                  "rowType": [
+                    {
+                      "length": 100,
+                      "name": "LTO_ITEM_NAME",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "text"
+                    }
+                  ]
+                },
+                "statementHandle": "01c3ee78-0815-9d22-0001-dd71d98f385b"
+              },
+              "semantic_model_path": "TEMP.EESCOBAR.MKT_MENU_LTO_VIEW",
+              "sql": "WITH __lto_channel_attach AS (\n  SELECT\n    lto_item_name\n  FROM TEMP.EESCOBAR.MKT_LTO_CHANNEL_ATTACH\n)\nSELECT DISTINCT\n  lto_item_name\nFROM __lto_channel_attach\nWHERE\n  lto_item_name ILIKE '%dubai%' OR lto_item_name ILIKE '%chocolate%'\nORDER BY\n  lto_item_name /* Generated by Cortex */;"
+            },
+            "type": "json"
+          }
+        ],
+        "name": "system_execute_sql",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01YAejktP3nfkDnLY4gAzRyh",
+        "type": "system_execute_sql"
+      },
+      "type": "tool_result"
+    },
+    {
+      "thinking": {
+        "text": "\nAh, I see! The Dubai Chocolate Shake is called \"Dubai Chocolate Shake (NA)\" in the database. Let me re-run the query with the correct name:\n"
+      },
+      "type": "thinking"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "semantic_model": "menu_lto",
+          "sql": "\nSELECT\n    lto_item_name,\n    attach_order_channel,\n    SUM(lto_txns) AS lto_transactions,\n    SUM(channel_total_txns) AS channel_total_transactions,\n    100.0 * SUM(lto_txns) / NULLIF(SUM(channel_total_txns), 0) AS true_channel_attach_rate\nFROM __lto_channel_attach\nWHERE lto_item_name IN ('Big Shack', 'Dubai Chocolate Shake (NA)')\nGROUP BY lto_item_name, attach_order_channel\nORDER BY lto_item_name, true_channel_attach_rate DESC NULLS LAST\n"
+        },
+        "name": "system_execute_sql",
+        "tool_use_id": "toolu_bdrk_01PzwbVaGhNRyVvBq1PgBkeH",
+        "type": "system_execute_sql"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "query_id": "01c3ee78-0815-9d22-0001-dd71d98f3a7b",
+              "result_set": {
+                "data": [
+                  [
+                    "Big Shack",
+                    "WEB",
+                    "1376",
+                    "14728",
+                    "9.342749"
+                  ],
+                  [
+                    "Big Shack",
+                    "APP",
+                    "11869",
+                    "158269",
+                    "7.499258"
+                  ],
+                  [
+                    "Big Shack",
+                    "KIOSK",
+                    "6045",
+                    "82025",
+                    "7.369704"
+                  ],
+                  [
+                    "Big Shack",
+                    "IN_STORE",
+                    "7869",
+                    "111159",
+                    "7.079049"
+                  ],
+                  [
+                    "Big Shack",
+                    "GRUBHUB",
+                    "1695",
+                    "34790",
+                    "4.872090"
+                  ],
+                  [
+                    "Big Shack",
+                    "DOORDASH",
+                    "2092",
+                    "46334",
+                    "4.515043"
+                  ],
+                  [
+                    "Big Shack",
+                    "UBER_EATS",
+                    "2706",
+                    "63482",
+                    "4.262626"
+                  ],
+                  [
+                    "Dubai Chocolate Shake (NA)",
+                    "WEB",
+                    "1435",
+                    "21420",
+                    "6.699346"
+                  ],
+                  [
+                    "Dubai Chocolate Shake (NA)",
+                    "KIOSK",
+                    "6021",
+                    "138736",
+                    "4.339897"
+                  ],
+                  [
+                    "Dubai Chocolate Shake (NA)",
+                    "IN_STORE",
+                    "7871",
+                    "194633",
+                    "4.044021"
+                  ],
+                  [
+                    "Dubai Chocolate Shake (NA)",
+                    "APP",
+                    "10713",
+                    "289119",
+                    "3.705395"
+                  ],
+                  [
+                    "Dubai Chocolate Shake (NA)",
+                    "GRUBHUB",
+                    "1771",
+                    "49414",
+                    "3.584005"
+                  ],
+                  [
+                    "Dubai Chocolate Shake (NA)",
+                    "DOORDASH",
+                    "2069",
+                    "66640",
+                    "3.104742"
+                  ],
+                  [
+                    "Dubai Chocolate Shake (NA)",
+                    "UBER_EATS",
+                    "2683",
+                    "93923",
+                    "2.856595"
+                  ]
+                ],
+                "resultSetMetaData": {
+                  "format": "jsonv2",
+                  "numRows": 14,
+                  "partition": 0,
+                  "partitionInfo": [
+                    {
+                      "rowCount": 14,
+                      "uncompressedSize": 837
+                    }
+                  ],
+                  "rowType": [
+                    {
+                      "length": 100,
+                      "name": "LTO_ITEM_NAME",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "text"
+                    },
+                    {
+                      "length": 30,
+                      "name": "ATTACH_ORDER_CHANNEL",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "text"
+                    },
+                    {
+                      "length": 0,
+                      "name": "LTO_TRANSACTIONS",
+                      "nullable": true,
+                      "precision": 30,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "CHANNEL_TOTAL_TRANSACTIONS",
+                      "nullable": true,
+                      "precision": 30,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "TRUE_CHANNEL_ATTACH_RATE",
+                      "nullable": true,
+                      "precision": 38,
+                      "scale": 6,
+                      "type": "fixed"
+                    }
+                  ]
+                },
+                "statementHandle": "01c3ee78-0815-9d22-0001-dd71d98f3a7b"
+              },
+              "semantic_model_path": "TEMP.EESCOBAR.MKT_MENU_LTO_VIEW",
+              "sql": "WITH __lto_channel_attach AS (\n  SELECT\n    order_channel AS attach_order_channel,\n    lto_item_name,\n    channel_total_txns,\n    lto_txns\n  FROM TEMP.EESCOBAR.MKT_LTO_CHANNEL_ATTACH\n)\nSELECT\n  lto_item_name,\n  attach_order_channel,\n  SUM(lto_txns) AS lto_transactions,\n  SUM(channel_total_txns) AS channel_total_transactions,\n  100.0 * SUM(lto_txns) / NULLIF(NULLIF(SUM(channel_total_txns), 0), 0) AS true_channel_attach_rate\nFROM __lto_channel_attach\nWHERE\n  lto_item_name IN ('Big Shack', 'Dubai Chocolate Shake (NA)')\nGROUP BY\n  lto_item_name,\n  attach_order_channel\nORDER BY\n  lto_item_name,\n  true_channel_attach_rate DESC NULLS LAST /* Generated by Cortex */;"
+            },
+            "type": "json"
+          }
+        ],
+        "name": "system_execute_sql",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01PzwbVaGhNRyVvBq1PgBkeH",
+        "type": "system_execute_sql"
+      },
+      "type": "tool_result"
+    },
+    {
+      "thinking": {
+        "text": "\nPerfect! Now I have complete data for both LTOs. Let me analyze the results:\n\nBig Shack attach rates by channel:\n- WEB: 9.3%\n- APP: 7.5%\n- KIOSK: 7.4%\n- IN_STORE: 7.1%\n- GRUBHUB: 4.9%\n- DOORDASH: 4.5%\n- UBER_EATS: 4.3%\n\nDubai Chocolate Shake attach rates by channel:\n- WEB: 6.7%\n- KIOSK: 4.3%\n- IN_STORE: 4.0%\n- APP: 3.7%\n- GRUBHUB: 3.6%\n- DOORDASH: 3.1%\n- UBER_EATS: 2.9%\n\nKey insights:\n1. Big Shack has higher attach rates than Dubai Chocolate Shake across ALL channels\n2. WEB channel performs best for both items\n3. Big Shack performs especially well in owned/digital-direct channels (WEB/APP/KIOSK: 7.4-9.3%) vs 3P delivery (4.3-4.9%)\n4. Dubai Chocolate Shake underperforms in APP (3.7%) despite APP being a strong channel for Big Shack (7.5%)\n5. Third-party delivery has the lowest attach rates for both items\n\nNow I need to format this following the response template: Headline \u2192 Scorecard \u2192 Data table \u2192 Action.\n"
+      },
+      "type": "thinking"
+    },
+    {
+      "text": "\n**Big Shack outperforms Dubai Chocolate Shake by 2x across all channels, with WEB showing the widest gap: **9.3%** vs **6.7%** attach rate**\n\n| Metric | Value |\n|--------|-------|\n| Big Shack highest attach rate | **9.3%** (WEB) |\n| Dubai Shake highest attach rate | **6.7%** (WEB) |\n| Big Shack 3P delivery attach rate | **4.3-4.9%** |\n| Dubai Shake 3P delivery attach rate | **2.9-3.6%** |\n\n## Channel Comparison\n\n",
+      "type": "text"
+    },
+    {
+      "table": {
+        "query_id": "01c3ee78-0815-9d22-0001-dd71d98f3a7b",
+        "result_set": {
+          "data": [
+            [
+              "Big Shack",
+              "WEB",
+              "1376",
+              "14728",
+              "9.342749"
+            ],
+            [
+              "Big Shack",
+              "APP",
+              "11869",
+              "158269",
+              "7.499258"
+            ],
+            [
+              "Big Shack",
+              "KIOSK",
+              "6045",
+              "82025",
+              "7.369704"
+            ],
+            [
+              "Big Shack",
+              "IN_STORE",
+              "7869",
+              "111159",
+              "7.079049"
+            ],
+            [
+              "Big Shack",
+              "GRUBHUB",
+              "1695",
+              "34790",
+              "4.872090"
+            ],
+            [
+              "Big Shack",
+              "DOORDASH",
+              "2092",
+              "46334",
+              "4.515043"
+            ],
+            [
+              "Big Shack",
+              "UBER_EATS",
+              "2706",
+              "63482",
+              "4.262626"
+            ],
+            [
+              "Dubai Chocolate Shake (NA)",
+              "WEB",
+              "1435",
+              "21420",
+              "6.699346"
+            ],
+            [
+              "Dubai Chocolate Shake (NA)",
+              "KIOSK",
+              "6021",
+              "138736",
+              "4.339897"
+            ],
+            [
+              "Dubai Chocolate Shake (NA)",
+              "IN_STORE",
+              "7871",
+              "194633",
+              "4.044021"
+            ],
+            [
+              "Dubai Chocolate Shake (NA)",
+              "APP",
+              "10713",
+              "289119",
+              "3.705395"
+            ],
+            [
+              "Dubai Chocolate Shake (NA)",
+              "GRUBHUB",
+              "1771",
+              "49414",
+              "3.584005"
+            ],
+            [
+              "Dubai Chocolate Shake (NA)",
+              "DOORDASH",
+              "2069",
+              "66640",
+              "3.104742"
+            ],
+            [
+              "Dubai Chocolate Shake (NA)",
+              "UBER_EATS",
+              "2683",
+              "93923",
+              "2.856595"
+            ]
+          ],
+          "resultSetMetaData": {
+            "format": "jsonv2",
+            "numRows": 14,
+            "partition": 0,
+            "rowType": [
+              {
+                "length": 100,
+                "name": "LTO_ITEM_NAME",
+                "nullable": true,
+                "precision": 0,
+                "scale": 0,
+                "type": "text"
+              },
+              {
+                "length": 30,
+                "name": "ATTACH_ORDER_CHANNEL",
+                "nullable": true,
+                "precision": 0,
+                "scale": 0,
+                "type": "text"
+              },
+              {
+                "length": 0,
+                "name": "LTO_TRANSACTIONS",
+                "nullable": true,
+                "precision": 30,
+                "scale": 0,
+                "type": "fixed"
+              },
+              {
+                "length": 0,
+                "name": "CHANNEL_TOTAL_TRANSACTIONS",
+                "nullable": true,
+                "precision": 30,
+                "scale": 0,
+                "type": "fixed"
+              },
+              {
+                "length": 0,
+                "name": "TRUE_CHANNEL_ATTACH_RATE",
+                "nullable": true,
+                "precision": 38,
+                "scale": 6,
+                "type": "fixed"
+              }
+            ]
+          },
+          "statementHandle": "01c3ee78-0815-9d22-0001-dd71d98f3a7b"
+        },
+        "title": "Big Shack vs Dubai Chocolate Shake Attach Rates by Channel",
+        "tool_use_id": "toolu_bdrk_01PzwbVaGhNRyVvBq1PgBkeH"
+      },
+      "type": "table"
+    },
+    {
+      "text": "\n\n**Action:**\n- Investigate why Dubai Chocolate Shake underperforms in APP (**3.7%**) when Big Shack hits **7.5%** \u2014 review placement, imagery, and push notification strategy\n- Double down on WEB merchandising for both items: it drives highest attach rates and lowest commission cost\n- Redesign 3P delivery menus: both LTOs struggle on third-party platforms (**2.9-4.9%** range), signaling poor menu positioning or photography\n",
+      "type": "text"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "skill_name": "system_suggested_queries"
+        },
+        "name": "server_skill",
+        "tool_use_id": "toolu_bdrk_01XhTQoVvbFLzqrSFHwDXMAc",
+        "type": "server_skill"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "content": "# Skill: system_suggested_queries\n\n**Description**: \"Follow-up question generation -- criteria for relevant, novel suggested queries, plus required output format and confidence scoring rubric. Load before emitting `<suggested_queries>` follow-up questions.\"\n\n## Instructions\n\n\n# Suggested Follow-up Questions\n\n## Context and Purpose\n- Follow-up questions help users explore the topic further after receiving an answer\n- They should be natural extensions or related angles, not repetitions of what was just answered\n- Think: \"What would a curious user want to know next?\"\n\n## When to Provide\n- After successfully answering a question with data/analysis\n- When the answer reveals interesting patterns or insights worth exploring\n- When there are natural follow-up directions the user might want to pursue\n- Do NOT suggest follow-ups for: system errors, clarification requests, or greetings\n\n## Core Principles\n\n1. **Match the user's question pattern**: Follow-ups should mirror the TYPE of question asked.\n   - \"what changed\" \u2192 more \"what changed\" explorations (different time periods, dimensions)\n   - \"how much\" \u2192 more quantitative follow-ups (breakdowns, comparisons, trends)\n   - \"who/which\" \u2192 more identification/ranking follow-ups\n   - \"why\" \u2192 deeper \"why\" ONLY if data sources support causal analysis (see rule 4)\n\n2. **Stay within the same data sources**: Suggest questions answerable by the SAME tools and specific data sources used in the current answer. If the answer came from Cortex Analyst, suggest questions the same semantic model(s) can answer. If from Cortex Search, suggest questions the same search index can answer.\n\n3. **Use these follow-up templates** (adapt naturally to the conversation, don't use verbatim):\n   - **Drill-down**: \"How does [metric] break down by [a different dimension in the data]?\"\n   - **Time comparison**: \"How does [metric] compare to [a different time period]?\"\n   - **Trend**: \"What is the trend for [metric] over [time range available]?\"\n   - **Ranking**: \"Which [entities] have the highest/lowest [metric]?\"\n   - **Filtering**: \"What does [metric] look like for [a specific segment in the data]?\"\n\n4. **[CRITICAL] Be careful with \"why\" questions**: \"Why\" questions often require causal reasoning or external context that tools CANNOT provide.\n   - SQL/Analyst tools can show WHAT happened and HOW metrics changed, but rarely WHY.\n   - Only suggest \"why\" if search indexes or documents contain explanatory content (reports, analyses, commentary) that could plausibly answer it.\n   - When in doubt, reframe \"why\" as \"what\". E.g., instead of \"Why did revenue drop?\" \u2192 \"What are the top contributing segments to the revenue change?\"\n\n5. **Novelty**: Questions MUST require NEW information not already provided in the answer. Don't suggest questions that can be answered from information already given.\n\n6. **Answerability**: [IMPORTANT] Questions MUST have high confidence of being answerable using the same tools available. Do NOT suggest questions requiring information your tools do not have access to.\n\n7. **Recency and Relevance**: Prefer questions about recent time periods over historical data, unless historical context is specifically relevant.\n\n## Format\n- Generate 2-3 high-quality questions maximum\n- Enclose in <suggested_queries>...</suggested_queries> tags\n- Frame as natural questions a user might ask\n- Don't repeat the current question with minor variations\n- Each suggestion should explore a distinct angle\n\n**Confidence scoring**: Rate each question on 3 criteria (1 point each):\n  - **Relevant**: Related to the previous question, matches the question pattern, natural follow-up\n  - **Novel**: Requires additional information to be looked up (not already in the answer)\n  - **Answerable**: Can be answered by the SAME tools and data sources used\n\nScore: \"high\" if all 3 are true, \"medium\" if 2/3, \"low\" if 0-1.\n\nOutput as a JSON array of objects with query and confidence score.\n\n## Examples\nGood suggestions after answering \"What was Q1 2023 revenue?\":\n- \"How does Q1 2023 revenue compare to Q1 2022?\"\n- \"Which product line contributed most to Q1 2023 revenue?\"\n- \"What is the revenue forecast for Q2 2023?\"\n\nBad suggestions:\n- \"What is the total Q1 2023 revenue?\" (repeats answered question)\n- \"Why did revenue change in Q1 2023?\" (requires causal data that may not exist)\n- \"What is customer satisfaction?\" (unrelated, requires different data)",
+              "skill_name": "system_suggested_queries"
+            },
+            "type": "json"
+          }
+        ],
+        "name": "server_skill",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01XhTQoVvbFLzqrSFHwDXMAc",
+        "type": "server_skill"
+      },
+      "type": "tool_result"
+    },
+    {
+      "suggested_queries": [
+        {
+          "query": "Which markets show the highest Big Shack attach rates in the KIOSK channel?"
+        },
+        {
+          "query": "What is the revenue contribution from Big Shack vs Dubai Chocolate Shake across digital-direct channels?"
+        },
+        {
+          "query": "How do guest reviews explain the performance gap between Big Shack and Dubai Chocolate Shake?"
+        }
+      ],
+      "type": "suggested_queries"
+    },
+    {
+      "suggested_queries": [
+        {
+          "query": "Which markets show the highest Big Shack attach rates in the KIOSK channel?"
+        },
+        {
+          "query": "What is the revenue contribution from Big Shack vs Dubai Chocolate Shake across digital-direct channels?"
+        },
+        {
+          "query": "How do guest reviews explain the performance gap between Big Shack and Dubai Chocolate Shake?"
+        }
+      ],
+      "type": "suggested_queries"
+    },
+    {
+      "suggested_queries": [
+        {
+          "query": "Which markets show the highest Big Shack attach rates in the KIOSK channel?"
+        },
+        {
+          "query": "What is the revenue contribution from Big Shack vs Dubai Chocolate Shake across digital-direct channels?"
+        },
+        {
+          "query": "How do guest reviews explain the performance gap between Big Shack and Dubai Chocolate Shake?"
+        }
+      ],
+      "type": "suggested_queries"
+    },
+    {
+      "suggested_queries": [
+        {
+          "query": "Which markets show the highest Big Shack attach rates in the KIOSK channel?"
+        },
+        {
+          "query": "What is the revenue contribution from Big Shack vs Dubai Chocolate Shake across digital-direct channels?"
+        },
+        {
+          "query": "How do guest reviews explain the performance gap between Big Shack and Dubai Chocolate Shake?"
+        }
+      ],
+      "type": "suggested_queries"
+    },
+    {
+      "suggested_queries": [
+        {
+          "query": "Which markets show the highest Big Shack attach rates in the KIOSK channel?"
+        },
+        {
+          "query": "What is the revenue contribution from Big Shack vs Dubai Chocolate Shake across digital-direct channels?"
+        },
+        {
+          "query": "How do guest reviews explain the performance gap between Big Shack and Dubai Chocolate Shake?"
+        }
+      ],
+      "type": "suggested_queries"
+    },
+    {
+      "suggested_queries": [
+        {
+          "query": "Which markets show the highest Big Shack attach rates in the KIOSK channel?"
+        },
+        {
+          "query": "What is the revenue contribution from Big Shack vs Dubai Chocolate Shake across digital-direct channels?"
+        },
+        {
+          "query": "How do guest reviews explain the performance gap between Big Shack and Dubai Chocolate Shake?"
+        }
+      ],
+      "type": "suggested_queries"
+    },
+    {
+      "text": "\n\n",
+      "type": "text"
+    },
+    {
+      "suggested_queries": [
+        {
+          "query": "Which markets show the highest Big Shack attach rates in the KIOSK channel?"
+        },
+        {
+          "query": "What is the revenue contribution from Big Shack vs Dubai Chocolate Shake across digital-direct channels?"
+        },
+        {
+          "query": "How do guest reviews explain the performance gap between Big Shack and Dubai Chocolate Shake?"
+        }
+      ],
+      "type": "suggested_queries"
+    },
+    {
+      "text": "\n\n",
+      "type": "text"
+    }
+  ],
+  "metadata": {
+    "usage": {
+      "tokens_consumed": [
+        {
+          "context_window": 200000,
+          "input_tokens": {
+            "cache_read": 298459,
+            "cache_write": 16227,
+            "total": 314712,
+            "uncached": 26
+          },
+          "model_name": "claude-sonnet-4-5",
+          "output_tokens": {
+            "total": 2741
+          }
+        }
+      ]
+    }
+  },
+  "role": "assistant",
+  "schema_version": "v2",
+  "sequence_number": 332,
+  "status": "completed"
+}

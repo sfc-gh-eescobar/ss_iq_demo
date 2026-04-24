@@ -1,0 +1,466 @@
+{
+  "content": [
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "agentic_search": false,
+          "filter": "{\"@eq\": {\"TOPICS\": \"LTO\"}}",
+          "limit": 15,
+          "query": "Big Shack LTO review sentiment feedback"
+        },
+        "name": "guest_reviews",
+        "tool_use_id": "toolu_bdrk_01VfFAtQxFWwDzjFDVjo869u",
+        "type": "cortex_search"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "has_time_column": true,
+          "need_future_forecasting_data": false,
+          "original_query": "How did the Big Shack LTO perform in Q4 2025? Include guest sentiment.",
+          "previous_related_tool_result_id": "",
+          "query": "Big Shack LTO performance Q4 2025"
+        },
+        "name": "menu_lto",
+        "tool_use_id": "toolu_bdrk_01ALAcvJPsWKE2vyQNUKYaSH",
+        "type": "cortex_analyst_text_to_sql"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "message": "No results found.",
+              "searchResultsPersist": {}
+            },
+            "type": "json"
+          }
+        ],
+        "name": "guest_reviews",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01VfFAtQxFWwDzjFDVjo869u",
+        "type": "cortex_search"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "query_id": "01c3e250-0212-a874-0053-fc0716ab3bea",
+              "result_set": {
+                "data": [
+                  [
+                    "2025-11-04",
+                    "2025-12-31",
+                    "26592",
+                    "Big Shack Launch",
+                    "COMPLETED",
+                    "278680.17",
+                    "189374.57",
+                    "67.96965930",
+                    "27908",
+                    "25704",
+                    "0.87000000",
+                    "48.00000000",
+                    "20.00000000",
+                    "85.00000000",
+                    "14.00000000",
+                    "9.00000000",
+                    "16404"
+                  ]
+                ],
+                "resultSetMetaData": {
+                  "format": "jsonv2",
+                  "numRows": 1,
+                  "partition": 0,
+                  "partitionInfo": [
+                    {
+                      "rowCount": 1,
+                      "uncompressedSize": 221
+                    }
+                  ],
+                  "rowType": [
+                    {
+                      "length": 0,
+                      "name": "START_DATE",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "date"
+                    },
+                    {
+                      "length": 0,
+                      "name": "END_DATE",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "date"
+                    },
+                    {
+                      "length": 0,
+                      "name": "TOTAL_ORDER_ITEMS",
+                      "nullable": false,
+                      "precision": 18,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 200,
+                      "name": "LTO_CAMPAIGN_NAME",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "text"
+                    },
+                    {
+                      "length": 30,
+                      "name": "LTO_OUTCOME",
+                      "nullable": true,
+                      "precision": 0,
+                      "scale": 0,
+                      "type": "text"
+                    },
+                    {
+                      "length": 0,
+                      "name": "TOTAL_ITEM_REVENUE",
+                      "nullable": true,
+                      "precision": 22,
+                      "scale": 2,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "TOTAL_ITEM_PROFIT",
+                      "nullable": true,
+                      "precision": 28,
+                      "scale": 2,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "AVG_ITEM_MARGIN",
+                      "nullable": true,
+                      "precision": 38,
+                      "scale": 8,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "TOTAL_UNITS_SOLD",
+                      "nullable": true,
+                      "precision": 17,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "UNIQUE_TRANSACTIONS",
+                      "nullable": false,
+                      "precision": 18,
+                      "scale": 0,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "AVG_SOCIAL_SENTIMENT",
+                      "nullable": true,
+                      "precision": 23,
+                      "scale": 8,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "AVG_REPEAT_PURCHASE_RATE",
+                      "nullable": true,
+                      "precision": 23,
+                      "scale": 8,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "AVG_ATTACH_RATE",
+                      "nullable": true,
+                      "precision": 23,
+                      "scale": 8,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "AVG_INCREMENTALITY_SCORE",
+                      "nullable": true,
+                      "precision": 23,
+                      "scale": 8,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "AVG_INCREMENTAL_TRAFFIC_PCT",
+                      "nullable": true,
+                      "precision": 23,
+                      "scale": 8,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "AVG_CANNIBALIZATION_PCT",
+                      "nullable": true,
+                      "precision": 23,
+                      "scale": 8,
+                      "type": "fixed"
+                    },
+                    {
+                      "length": 0,
+                      "name": "UNIQUE_GUESTS",
+                      "nullable": false,
+                      "precision": 18,
+                      "scale": 0,
+                      "type": "fixed"
+                    }
+                  ]
+                },
+                "statementHandle": "01c3e250-0212-a874-0053-fc0716ab3bea"
+              },
+              "result_set_truncated": false,
+              "sql": "WITH __menu_performance AS (\n  SELECT\n    guest_id,\n    is_lto,\n    lto_campaign_name,\n    lto_outcome,\n    order_item_id,\n    transaction_id,\n    transaction_date,\n    item_gross_profit,\n    item_margin_pct,\n    line_total,\n    lto_attach_rate,\n    lto_cannibalization_pct,\n    lto_incrementality_score,\n    lto_incremental_traffic_pct,\n    lto_repeat_purchase_rate,\n    lto_social_sentiment,\n    quantity\n  FROM DEMO_DB.SHAKE_SHACK.MKT_MENU_PERFORMANCE_MART\n)\nSELECT\n  MIN(transaction_date) AS start_date,\n  MAX(transaction_date) AS end_date,\n  COUNT(order_item_id) AS total_order_items,\n  lto_campaign_name,\n  lto_outcome,\n  SUM(line_total) AS total_item_revenue,\n  SUM(item_gross_profit) AS total_item_profit,\n  AVG(item_margin_pct) AS avg_item_margin,\n  SUM(quantity) AS total_units_sold,\n  COUNT(DISTINCT transaction_id) AS unique_transactions,\n  AVG(lto_social_sentiment) AS avg_social_sentiment,\n  AVG(lto_repeat_purchase_rate) AS avg_repeat_purchase_rate,\n  AVG(lto_attach_rate) AS avg_attach_rate,\n  AVG(lto_incrementality_score) AS avg_incrementality_score,\n  AVG(lto_incremental_traffic_pct) AS avg_incremental_traffic_pct,\n  AVG(lto_cannibalization_pct) AS avg_cannibalization_pct,\n  COUNT(DISTINCT guest_id) AS unique_guests\nFROM __menu_performance\nWHERE\n  is_lto = TRUE\n  AND lto_campaign_name ILIKE '%Big Shack%'\n  AND transaction_date >= '2025-10-01'\n  AND transaction_date <= '2025-12-31'\n  AND transaction_date <= CURRENT_DATE\nGROUP BY\n  lto_campaign_name,\n  lto_outcome\nORDER BY\n  total_item_revenue DESC NULLS LAST\n -- Generated by Cortex Analyst (request_id: 696ab2d9-7b65-4499-9b78-12366f72a87c)\n;",
+              "text": "The question is clear and I can answer it with the following SQL."
+            },
+            "type": "json"
+          }
+        ],
+        "name": "menu_lto",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01ALAcvJPsWKE2vyQNUKYaSH",
+        "type": "cortex_analyst_text_to_sql"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "agentic_search": false,
+          "limit": 10,
+          "query": "Big Shack burger LTO experience taste quality"
+        },
+        "name": "guest_reviews",
+        "tool_use_id": "toolu_bdrk_01TMXXcSwFWdY7GPcnwKSP9g",
+        "type": "cortex_search"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "search_results": [
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_7ed94c25-3122-4503-ad14-293f4ce20a2c",
+                  "source_id": 0,
+                  "text": "The Big Shack might be the best fast casual burger in America right now. Two thick quarter-pound patties, hand-sliced onions, Roma tomatoes \u2014 you can taste the quality in every bite. Worth every penny of $9.99."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_7307161e-5563-41f5-847e-fea5299c1a15",
+                  "source_id": 0,
+                  "text": "The Big Shack eating challenge is real because this thing is MASSIVE. Two quarter-pound patties stacked on three buns. Finished the whole thing and immediately wanted another one. Best LTO they have ever done."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_59841df7-5ac7-4800-a799-afd5088ee157",
+                  "source_id": 0,
+                  "text": "Just had the Onion Rings (LTO) for the second time this week. The flavors are incredible and the quality is exactly what I expect from Shake Shack. Already told all my friends about it."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "2"
+                  },
+                  "id": "cs_f4a9888a-c3b5-4941-93d6-baa487f433f5",
+                  "source_id": 0,
+                  "text": "Just had the Onion Rings (LTO) for the second time this week. The flavors are incredible and the quality is exactly what I expect from Shake Shack. Already told all my friends about it."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_d4b04140-6491-4614-8509-bbb33c5ea55d",
+                  "source_id": 0,
+                  "text": "I drove 30 minutes specifically for the Big Shack and it was absolutely worth it. The Angus beef quality is leagues ahead of any other chain doing a similar triple-bun burger concept. Shake Shack wins."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_72404e0a-493b-42de-bc0f-eea7678e9d9d",
+                  "source_id": 0,
+                  "text": "The Big Shack shows that Shake Shack actually understands what makes a great burger \u2014 quality beef, fresh toppings, and attention to detail. The three potato bun layers are buttered and toasted to perfection."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_c1144fb4-8820-434b-989c-5b3ec49a3c5b",
+                  "source_id": 0,
+                  "text": "The Big Shack has ruined all other burgers for me. The quality of Shake Shack Angus beef in two quarter-pound patties with that secret sauce... nothing else comes close. Not Five Guys, not In-N-Out."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_e75f0eff-6278-48a2-a4a3-a23259cc64f4",
+                  "source_id": 0,
+                  "text": "Big Shack review: the lettuce is hand-harvested green leaf not iceberg, tomatoes are Roma not those sad pink slices, and the beef is 100 percent Angus. THIS is how you do a premium burger. Bravo Shake Shack."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_3b5c8162-712e-4a80-bc85-a685856b472b",
+                  "source_id": 0,
+                  "text": "The Onion Rings (LTO) is the reason I keep choosing Shake Shack over Five Guys and Smashburger. This is premium fast casual done right."
+                },
+                {
+                  "columns": {
+                    "@CONFIDENCE_SCORE": "1"
+                  },
+                  "id": "cs_60212401-5402-4dd7-b647-9267c8676a92",
+                  "source_id": 0,
+                  "text": "The Onion Rings (LTO) is the reason I keep choosing Shake Shack over Five Guys and Smashburger. This is premium fast casual done right."
+                }
+              ],
+              "search_results_persist": {}
+            },
+            "type": "json"
+          }
+        ],
+        "name": "guest_reviews",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01TMXXcSwFWdY7GPcnwKSP9g",
+        "type": "cortex_search"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "skill_name": "system_chart_workflow"
+        },
+        "name": "server_skill",
+        "tool_use_id": "toolu_bdrk_01AvsRxuxMnVz4E5bfLkq9BW",
+        "type": "server_skill"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "content": "# Skill: system_chart_workflow\n\n**Description**: Chart generation workflow -- when to generate charts, mandatory visualization rules, chart citing format.\n\n## Instructions\n\n\n# Chart Workflow\n\n## When to Generate Charts\n- SQL results with 2+ rows AND numerical metrics (revenue, sales, counts, growth, percentages)\n- Comparisons: metrics by region/product/team/category\n- Rankings: top N customers, bottom performers, leaderboards\n- Time series: monthly trends, year-over-year growth, daily patterns\n- Distributions: category breakdowns, segment analysis\n\n## When NOT to Chart\n- Single scalar values (\"What is total revenue?\" \u2192 answer \"$X\", no chart)\n- Purely textual data\n- When the user explicitly asks for a table only\n\n## Chart Generation Process\n1. Evaluate if SQL results would benefit from visualization\n2. Load the `chart_generation_instructions` skill for detailed chart creation guidance\n3. Follow the skill instructions to call the data_to_chart tool\n\n## Citing Charts\nAfter receiving a data_to_chart tool result:\n- Say \"Please find the visualization below.\" (or similar context) inside the <answer> block\n- Include `<chart>toolUseId</chart>` where toolUseId is from the data_to_chart tool result\n- Valid format: `<chart>tooluse_8n3P5qRk7aWzJ1cYxTvEfg</chart>`\n- **CRITICAL**: Use the tool_use_id from data_to_chart, NOT from SQL tools. SQL tool IDs cause rendering errors.\n- If the data_to_chart result contains warnings, do NOT cite the chart \u2014 fix the issue first.\n- Never reference chart colors (e.g., \"the blue line\", \"red bars\") \u2014 users can customize colors.",
+              "skill_name": "system_chart_workflow"
+            },
+            "type": "json"
+          }
+        ],
+        "name": "server_skill",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01AvsRxuxMnVz4E5bfLkq9BW",
+        "type": "server_skill"
+      },
+      "type": "tool_result"
+    },
+    {
+      "tool_use": {
+        "client_side_execute": false,
+        "input": {
+          "skill_name": "system_suggested_queries"
+        },
+        "name": "server_skill",
+        "tool_use_id": "toolu_bdrk_01U9rGM3oFkBGsPFMBduQaMp",
+        "type": "server_skill"
+      },
+      "type": "tool_use"
+    },
+    {
+      "tool_result": {
+        "content": [
+          {
+            "json": {
+              "content": "# Skill: system_suggested_queries\n\n**Description**: \"Follow-up question generation -- criteria for relevant, novel suggested queries, plus required output format and confidence scoring rubric. Load before emitting `<suggested_queries>` follow-up questions.\"\n\n## Instructions\n\n\n# Suggested Follow-up Questions\n\n## Context and Purpose\n- Follow-up questions help users explore the topic further after receiving an answer\n- They should be natural extensions or related angles, not repetitions of what was just answered\n- Think: \"What would a curious user want to know next?\"\n\n## When to Provide\n- After successfully answering a question with data/analysis\n- When the answer reveals interesting patterns or insights worth exploring\n- When there are natural follow-up directions the user might want to pursue\n- Do NOT suggest follow-ups for: system errors, clarification requests, or greetings\n\n## Core Principles\n\n1. **Match the user's question pattern**: Follow-ups should mirror the TYPE of question asked.\n   - \"what changed\" \u2192 more \"what changed\" explorations (different time periods, dimensions)\n   - \"how much\" \u2192 more quantitative follow-ups (breakdowns, comparisons, trends)\n   - \"who/which\" \u2192 more identification/ranking follow-ups\n   - \"why\" \u2192 deeper \"why\" ONLY if data sources support causal analysis (see rule 4)\n\n2. **Stay within the same data sources**: Suggest questions answerable by the SAME tools and specific data sources used in the current answer. If the answer came from Cortex Analyst, suggest questions the same semantic model(s) can answer. If from Cortex Search, suggest questions the same search index can answer.\n\n3. **Use these follow-up templates** (adapt naturally to the conversation, don't use verbatim):\n   - **Drill-down**: \"How does [metric] break down by [a different dimension in the data]?\"\n   - **Time comparison**: \"How does [metric] compare to [a different time period]?\"\n   - **Trend**: \"What is the trend for [metric] over [time range available]?\"\n   - **Ranking**: \"Which [entities] have the highest/lowest [metric]?\"\n   - **Filtering**: \"What does [metric] look like for [a specific segment in the data]?\"\n\n4. **[CRITICAL] Be careful with \"why\" questions**: \"Why\" questions often require causal reasoning or external context that tools CANNOT provide.\n   - SQL/Analyst tools can show WHAT happened and HOW metrics changed, but rarely WHY.\n   - Only suggest \"why\" if search indexes or documents contain explanatory content (reports, analyses, commentary) that could plausibly answer it.\n   - When in doubt, reframe \"why\" as \"what\". E.g., instead of \"Why did revenue drop?\" \u2192 \"What are the top contributing segments to the revenue change?\"\n\n5. **Novelty**: Questions MUST require NEW information not already provided in the answer. Don't suggest questions that can be answered from information already given.\n\n6. **Answerability**: [IMPORTANT] Questions MUST have high confidence of being answerable using the same tools available. Do NOT suggest questions requiring information your tools do not have access to.\n\n7. **Recency and Relevance**: Prefer questions about recent time periods over historical data, unless historical context is specifically relevant.\n\n## Format\n- Generate 2-3 high-quality questions maximum\n- Enclose in <suggested_queries>...</suggested_queries> tags\n- Frame as natural questions a user might ask\n- Don't repeat the current question with minor variations\n- Each suggestion should explore a distinct angle\n\n**Confidence scoring**: Rate each question on 3 criteria (1 point each):\n  - **Relevant**: Related to the previous question, matches the question pattern, natural follow-up\n  - **Novel**: Requires additional information to be looked up (not already in the answer)\n  - **Answerable**: Can be answered by the SAME tools and data sources used\n\nScore: \"high\" if all 3 are true, \"medium\" if 2/3, \"low\" if 0-1.\n\nOutput as a JSON array of objects with query and confidence score.\n\n## Examples\nGood suggestions after answering \"What was Q1 2023 revenue?\":\n- \"How does Q1 2023 revenue compare to Q1 2022?\"\n- \"Which product line contributed most to Q1 2023 revenue?\"\n- \"What is the revenue forecast for Q2 2023?\"\n\nBad suggestions:\n- \"What is the total Q1 2023 revenue?\" (repeats answered question)\n- \"Why did revenue change in Q1 2023?\" (requires causal data that may not exist)\n- \"What is customer satisfaction?\" (unrelated, requires different data)",
+              "skill_name": "system_suggested_queries"
+            },
+            "type": "json"
+          }
+        ],
+        "name": "server_skill",
+        "status": "success",
+        "tool_use_id": "toolu_bdrk_01U9rGM3oFkBGsPFMBduQaMp",
+        "type": "server_skill"
+      },
+      "type": "tool_result"
+    },
+    {
+      "thinking": {
+        "text": "\nLet me analyze the Big Shack LTO performance data:\n\n**Quantitative Data (Q4 2025: Nov 4 \u2013 Dec 31, 2025):**\n- Total Units Sold: 27,908\n- Unique Guests: 16,404\n- Unique Transactions: 25,704\n- Total Revenue: $278,680\n- Total Profit: $189,375\n- Avg Item Margin: 68.0%\n- Social Sentiment: 0.87 (out of 1, so very high)\n- Repeat Purchase Rate: 48.0%\n- Attach Rate: 20.0%\n- Incrementality Score: 85.0\n- Incremental Traffic %: 14.0%\n- Cannibalization %: 9.0%\n- LTO Outcome: COMPLETED\n\n**Guest Sentiment:**\nOverwhelmingly positive reviews highlighting quality beef, premium ingredients, and strong competitor comparisons (beating Five Guys, In-N-Out).\n\nThis is a single-row result, so a chart wouldn't add much value here. Let me present a clean scorecard and include the guest quotes.\n\nThe data looks solid. Let me compose the response with:\n1. Headline with key finding\n2. Scorecard (3-5 KPIs)\n3. Quotes block (2-3 verbatims)\n4. Action bullets\n\nNo chart needed since it's a single LTO/campaign row.\n"
+      },
+      "type": "thinking"
+    },
+    {
+      "text": "\n\n**Big Shack Launch was a standout LTO \u2014 $279K revenue, 68% margin, and near-perfect guest sentiment.**\n\n| Metric | Value |\n|---|---|\n| Total Revenue | **$278,680** |\n| Avg Item Margin | **68.0%** |\n| Units Sold | **27,908** |\n| Repeat Purchase Rate | **48.0%** |\n| Social Sentiment Score | **0.87 / 1.0** |\n| Incremental Traffic Lift | **+14.0%** |\n\n> *\"The Big Shack might be the best fast casual burger in America right now. Two thick quarter-pound patties, hand-sliced onions, Roma tomatoes \u2014 you can taste the quality in every bite. Worth every penny of $9.99.\"* \u2014 Guest Review\n\n> *\"The Big Shack has ruined all other burgers for me... nothing else comes close. Not Five Guys, not In-N-Out.\"* \u2014 Guest Review\n\n> *\"Big Shack review: the lettuce is hand-harvested green leaf not iceberg, tomatoes are Roma... THIS is how you do a premium burger. Bravo Shake Shack.\"* \u2014 Guest Review\n\n**Action:**\n- **Evaluate for CORE menu addition** \u2014 a 48% repeat purchase rate, 85 incrementality score, and near-zero brand risk (9% cannibalization) make this a strong candidate for permanent menu inclusion.\n- **Leverage competitor contrast in paid media** \u2014 guest reviews explicitly call out Five Guys and In-N-Out as inferior; this is ready-made positioning for acquisition campaigns.\n- **Use Big Shack as an anchor for future premium LTO pricing** \u2014 the $9.99 price point generated both volume and margin, validating premium positioning with the core guest base.\n\n",
+      "type": "text"
+    },
+    {
+      "suggested_queries": [
+        {
+          "query": "How does Big Shack's repeat purchase rate compare to other completed LTOs?"
+        },
+        {
+          "query": "Which markets drove the most Big Shack units sold in Q4 2025?"
+        },
+        {
+          "query": "What LTO items are currently in the PILOT or SCALE stage of the pipeline?"
+        }
+      ],
+      "type": "suggested_queries"
+    }
+  ],
+  "metadata": {
+    "usage": {
+      "tokens_consumed": [
+        {
+          "context_window": 200000,
+          "input_tokens": {
+            "cache_read": 76759,
+            "cache_write": 20958,
+            "total": 97725,
+            "uncached": 8
+          },
+          "model_name": "claude-sonnet-4-6",
+          "output_tokens": {
+            "total": 1038
+          }
+        }
+      ]
+    }
+  },
+  "role": "assistant",
+  "schema_version": "v2",
+  "sequence_number": 380,
+  "status": "completed"
+}
